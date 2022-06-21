@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:app/domain/atributos_card.dart';
 import 'package:app/pages/assunto_page.dart';
 import 'package:app/widgets/estudos_cards.dart';
+import 'package:app/widgets/nav_drawer.dart';
 
 class MeuCard extends StatefulWidget {
   const MeuCard({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _MeuCardState extends State<MeuCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //drawer: NavDrawer(),
+      drawer: NavDrawer(),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color(0xFF180C36),
