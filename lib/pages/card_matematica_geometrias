@@ -1,0 +1,149 @@
+import 'package:flutter/material.dart';
+
+class CardMatematica extends StatefulWidget {
+  const CardMatematica({Key? key}) : super(key: key);
+
+  @override
+  _CardMatematica createState() => _CardMatematica();
+}
+
+class _CardMatematica extends State<CardMatematica> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFF6E39F5),
+      body: Column(
+        children: [
+          AppBar(
+            title: Container(
+              child: Center(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          //caractere invísicel antes de 'Card'.
+                          //n]ao consegui centralizar de modo certo.
+                          ' ⠀⠀⠀⠀CARD MATEMÁTICA',
+                          style: TextStyle(
+                              fontSize: 24
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Text(
+                      'GEOMETRIAS',
+                      style: TextStyle(
+                          fontSize: 24
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            backgroundColor: Color(0xFF180C36),
+          ),
+
+          const SizedBox(width: 50),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFB6CCD7),
+            ),
+            child: Center(
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        const Text(
+                          'PESQUISAR',
+                          style: TextStyle(
+                              fontSize: 30
+                          ),
+                        ),
+                        const SizedBox(width: 170),
+                        Icon(
+                            Icons.search,
+                            size: 50
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 40),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFB6CCD7),
+            ),
+            child: Center(
+              child: Column(
+                children: [
+                  const Text(
+                    'GEOMETRIA PLANA',
+                    style: TextStyle(
+                      fontSize: 30
+                    ),
+                  ),
+                  Icon(
+                    Icons.calculate,
+                    size: 50
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 80),
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFB6CCD7),
+            ),
+            child: Center(
+              child: Column(
+                children: [
+                  const Text(
+                    'GEOMETRIA ESPACIAL',
+                    style: TextStyle(
+                        fontSize: 30
+                    ),
+                  ),
+                  Icon(
+                    Icons.category,
+                    size: 50
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 80),
+          Container(
+            color: Color(0xFFB6CCD7),
+            child: Center(
+              child: Column(
+                children: [
+                  const Text(
+                    'GEOMETRIA ANALÍTICA',
+                    style: TextStyle(
+                      fontSize: 30
+                    ),
+                  ),
+                  Icon(
+                    Icons.circle,
+                    size: 50
+                  ),
+                ],
+              ),
+            ),
+          ),
+          //colocar os botões finais aqui
+        ],
+      ),
+    );
+  }
+}
