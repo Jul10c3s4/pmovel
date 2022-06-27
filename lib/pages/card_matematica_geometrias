@@ -11,19 +11,20 @@ class _CardMatematica extends State<CardMatematica> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'MATEMÁTICA - GEOMETRIAS',
+          style: TextStyle(
+              fontSize: 24
+          ),
+        ),
+        backgroundColor: Color(0xFF180C36),
+      ),
       backgroundColor: Color(0xFF6E39F5),
+      
       body: ListView(
         children: [
-          AppBar(
-            centerTitle: true,
-            title: const Text(
-              'MATEMÁTICA - GEOMETRIAS',
-              style: TextStyle(
-                fontSize: 24
-              ),
-            ),
-            backgroundColor: Color(0xFF180C36),
-          ),
           Column(
             children: [
               const SizedBox(width: 50),
@@ -112,7 +113,6 @@ class _CardMatematica extends State<CardMatematica> {
                   ),
                 ),
               ),
-              //colocar os botões finais aqui
             ],
            ),
         ],
