@@ -31,8 +31,9 @@ class _CardMatematica extends State<CardMatematica> {
               Card(
                 color: Color(0xFFB6CCD7),
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(80, 10, 0, 10),
+                  padding: EdgeInsets.fromLTRB(20, 10, 40, 10),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'PESQUISAR',
