@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetinho/teste.dart';
 
 class CardMatematica extends StatefulWidget {
   const CardMatematica({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _CardMatematica extends State<CardMatematica> {
         backgroundColor: Color(0xFF180C36),
       ),
       backgroundColor: Color(0xFF6E39F5),
-      
+
       body: ListView(
         children: [
           Column(
@@ -50,71 +51,39 @@ class _CardMatematica extends State<CardMatematica> {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 40),
-              Card(
-                color: Color(0xFFB6CCD7),
-                child: Center(
-                  child: Column(
-                    children: [
-                      const Text(
-                        'GEOMETRIA PLANA',
-                        style: TextStyle(
-                            fontSize: 30
-                        ),
-                      ),
-                      Icon(
-                          Icons.calculate,
-                          size: 50
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 80),
-              Card(
-                color: Color(0xFFB6CCD7),
-                child: Center(
-                  child: Column(
-                    children: [
-                      const Text(
-                        'GEOMETRIA ESPACIAL',
-                        style: TextStyle(
-                            fontSize: 30
-                        ),
-                      ),
-                      Icon(
-                          Icons.category,
-                          size: 50
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 80),
-              Card(
-                color: Color(0xFFB6CCD7),
-                child: Center(
-                  child: Column(
-                    children: [
-                      const Text(
-                        'GEOMETRIA ANALÍTICA',
-                        style: TextStyle(
-                            fontSize: 30
-                        ),
-                      ),
-                      Icon(
-                          Icons.circle,
-                          size: 50
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ],
-           ),
+          ),
+
+          const SizedBox(height: 80),
+          const GeometriasDivisoes(
+            texto: 'GEOMETRIA PLANA',
+            icone: 'calculate',
+          ),
+
+          const SizedBox(height: 80),
+          const GeometriasDivisoes(
+            texto: 'GEOMETRIA ESPACIAL',
+            icone: 'category',
+          ),
+
+          const SizedBox(height: 80),
+          const GeometriasDivisoes(
+            texto: 'GEOMETRIA ANALÍTICA',
+            icone: 'circle',
+          ),
+
+          const SizedBox(height: 80),
+          const GeometriasDivisoes(
+            texto: 'PROGRESSÃO ARITMÉTICA',
+            icone: 'circle',
+          ),
+
+          const SizedBox(height: 80),
+          const GeometriasDivisoes(
+            texto: 'PROGRESSÃO GEOMÉTRICA',
+            icone: 'circle',
+          ),
+
         ],
       ),
     );
