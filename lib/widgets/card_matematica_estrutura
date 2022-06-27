@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+class GeometriasDivisoes extends StatefulWidget {
+  final String texto;
+  final String icone;
+
+  const GeometriasDivisoes({
+    Key? key,
+    required this.texto,
+    required this.icone,
+  }) : super(key: key);
+
+  @override
+  _GeometriasDivisoesState createState() => _GeometriasDivisoesState();
+}
+
+class _GeometriasDivisoesState extends State<GeometriasDivisoes>{
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Color(0xFFB6CCD7),
+      child: Center(
+        child: Column(
+          children: [
+            Text(
+              '${widget.texto}',
+              style: TextStyle(
+                  fontSize: 30
+              ),
+            ),
+            Icon(
+                Icons.calculate,
+                size: 50
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//'${widget.texto}',
