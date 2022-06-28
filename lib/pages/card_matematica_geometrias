@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projetinho/GeometriasDivisoes.dart';
+import 'package:untitled3/GeometriasDivisoes.dart';
 
 class CardMatematica extends StatefulWidget {
   const CardMatematica({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class _CardMatematica extends State<CardMatematica> {
         children: [
           Column(
             children: [
-              const SizedBox(width: 50),
               //color: Color(0xFFB6CCD7),
               Card(
                 color: Color(0xFFB6CCD7),
@@ -54,37 +53,53 @@ class _CardMatematica extends State<CardMatematica> {
             ],
           ),
 
-          const SizedBox(height: 80),
+          const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA PLANA',
             icone: Icons.calculate,
           ),
 
-          const SizedBox(height: 80),
+          const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ESPACIAL',
             icone: Icons.category,
           ),
 
-          const SizedBox(height: 80),
+          const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ANALÍTICA',
             icone: Icons.circle,
           ),
 
-          const SizedBox(height: 80),
+          const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO ARITMÉTICA',
             icone: Icons.functions,
           ),
 
-          const SizedBox(height: 80),
+          const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO GEOMÉTRICA',
             icone: Icons.star,
           ),
 
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+          ),
+        ],
+        selectedItemColor: const Color(0xFFD0C3F1),
+        unselectedItemColor: Colors.white,
+        backgroundColor: const Color(0xFF351B75),
+        currentIndex: 0,
       ),
     );
   }
