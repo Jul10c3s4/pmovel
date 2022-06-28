@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projetinho/teste.dart';
+import 'package:projetinho/GeometriasDivisoes.dart';
 
 class CardMatematica extends StatefulWidget {
   const CardMatematica({Key? key}) : super(key: key);
@@ -57,31 +57,31 @@ class _CardMatematica extends State<CardMatematica> {
           const SizedBox(height: 80),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA PLANA',
-            icone: 'calculate',
+            icone: Icons.calculate,
           ),
 
           const SizedBox(height: 80),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ESPACIAL',
-            icone: 'category',
+            icone: Icons.category,
           ),
 
           const SizedBox(height: 80),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ANALÍTICA',
-            icone: 'circle',
+            icone: Icons.circle,
           ),
 
           const SizedBox(height: 80),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO ARITMÉTICA',
-            icone: 'circle',
+            icone: Icons.functions,
           ),
 
           const SizedBox(height: 80),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO GEOMÉTRICA',
-            icone: 'circle',
+            icone: Icons.star,
           ),
 
         ],
