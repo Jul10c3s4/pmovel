@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class GeometriasDivisoes extends StatefulWidget {
   final String texto;
-  final String icone;
+  final IconData icone;
 
   const GeometriasDivisoes({
     Key? key,
@@ -29,7 +29,7 @@ class _GeometriasDivisoesState extends State<GeometriasDivisoes>{
               ),
             ),
             Icon(
-                Icons.calculate,
+                widget.icone,
                 size: 50
             ),
           ],
