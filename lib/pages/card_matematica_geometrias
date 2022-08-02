@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled3/GeometriasDivisoes.dart';
+import 'package:untitled5/conteudos_matematica.dart';
+import 'card_estrutura.dart';
 
 class CardMatematica extends StatefulWidget {
   const CardMatematica({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _CardMatematica extends State<CardMatematica> {
               Card(
                 color: Color(0xFFB6CCD7),
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(20, 10, 40, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 10, 40, 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -57,30 +58,35 @@ class _CardMatematica extends State<CardMatematica> {
           const GeometriasDivisoes(
             texto: 'GEOMETRIA PLANA',
             icone: Icons.calculate,
+            page: CardMatematica(),
           ),
 
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ESPACIAL',
             icone: Icons.category,
+            page: ConteudosGeometriaAnalitica(),
           ),
 
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ANALÍTICA',
             icone: Icons.circle,
+            page: ConteudosGeometriaAnalitica(),
           ),
 
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO ARITMÉTICA',
             icone: Icons.functions,
+            page: ConteudosGeometriaAnalitica(),
           ),
 
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO GEOMÉTRICA',
             icone: Icons.star,
+            page: ConteudosGeometriaAnalitica(),
           ),
 
         ],
