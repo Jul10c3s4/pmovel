@@ -44,9 +44,6 @@ class _conteudosGeometriaAnalitica extends State<ConteudosGeometriaAnalitica> {
     );
   }
   void onPressed(){
-    Navigator.pop(
-      context
-
-    );
+    Navigator.pop(context);
   }
 }
