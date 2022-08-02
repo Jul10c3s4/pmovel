@@ -53,7 +53,7 @@ class _GeometriasDivisoesState extends State<GeometriasDivisoes>{
     );
   }
   void onPressed(){
-    Navigator.pushReplacement(
+    Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) {
@@ -63,4 +63,5 @@ class _GeometriasDivisoesState extends State<GeometriasDivisoes>{
     );
   }
 }
+
 
