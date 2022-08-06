@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled5/conteudos_matematica.dart';
-import 'card_estrutura.dart';
+import 'conteudos_matematica.dart';
+//import 'card_estrutura.dart';
 
 class CardMatematica extends StatefulWidget {
   const CardMatematica({Key? key}) : super(key: key);
@@ -17,14 +17,11 @@ class _CardMatematica extends State<CardMatematica> {
         centerTitle: true,
         title: const Text(
           'MATEMÁTICA - GEOMETRIAS',
-          style: TextStyle(
-              fontSize: 24
-          ),
+          style: TextStyle(fontSize: 24),
         ),
         backgroundColor: Color(0xFF180C36),
       ),
       backgroundColor: Color(0xFF6E39F5),
-
       body: ListView(
         children: [
           Column(
@@ -39,56 +36,45 @@ class _CardMatematica extends State<CardMatematica> {
                     children: [
                       const Text(
                         'PESQUISAR',
-                        style: TextStyle(
-                            fontSize: 30
-                        ),
+                        style: TextStyle(fontSize: 30),
                       ),
-                      Icon(
-                          Icons.search,
-                          size: 50
-                      ),
+                      Icon(Icons.search, size: 50),
                     ],
                   ),
                 ),
               ),
             ],
           ),
-
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA PLANA',
             icone: Icons.calculate,
             page: CardMatematica(),
           ),
-
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ESPACIAL',
             icone: Icons.category,
             page: ConteudosGeometriaAnalitica(),
           ),
-
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ANALÍTICA',
             icone: Icons.circle,
             page: ConteudosGeometriaAnalitica(),
           ),
-
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO ARITMÉTICA',
             icone: Icons.functions,
             page: ConteudosGeometriaAnalitica(),
           ),
-
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'PROGRESSÃO GEOMÉTRICA',
             icone: Icons.star,
             page: ConteudosGeometriaAnalitica(),
           ),
-
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
