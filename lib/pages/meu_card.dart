@@ -54,22 +54,6 @@ class _MeuCardState extends State<MeuCard> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
-          ),
-        ],
-        selectedItemColor: const Color(0xFFD0C3F1),
-        unselectedItemColor: Colors.white,
-        backgroundColor: const Color(0xFF351B75),
-        currentIndex: 0,
-      ),
     );
   }
 

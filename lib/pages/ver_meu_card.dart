@@ -23,37 +23,36 @@ class _VerMeuCardState extends State<VerMeuCard> {
       appBar: AppBar(),
       body: Container(
         margin: const EdgeInsets.symmetric(vertical: 5.0),
-        padding: const EdgeInsets.all(6.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7),
-          color: Colors.grey[200],
-        ),
+        padding: const EdgeInsets.all(12.0),
         child: Row(
           children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    widget.cartaoResumo.titulo,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      widget.cartaoResumo.titulo,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  Text(
-                    widget.cartaoResumo.descricao,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 10,
+                    const SizedBox(width: 12),
+                    Text(
+                      widget.cartaoResumo.descricao,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 24),
+                    buildImage(),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(width: 24),
-            buildImage(),
           ],
         ),
       ),

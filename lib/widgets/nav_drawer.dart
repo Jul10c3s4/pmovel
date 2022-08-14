@@ -1,3 +1,4 @@
+import 'package:app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/pages/meu_card.dart';
@@ -26,7 +27,12 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Home'),
-            onTap: () => {},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              ),
+            },
           ),
           ListTile(
             leading: const Icon(Icons.person_outlined),
@@ -41,7 +47,7 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MeuCard()),
+                MaterialPageRoute(builder: (context) => const MeuCard()),
               ),
             },
           ),
@@ -61,7 +67,7 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Materias()),
+                MaterialPageRoute(builder: (context) => const Materias()),
               ),
             },
           ),

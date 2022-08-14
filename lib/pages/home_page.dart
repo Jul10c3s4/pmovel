@@ -13,8 +13,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   List pages = [
-    DestaquePage(),
-    ExplorePage(),
+    const DestaquePage(),
+    const ExplorePage(),
   ];
 
   @override
@@ -23,9 +23,8 @@ class _HomePageState extends State<HomePage> {
       drawer: NavDrawer(),
       appBar: AppBar(
         backgroundColor: const Color(0xff180c36),
-        title: const Text('HOME'),
+        title: const Text('MEMSTUDY'),
       ),
-      backgroundColor: const Color(0xff6239db),
       body: pages[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

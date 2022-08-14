@@ -41,11 +41,7 @@ class _DestaquePageState extends State<DestaquePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavDrawer(),
-      appBar: AppBar(
-        backgroundColor: const Color(0xff180c36),
-        title: const Text('HOME'),
-      ),
+      backgroundColor: const Color(0xff6239db),
       body: ListView(
         children: [
           const SizedBox(height: 20),

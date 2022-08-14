@@ -131,26 +131,6 @@ class _JogosPageState extends State<JogosPage> {
           ),
         ),
       ]),
-
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.purple,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
-            backgroundColor: Colors.green,
-          ),
-        ],
-        selectedItemColor: Color(0xFFD0C3F1),
-        unselectedItemColor: Colors.white,
-        backgroundColor: Color(0xFF351B75),
-        currentIndex: 0,
-        /*falta colocar a cor do item quando ele não está selecionado*/
-      ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
