@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app/pages/conteudos_matematica.dart';
-import '../widgets/card_matematica_estrutura';
+import 'conteudos_matematica.dart';
+//import 'card_estrutura.dart';
 
 class CardMatematica extends StatefulWidget {
   const CardMatematica({Key? key}) : super(key: key);
@@ -48,19 +48,22 @@ class _CardMatematica extends State<CardMatematica> {
           const GeometriasDivisoes(
             texto: 'GEOMETRIA PLANA',
             icone: Icons.calculate,
-            page: ConteudosGeometriaAnalitica(nomeBotoes: "Vídeo-Aulas", onPressed: "onPressed1"),
+            page: ConteudosGeometriaAnalitica(
+                nomeBotoes: "Vídeo-Aulas", onPressed: "onPressed1"),
           ),
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ESPACIAL',
             icone: Icons.category,
-            page: ConteudosGeometriaAnalitica(nomeBotoes: "Vídeo-Aulas", onPressed: "onPressed2"),
+            page: ConteudosGeometriaAnalitica(
+                nomeBotoes: "Vídeo-Aulas", onPressed: "onPressed2"),
           ),
           const SizedBox(height: 60),
           const GeometriasDivisoes(
             texto: 'GEOMETRIA ANALÍTICA',
             icone: Icons.circle,
-            page: ConteudosGeometriaAnalitica(nomeBotoes: "Vídeo-Aulas", onPressed: "onPressed3"),
+            page: ConteudosGeometriaAnalitica(
+                nomeBotoes: "Vídeo-Aulas", onPressed: "onPressed3"),
           ),
         ],
       ),
