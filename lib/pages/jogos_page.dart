@@ -1,18 +1,9 @@
-import 'package:app/pages/jogo_memoria.dart';
-import 'package:app/pages/pergunta1.dart';
-import 'package:app/pages/pergunta2.dart';
 import 'package:flutter/material.dart';
+import '../pergunta1.dart';
+import '../pergunta2.dart';
+import '../jogo_memoria.dart';
 
 class JogosPage extends StatefulWidget {
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   @override
   _JogosPageState createState() => _JogosPageState();
 }
@@ -20,11 +11,6 @@ class JogosPage extends StatefulWidget {
 class _JogosPageState extends State<JogosPage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +24,6 @@ class _JogosPageState extends State<JogosPage> {
           tooltip: 'back',
           onPressed: () {},
         ),
-
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.more_vert),
@@ -55,7 +40,9 @@ class _JogosPageState extends State<JogosPage> {
           child: Row(children: [
             IconButton(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context, false);
+              },
             ),
             SizedBox(width: 16),
           ]),
@@ -131,6 +118,26 @@ class _JogosPageState extends State<JogosPage> {
           ),
         ),
       ]),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
+            backgroundColor: Colors.green,
+          ),
+        ],
+        selectedItemColor: Color(0xFFD0C3F1),
+        unselectedItemColor: Colors.white,
+        backgroundColor: Color(0xFF351B75),
+        currentIndex: 0,
+        /*falta colocar a cor do item quando ele não está selecionado*/
+      ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
