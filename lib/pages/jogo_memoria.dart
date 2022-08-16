@@ -33,7 +33,9 @@ class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           tooltip: 'back',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context, false);
+          },
         ),
 
         actions: <Widget>[
@@ -57,33 +59,33 @@ class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildCard(),
-                    buildCard(),
-                    buildCard(texto: "ortocentro"),
+                    buildCard(cardD: BD.cardDatabase[0]),
+                    buildCard(cardD: BD.cardDatabase[1]),
+                    buildCard(cardD: BD.cardDatabase[2]),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildCard(),
-                    buildCard(),
-                    buildCard(),
+                    buildCard(cardD: BD.cardDatabase[2]),
+                    buildCard(cardD: BD.cardDatabase[2]),
+                    buildCard(cardD: BD.cardDatabase[2]),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildCard(),
-                    buildCard(),
-                    buildCard(),
+                    buildCard(cardD: BD.cardDatabase[2]),
+                    buildCard(cardD: BD.cardDatabase[2]),
+                    buildCard(cardD: BD.cardDatabase[2]),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildCard(),
-                    buildCard(),
-                    buildCard(),
+                    buildCard(cardD: BD.cardDatabase[2]),
+                    buildCard(cardD: BD.cardDatabase[2]),
+                    buildCard(cardD: BD.cardDatabase[2]),
                   ],
                 ),
               ]),
@@ -152,7 +154,7 @@ class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
 }
 
 Widget buildCard({
-  String texto: " ",
+  required CardDef cardD,
 }) {
   return Container(
     height: 96,
@@ -160,14 +162,14 @@ Widget buildCard({
     padding: const EdgeInsets.all(0),
     child: Card(
       semanticContainer: true,
-      color: (texto == " ") ? Color(0xFFB6CCD7) : Color(0xFF351B75),
+      color: (cardD.titulo == "" && cardD.descricao == "") ? Color(0xFFB6CCD7) : Color(0xFF351B75),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {},
         child: Center(
           child: Text(
-            texto,
+            cardD.titulo,
             style: TextStyle(
               color: Colors.white,
             ),
