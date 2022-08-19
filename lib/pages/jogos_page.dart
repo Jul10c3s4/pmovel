@@ -16,7 +16,7 @@ class _JogosPageState extends State<JogosPage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text("Teste"),
+        title: Text("Jogos"),
         backgroundColor: Color(0xFF180C36),
         /*centerTitle: true,
         leading: IconButton(
@@ -61,60 +61,62 @@ class _JogosPageState extends State<JogosPage> {
             ),
             padding: EdgeInsets.all(16),
             //margin: EdgeInsets.only(top: 16),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              ElevatedButton(
-                onPressed: onPressedButton,
-                child: Text(
-                  "CARTÃO - FRENTE",
-                  style: TextStyle(
-                    color: Colors.black,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ElevatedButton(
+                    onPressed: onPressedButton,
+                    child: Text(
+                      "CARTÃO - FRENTE",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFB6CCD7),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: onPressedButton2,
-                child: Text(
-                  "CARTÃO - VERSO",
-                  style: TextStyle(
-                    color: Colors.white,
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: onPressedButton2,
+                    child: Text(
+                      "CARTÃO - VERSO",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF351B75),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: onPressedButton3,
-                child: Text(
-                  "JOGO DA MEMÓRIA",
-                  style: TextStyle(
-                    color: Colors.black,
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: onPressedButton3,
+                    child: Text(
+                      "JOGO DA MEMÓRIA",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFB6CCD7),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "FlashcardsHalfPair",
-                  style: TextStyle(
-                    color: Colors.black,
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      "FlashcardsHalfPair",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFB6CCD7),
-                ),
-              ),
-              SizedBox(height: 16),
-            ]),
+                  SizedBox(height: 16),
+                ]),
           ),
         ),
       ]),
@@ -174,15 +176,4 @@ class _JogosPageState extends State<JogosPage> {
       ),
     );
   }
-
-  /*void onPressedButton4() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return  NewCard();
-        },
-      ),
-    );
-  }*/
 }
