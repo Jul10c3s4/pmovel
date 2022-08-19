@@ -1,7 +1,5 @@
-import '../domain/atributos_card.dart';
-//import '../domain/atributos_conteudos_geometrias.dart';
-//import '../domain/card_resumo.dart';
 import '../domain/cartaoDefinitivo.dart';
+import 'dart:math';
 
 class BD {
   /*
@@ -19,10 +17,13 @@ class BD {
     CardDef(titulo: "card3", descricao: "textoCard3", image: "url"),
     CardDef(titulo: "card4", descricao: "textoCard4", video: "url"),
     CardDef(titulo: "card5", descricao: "textoCard5", questao: "questao1 ..."),
-    CardDef(titulo: "card2", descricao: "textoCard2"),
-    CardDef(titulo: "card2", descricao: "textoCard2"),
-    CardDef(titulo: "card2", descricao: "textoCard2"),
-    CardDef(titulo: "card2", descricao: "textoCard2"),
+    CardDef(titulo: "card6", descricao: "textoCard6"),
+    CardDef(titulo: "card7", descricao: "textoCard7"),
+    CardDef(titulo: "card8", descricao: "textoCard8"),
+    CardDef(titulo: "card9", descricao: "textoCard9"),
+    CardDef(titulo: "card10", descricao: "textoCard10"),
+    CardDef(titulo: "card11", descricao: "textoCard11"),
+    CardDef(titulo: "card12", descricao: "textoCard12"),
   ];
 
   static addCard(CardDef novoCard) {
@@ -32,5 +33,11 @@ class BD {
   //recebe o indice do Card que será deletado
   static deletarCard(int index) {
     BD.cardDatabase.removeAt(index);
+  }
+
+  static sortearCard() {
+    Random rnd = new Random();
+    int indiceSorteado = rnd.nextInt(cardDatabase.length - 1);
+    return cardDatabase[indiceSorteado];
   }
 }
