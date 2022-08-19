@@ -1,33 +1,27 @@
 import 'package:flutter/material.dart';
+import '../data/bd.dart';
+import '../domain/cartaoDefinitivo.dart';
+import '../domain/half_card.dart';
 
 class JogoMemoriaPage extends StatefulWidget {
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  List<CardDef> lista = BD.cardDatabase;
 
   @override
   _JogoMemoriaPageState createState() => _JogoMemoriaPageState();
 }
 
 class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
+  List<CardHalf> mCards = getHalfCard();
+  int qMemCardFaceUp = 0;
+  bool isEndedGame = false;
+
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("Jogo da Memória"),
+        title: Text(
+          !isEndedGame ? "Jogo da Memória" : "Voce Venceu",
+        ),
         backgroundColor: Color(0xFF180C36),
         centerTitle: true,
         leading: IconButton(
@@ -37,7 +31,6 @@ class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
             Navigator.pop(context, false);
           },
         ),
-
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.more_vert),
@@ -55,143 +48,195 @@ class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
               ),
               padding: EdgeInsets.all(16),
               //margin: EdgeInsets.only(top: 16),
-              child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildCard(cardD: BD.cardDatabase[0]),
-                    buildCard(cardD: BD.cardDatabase[1]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-              ]),
+              child: buildGridView(),
             ),
-
-            AlertDialog(
-                title: Center(
-                  child: Text(
-                    "detalhes",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      backgroundColor: Color(0xFF180C36),
-                    ),
-                  ),
-                ),
-                titlePadding: const EdgeInsets.all(8),
-                scrollable: true,
-                backgroundColor: Color(0xFF351B75),
-                content: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  new Text(
-                    "Texto da carta",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  new ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      "OK",
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFB6CCD7),
-                    ),
-                  ),
-                ]),
-                actions: <Widget>[
-                  // define os botões na base do dialogo
-                  new FlatButton(
-                    child: new Text(
-                      "Fechar",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ]),
-
-            // background-color
-            // conteiner do texto
-            // barra de cima
           ]),
         ),
       ]),
+    );
+  }
 
-      // This trailing comma makes auto-formatting nicer for build methods.
+  virarHalfCard(CardHalf halfCard) {
+    setState(() {
+      if (halfCard.isFaceUp == false && !halfCard.isClear) {
+        halfCard.isFaceUp = true;
+        qMemCardFaceUp++;
+      }
+    });
+  }
+
+  Widget buildGridView() {
+    return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 5,
+        ),
+        //itemCount: BD.cardDatabase.length,
+        itemCount: 12,
+        itemBuilder: (BuildContext context, int index) {
+          //return buildCard(context: context, cardD: BD.cardDatabase[index]);
+
+          return buildCard(context: context, cardH: mCards[index]);
+        });
+  }
+
+  Widget buildCard({
+    required BuildContext context,
+    required CardHalf cardH,
+  }) {
+    return Container(
+      height: 96,
+      width: 64,
+      padding: const EdgeInsets.all(0),
+      child: Card(
+        semanticContainer: true,
+        color: (cardH.isFaceUp == false)
+            ? const Color(0xFFB6CCD7)
+            : const Color(0xFF351B75),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: InkWell(
+          splashColor: Colors.blue.withAlpha(30),
+          onTap: () async {
+            //rebuild Gridview
+            //
+            if (qMemCardFaceUp < 2) {
+              virarHalfCard(cardH);
+              buildAlertDCard(context: context, cardH: cardH);
+              CardHalf cH1 = mCards.firstWhere(
+                  (element) => element.isFaceUp == true && !element.isClear);
+              CardHalf cH2 = mCards.lastWhere(
+                  (element) => element.isFaceUp == true && !element.isClear);
+
+              print(cH1.text);
+              print(cH2.text);
+              if (cH1.equals(cH2) && qMemCardFaceUp == 2) {
+                qMemCardFaceUp = 0;
+                cH1.isClear = true;
+                cH2.isClear = true;
+
+                if (mCards.every((element) => element.isClear)) {
+                  setState(() {
+                    isEndedGame = true;
+                  });
+                }
+              } else if (qMemCardFaceUp >= 2) {
+                await Future.delayed(Duration(seconds: 3));
+                setState(
+                  () {
+                    mCards.forEach((cardH) {
+                      cardH.isFaceUp = false;
+                      cardH.isClear = false;
+                    });
+                    qMemCardFaceUp = 0;
+                  },
+                );
+              }
+            }
+          },
+          child: Center(
+            child: Text(
+              cardH.isFaceUp ? cardH.text : " ",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        elevation: 5,
+        margin: EdgeInsets.all(1),
+      ),
+      color: Color(0xFFB6CCD7),
     );
   }
 }
 
-Widget buildCard({
-  required CardDef cardD,
+List<CardHalf> convertCardDInHalfCard(List<CardDef> listCardsD) {
+  List<CardHalf> listaHC = <CardHalf>[];
+
+  listCardsD.forEach((element) {
+    listaHC.add(
+      new CardHalf(
+        text: element.titulo,
+        isTituloFace: true,
+        isFaceUp: false,
+      ),
+    );
+  });
+
+  listCardsD.forEach((element) {
+    listaHC.add(new CardHalf(
+      text: element.descricao,
+      isTituloFace: false,
+      isFaceUp: false,
+    ));
+  });
+
+  return listaHC;
+}
+
+List<CardHalf> getHalfCard() {
+  List<CardDef> listaJogoM = BD.cardDatabase;
+  listaJogoM.shuffle();
+  listaJogoM = listaJogoM.getRange(0, 6).toList();
+
+  List<CardHalf> listaHalfCard = convertCardDInHalfCard(listaJogoM);
+
+  //listaJogoM.shuffle();
+  return listaHalfCard;
+}
+
+buildAlertDCard({
+  required BuildContext context,
+  required CardHalf cardH,
 }) {
-  return Container(
-    height: 96,
-    width: 64,
-    padding: const EdgeInsets.all(0),
-    child: Card(
-      semanticContainer: true,
-      color: (cardD.titulo == "" && cardD.descricao == "") ? Color(0xFFB6CCD7) : Color(0xFF351B75),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: InkWell(
-        splashColor: Colors.blue.withAlpha(30),
-        onTap: () {},
-        child: Center(
+  showDialog<String>(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+        title: Center(
           child: Text(
-            cardD.titulo,
+            "detalhes",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              backgroundColor: Color(0xFF180C36),
+            ),
+          ),
+        ),
+        titlePadding: const EdgeInsets.all(8),
+        scrollable: true,
+        backgroundColor: Color(0xFF351B75),
+        content:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          new Text(
+            cardH.text,
             style: TextStyle(
               color: Colors.white,
             ),
           ),
-        ),
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      elevation: 5,
-      margin: EdgeInsets.all(1),
-    ),
-    /*
-    Center(
-      child: Text(
-        texto,
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-    ),
-    */
-    color: Color(0xFFB6CCD7),
+        ]),
+        actions: <Widget>[
+          // define os botões na base do dialogo
+          new FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("OK"),
+          ),
+          new FlatButton(
+            child: new Text(
+              "Fechar",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ]),
   );
 }
