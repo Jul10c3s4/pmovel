@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/data/bd.dart';
 
 class JogoMemoriaPage extends StatefulWidget {
   // This widget is the home page of your application. It is stateful, meaning
@@ -55,40 +56,43 @@ class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
               ),
               padding: EdgeInsets.all(16),
               //margin: EdgeInsets.only(top: 16),
-              child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    buildCard(cardD: BD.cardDatabase[0]),
-                    buildCard(cardD: BD.cardDatabase[1]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                    buildCard(cardD: BD.cardDatabase[2]),
-                  ],
-                ),
-              ]),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildCard(cardD: BD.cardDatabase[0]),
+                        buildCard(cardD: BD.cardDatabase[1]),
+                        buildCard(cardD: BD.cardDatabase[2]),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildCard(cardD: BD.cardDatabase[2]),
+                        buildCard(cardD: BD.cardDatabase[2]),
+                        buildCard(cardD: BD.cardDatabase[2]),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildCard(cardD: BD.cardDatabase[2]),
+                        buildCard(cardD: BD.cardDatabase[2]),
+                        buildCard(cardD: BD.cardDatabase[2]),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildCard(cardD: BD.cardDatabase[2]),
+                        buildCard(cardD: BD.cardDatabase[2]),
+                        buildCard(cardD: BD.cardDatabase[2]),
+                      ],
+                    ),
+                  ]),
             ),
 
             AlertDialog(
@@ -105,27 +109,29 @@ class _JogoMemoriaPageState extends State<JogoMemoriaPage> {
                 titlePadding: const EdgeInsets.all(8),
                 scrollable: true,
                 backgroundColor: Color(0xFF351B75),
-                content: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  new Text(
-                    "Texto da carta",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  new ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      "OK",
-                      style: TextStyle(
-                        color: Colors.black,
+                content: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      new Text(
+                        "Texto da carta",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFB6CCD7),
-                    ),
-                  ),
-                ]),
+                      SizedBox(height: 16),
+                      new ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "OK",
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xFFB6CCD7),
+                        ),
+                      ),
+                    ]),
                 actions: <Widget>[
                   // define os botões na base do dialogo
                   new FlatButton(
@@ -162,7 +168,9 @@ Widget buildCard({
     padding: const EdgeInsets.all(0),
     child: Card(
       semanticContainer: true,
-      color: (cardD.titulo == "" && cardD.descricao == "") ? Color(0xFFB6CCD7) : Color(0xFF351B75),
+      color: (cardD.titulo == "" && cardD.descricao == "")
+          ? Color(0xFFB6CCD7)
+          : Color(0xFF351B75),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),

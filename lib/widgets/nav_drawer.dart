@@ -4,7 +4,15 @@ import 'package:app/pages/jogos_page.dart';
 import 'package:app/pages/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
 
-class NavDrawer extends StatelessWidget {
+class NavDrawer extends StatefulWidget {
+  const NavDrawer({Key? key}) : super(key: key);
+
+  @override
+  State<NavDrawer> createState() => _NavDrawerState();
+}
+
+// BD.cardatabase
+class _NavDrawerState extends State<NavDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -20,7 +28,8 @@ class NavDrawer extends StatelessWidget {
               color: Color(0xff180c36),
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage('https://cdn.pixabay.com/photo/2016/11/01/08/16/brain-1787622_1280.jpg'),
+                image: NetworkImage(
+                    'https://cdn.pixabay.com/photo/2016/11/01/08/16/brain-1787622_1280.jpg'),
               ),
             ),
           ),
@@ -37,9 +46,7 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.person_outlined),
             title: const Text('Perfil'),
-            onTap: () => {
-              Navigator.of(context).pop()
-            },
+            onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: const Icon(Icons.favorite),
@@ -74,16 +81,12 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Settings'),
-            onTap: () => {
-              Navigator.of(context).pop()
-            },
+            onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
-            onTap: () => {
-              Navigator.of(context).pop()
-            },
+            onTap: () => {Navigator.of(context).pop()},
           ),
         ],
       ),

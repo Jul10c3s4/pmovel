@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../pergunta1.dart';
-import '../pergunta2.dart';
-import '../jogo_memoria.dart';
+import 'package:app/pages/pergunta1.dart';
+import 'package:app/pages/pergunta2.dart';
+import 'package:app/pages/jogo_memoria.dart';
 
 class JogosPage extends StatefulWidget {
   @override
@@ -61,60 +61,62 @@ class _JogosPageState extends State<JogosPage> {
             ),
             padding: EdgeInsets.all(16),
             //margin: EdgeInsets.only(top: 16),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              ElevatedButton(
-                onPressed: onPressedButton,
-                child: Text(
-                  "CARTÃO - FRENTE",
-                  style: TextStyle(
-                    color: Colors.black,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ElevatedButton(
+                    onPressed: onPressedButton,
+                    child: Text(
+                      "CARTÃO - FRENTE",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFB6CCD7),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: onPressedButton2,
-                child: Text(
-                  "CARTÃO - VERSO",
-                  style: TextStyle(
-                    color: Colors.white,
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: onPressedButton2,
+                    child: Text(
+                      "CARTÃO - VERSO",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFF351B75),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF351B75),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: onPressedButton3,
-                child: Text(
-                  "JOGO DA MEMÓRIA",
-                  style: TextStyle(
-                    color: Colors.black,
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: onPressedButton3,
+                    child: Text(
+                      "JOGO DA MEMÓRIA",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFB6CCD7),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "FlashcardsHalfPair",
-                  style: TextStyle(
-                    color: Colors.black,
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      "FlashcardsHalfPair",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFFB6CCD7),
-                ),
-              ),
-              SizedBox(height: 16),
-            ]),
+                  SizedBox(height: 16),
+                ]),
           ),
         ),
       ]),

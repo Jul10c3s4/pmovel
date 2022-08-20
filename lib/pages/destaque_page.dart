@@ -4,7 +4,6 @@ import 'package:app/pages/new_card.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/widgets/cartao_resumo_card.dart';
 import 'package:app/widgets/ultimo_acesso_card.dart';
-import 'package:app/widgets/nav_drawer.dart';
 
 class DestaquePage extends StatefulWidget {
   const DestaquePage({Key? key}) : super(key: key);

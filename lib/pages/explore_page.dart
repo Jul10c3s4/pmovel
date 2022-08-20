@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app/widgets/nav_drawer.dart';
 import 'package:app/domain/cartao_resumo.dart';
-import 'package:app/widgets/cartao_resumo_card.dart';
+//import 'package:app/widgets/cartao_resumo_card.dart';
 import 'package:app/widgets/ultimo_acesso_card.dart';
 
 class ExplorePage extends StatefulWidget {
