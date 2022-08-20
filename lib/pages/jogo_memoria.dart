@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/data/bd.dart';
+import 'package:app/domain/cartaoDefinitivo.dart';
 
 class JogoMemoriaPage extends StatefulWidget {
   // This widget is the home page of your application. It is stateful, meaning

@@ -20,32 +20,81 @@ class _VerMeuCardState extends State<VerMeuCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        margin: const EdgeInsets.symmetric(vertical: 5.0),
-        padding: const EdgeInsets.all(12.0),
-        child: Row(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff180c36),
+        title: const Text('MEMSTUDY'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+            Row(
+              children: [
+                Column(
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          widget.cartaoResumo.titulo,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Icon(Icons.bookmark_outline),
-                        const Icon(Icons.edit),
-                      ],
+                    Text(
+                      widget.cartaoResumo.titulo,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    /*Text(
+                  ],
+                ),
+                const SizedBox(width: 6.0),
+                Column(
+                  children: const [
+                    Icon(Icons.bookmark_outline),
+                    Icon(Icons.edit),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 28),
+            Row(
+              children: const [
+                SizedBox(width: 6),
+                Text('materia'),
+                Icon(Icons.select_all), //procurar a setinha pra baixo
+              ],
+            ),
+            const SizedBox(height: 10.0),
+            const Text(
+              'DESCRIÇÃO',
+              style: TextStyle(fontWeight: FontWeight.w600),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white54,
+                  borderRadius: BorderRadius.circular(10)),
+              height: 150,
+              child: Text(
+                widget.cartaoResumo.descricao,
+                style: const TextStyle(
+                  color: Color(0xFFAF66F9),
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            const SizedBox(height: 10.0),
+            buildImage(),
+          ],
+        ),
+      ), /*Expanded(
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  
+                  const Icon(Icons.bookmark_outline),
+                  const Icon(Icons.edit),
+                ],
+              ),
+              /*Text(
                       widget.cartaoResumo.materia,
                       style: const TextStyle(
                         color: Colors.black,
@@ -53,31 +102,28 @@ class _VerMeuCardState extends State<VerMeuCard> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),*/
-                    const SizedBox(width: 12),
-                    Container(
-                      margin: const EdgeInsets.only(left: 30, right: 30),
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF6C2C81),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        widget.cartaoResumo.descricao,
-                        style: const TextStyle(
-                          color: Color(0xFFAF66F9),
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 24),
-                    buildImage(),
-                  ],
+              const SizedBox(width: 12),
+              Container(
+                margin: const EdgeInsets.only(left: 30, right: 30),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF6C2C81),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  widget.cartaoResumo.descricao,
+                  style: const TextStyle(
+                    color: Color(0xFFAF66F9),
+                    fontSize: 16,
+                  ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(width: 24),
+              buildImage(),
+            ],
+          ),
         ),
-      ),
+      ),*/
     );
   }
 

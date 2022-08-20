@@ -4,6 +4,7 @@ import 'package:app/pages/new_card.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/widgets/cartao_resumo_card.dart';
 import 'package:app/widgets/ultimo_acesso_card.dart';
+import 'package:app/data/bd2.dart';
 
 class DestaquePage extends StatefulWidget {
   const DestaquePage({Key? key}) : super(key: key);
@@ -13,29 +14,7 @@ class DestaquePage extends StatefulWidget {
 }
 
 class _DestaquePageState extends State<DestaquePage> {
-  CartaoResumo cartao1 = CartaoResumo(
-      image:
-          'https://www.historiadetudo.com/wp-content/uploads/2015/03/era-napoleonica.jpg',
-      titulo: 'HISTÓRIA - Era Napoleônica',
-      descricao:
-          'Em vingança a decisão do Czar Alexandre I, o governo napoleônico decidiu invadir a Rússia em 1812. Os generais acostumados com grandes vitórias...');
-  CartaoResumo cartao2 = CartaoResumo(
-      image:
-          'https://i.pinimg.com/564x/b5/f8/e7/b5f8e7bc5b9100a9fb63bf2cd4e34894.jpg',
-      titulo: 'GEOGRAFIA - Geopolítica',
-      descricao:
-          'A geopolítica mundial evoluiu para incluir as dinâmicas populacionais e econômicas dentro deste jogo de poder, no tabuleiro político internacional...');
-  CartaoResumo cartao3 = CartaoResumo(
-      image:
-          'https://s2.static.brasilescola.uol.com.br/img/2019/12/entre-tres-conjuntos(1).jpg',
-      titulo: 'MATEMÁTICA - Conjuntos',
-      descricao:
-          'Conjuntos numéricos são ..., A partir deles podemos definir interseções, uniões e manipular-los, no geral.');
-  CartaoResumo ultimoAcesso = CartaoResumo(
-      image: 'https://www.hypeness.com.br/1/2018/11/PJacksonWW1_vertical.jpg',
-      titulo: 'Card: HISTORIA - 1º Guerra Mundial',
-      descricao:
-          'A Primeira Guerra Mundial foi um conflito bélico global centrado na Europa, que começou em 28 de julho de 1914 e durou até 11 de novembro de 1918. A guerra envolveu as grandes potências...');
+  Future<List<CartaoResumo>> lista = BD.getCartaoResumo();
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +24,8 @@ class _DestaquePageState extends State<DestaquePage> {
         children: [
           const SizedBox(height: 20),
           Column(
-            children: [
-              const ListTile(
+            children: const [
+              ListTile(
                 leading: Icon(Icons.access_time, color: Colors.white),
                 title: Text(
                   'Último acesso',
@@ -55,7 +34,7 @@ class _DestaquePageState extends State<DestaquePage> {
                   ),
                 ),
               ),
-              CardUltimoAcesso(cartaoResumo: ultimoAcesso),
+              //CardUltimoAcesso(cartaoResumo: lista[2]),
             ],
           ),
           const SizedBox(height: 15),
@@ -72,9 +51,7 @@ class _DestaquePageState extends State<DestaquePage> {
                     ),
                   ),
                 ),
-                CardCartaoResumo(cartaoResumo: cartao1),
-                CardCartaoResumo(cartaoResumo: cartao2),
-                CardCartaoResumo(cartaoResumo: cartao3),
+                buildListView()
               ],
             ),
           ),
@@ -146,6 +123,28 @@ class _DestaquePageState extends State<DestaquePage> {
           return JogosPage();
         },
       ),
+    );
+  }
+
+  buildListView() {
+    return FutureBuilder<List<CartaoResumo>>(
+      future: lista,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<CartaoResumo> lista = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: lista.length,
+            itemBuilder: (BuildContext context, int index) {
+              return CardCartaoResumo(cartaoResumo: lista[index]);
+            },
+          );
+        }
+
+        return Center(child: const CircularProgressIndicator());
+      },
     );
   }
 }

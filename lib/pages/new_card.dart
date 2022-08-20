@@ -21,7 +21,7 @@ class _NewCardState extends State<NewCard> {
           backgroundColor: const Color(0xff180c36),
           title: const Text('MEMSTUDY'),
         ),
-        backgroundColor: const Color(0xFFD6AAD5),
+        backgroundColor: const Color(0xFF7940FF).withOpacity(0.5),
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -44,18 +44,6 @@ class _NewCardState extends State<NewCard> {
                         fontWeight: FontWeight.w600, color: Colors.white),
                   ),
                   const SizedBox(width: 60),
-
-                  /*Text("Selecione a cidade"),
-                      
-                      TextField(
-                        decoration: const InputDecoration(labelText: 'Matéria'),
-                        onSubmitted: (String userInput) {
-                          setState(() {
-                            debugPrint('chamei setState');
-                            nomeMateria = userInput;
-                          });
-                        },
-                      ),*/
                   DropdownButton<String>(
                       iconEnabledColor: Colors.white,
                       focusColor: Colors.white30,
