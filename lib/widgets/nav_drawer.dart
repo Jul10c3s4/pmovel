@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/pages/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
+import 'package:app/pages/perfil_page.dart';
 
 class NavDrawer extends StatefulWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -46,7 +47,12 @@ class _NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: const Icon(Icons.person_outlined),
             title: const Text('Perfil'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PerfilPage()),
+              ),
+            },
           ),
           ListTile(
             leading: const Icon(Icons.favorite),
@@ -86,7 +92,16 @@ class _NavDrawerState extends State<NavDrawer> {
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              /* GlobalMethods.warningDialog(
+                title: 'Sign out',
+                subtitle: 'Deseja sair?', 
+                fct: (){
+                  authInstance.signOut();
+                }
+                context: context 
+              ),*/
+            },
           ),
         ],
       ),
