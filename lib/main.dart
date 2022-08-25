@@ -6,6 +6,7 @@ void main() {
   runApp(
     const MaterialApp(
       home: HomePage(),
+      //tá cheio de erros no código
     ),
   );
 }
