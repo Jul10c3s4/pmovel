@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'conteudos_matematica.dart';
+import 'package:untitled1/topicosMatematica.dart';
+import 'atributosConteudos.dart';
 
 class GeometriasDivisoes extends StatefulWidget {
 
   final String texto;
   final IconData icone;
-  final Widget page;
+  final Conteudos classe;
 
-  const GeometriasDivisoes({
+  GeometriasDivisoes({
     Key? key,
     required this.texto,
     required this.icone,
-    required this.page,
+    required this.classe,
   }) : super(key: key);
 
   @override
@@ -36,14 +37,14 @@ class _GeometriasDivisoesState extends State<GeometriasDivisoes>{
                 Text(
                   '${widget.texto}',
                   style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.black,
+                    fontSize: 30,
+                    color: Colors.black,
                   ),
                 ),
                 Icon(
-                    widget.icone,
-                    size: 50,
-                    color: Colors.black,
+                  widget.icone,
+                  size: 50,
+                  color: Colors.black,
                 ),
               ],
             ),
@@ -57,11 +58,11 @@ class _GeometriasDivisoesState extends State<GeometriasDivisoes>{
       context,
       MaterialPageRoute(
         builder: (context) {
-          return widget.page;
+          return PaginaDeConteudos(
+            nomeClasse: widget.classe,
+          );
         },
       ),
     );
   }
 }
-
-
