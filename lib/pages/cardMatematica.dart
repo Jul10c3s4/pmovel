@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'atributosConteudos.dart';
-import 'geometriaDivisoes.dart';
+import 'package:app/domain/atributos_conteudos_geometrias';
+import 'package:app/widgets/geometriaDivisoes.dart';
 
 class CardMatematica extends StatefulWidget {
   const CardMatematica({Key? key}) : super(key: key);

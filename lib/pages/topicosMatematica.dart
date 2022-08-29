@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'atributosConteudos.dart';
+import 'package:app/domain/atributos_conteudos_geometrias';
 
 class PaginaDeConteudos extends StatefulWidget {
 
