@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import '../pergunta1.dart';
-import '../pergunta2.dart';
-import '../jogo_memoria.dart';
 import '../domain/half_card.dart';
 import '../domain/cartaoDefinitivo.dart';
 import '../data/bd.dart';
+import 'jogo_memoria.dart';
 
 class FCHPairPage extends StatefulWidget {
   @override

@@ -24,12 +24,13 @@ class MyWidget extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/login': (context) => const Login(),
         '/esqueci': (context) => const EsqueciSenha(),
-        '/config':(context) => const TelaConfig(),
-        '/homepage':(context) => const HomePage(),
-        '/central-ajuda':(context) => const CentralAjuda(),
-        '/sobre':(context) => const Sobre(),
-        '/avalie-nos':(context) => const Avalie(),
-        '/termos_uso':((context) => const Termos_uso())
+        '/config': (context) => const TelaConfig(),
+        '/homepage': (context) => const HomePage(),
+        '/central-ajuda': (context) => const CentralAjuda(),
+        '/sobre': (context) => const Sobre(),
+        '/avalie-nos': (context) => const Avalie(),
+        '/termos_uso': ((context) => const Termos_uso())
       },
     );
   }
+}

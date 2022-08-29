@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telasjogos/widget/perguntas.dart';
-import '../jogos_page.dart';
 import '../data/bd.dart';
+import '../widgets/perguntas.dart';
 //import '../widget/perguntas.dart';
 
 class Pergunta1Page extends StatefulWidget {
