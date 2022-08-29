@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:app/pages/pergunta1.dart';
-import 'package:app/pages/pergunta2.dart';
-import 'package:app/pages/jogo_memoria.dart';
+import '../pergunta1.dart';
+import '../pergunta2.dart';
+import '../jogo_memoria.dart';
+import '../flashCardsHalfPair.dart';
 
 class JogosPage extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _JogosPageState extends State<JogosPage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text("Teste"),
+        title: Text("Jogos"),
         backgroundColor: Color(0xFF180C36),
         /*centerTitle: true,
         leading: IconButton(
@@ -82,11 +83,11 @@ class _JogosPageState extends State<JogosPage> {
                     child: Text(
                       "CARTÃO - VERSO",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF351B75),
+                      primary: Color(0xFFB6CCD7),
                     ),
                   ),
                   SizedBox(height: 16),
@@ -104,7 +105,16 @@ class _JogosPageState extends State<JogosPage> {
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return FCHPairPage();
+                          },
+                        ),
+                      );
+                    },
                     child: Text(
                       "FlashcardsHalfPair",
                       style: TextStyle(
@@ -176,15 +186,4 @@ class _JogosPageState extends State<JogosPage> {
       ),
     );
   }
-
-  /*void onPressedButton4() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return  NewCard();
-        },
-      ),
-    );
-  }*/
 }
