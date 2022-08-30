@@ -1,3 +1,5 @@
+import 'package:app/data/bd.dart';
+import 'package:app/data/bd3.dart';
 import 'package:app/domain/container.dart';
 import 'package:app/pages/login.dart';
 import 'package:app/widgets/opcao_config.dart';
@@ -13,17 +15,11 @@ class TelaConfig extends StatefulWidget {
 }
 
 class _TelaConfigState extends State<TelaConfig> {
+  Future<List<Conteudo>> lista = BDConteudo.getConteudo();
   late final Login login;
   bool isSwitched1 = false;
   bool isSwitched2 = false;
   bool isSwitched3 = false;
-
-  Conteudo conte1 =
-      Conteudo(titulo: "Central de ajuda", rota: '/central-ajuda');
-  Conteudo conte2 = Conteudo(titulo: "Sobre o Memstudy", rota: '/sobre');
-  Conteudo conte3 = Conteudo(titulo: "Avalie-nos", rota: '/avalie-nos');
-  Conteudo conte4 = Conteudo(titulo: "Termos de uso", rota: '/termos_uso');
-  Conteudo conte5 = Conteudo(titulo: "Sair", rota: '/login');
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +37,7 @@ class _TelaConfigState extends State<TelaConfig> {
         ),
         leading: InkWell(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushReplacementNamed(context, '/homepage');
           },
           child: Icon(
             Icons.close,
@@ -51,7 +47,18 @@ class _TelaConfigState extends State<TelaConfig> {
         ),
       ),
       backgroundColor: Color(0xFF6D39E6),
-      body: Column(
+      body: buildListView(),
+    ));
+  }
+
+  buildListView() {
+    return FutureBuilder<List<Conteudo>>(
+      future: lista,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<Conteudo> lista = snapshot.data ?? [];
+
+          return Column(
         children: [
           Expanded(
             child: ListView(
@@ -61,8 +68,8 @@ class _TelaConfigState extends State<TelaConfig> {
                   children: [
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       SizedBox(
-                      height: 6,
-                    ),
+                        height: 6,
+                      ),
                     ]),
                     Container(
                         padding:
@@ -562,10 +569,6 @@ class _TelaConfigState extends State<TelaConfig> {
                     SizedBox(
                       height: 6,
                     ),
-                    Opcao_config(cont: conte1),
-                    SizedBox(
-                      height: 6,
-                    ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(color: Color(0xFF5B30BF)),
@@ -656,60 +659,67 @@ class _TelaConfigState extends State<TelaConfig> {
                     SizedBox(
                       height: 6,
                     ),
-                    Opcao_config(cont: conte2),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Opcao_config(cont: conte3),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Opcao_config(cont: conte4),
-                    SizedBox(
-                      height: 6,
-                    ),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                       decoration: BoxDecoration(color: Color(0xFF5B30BF)),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                            'Versão',
-                            style: TextStyle(
-                                fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 5,),
-                          Row(
-                            children: [
-                              Text('versão 1',
+                      child: Column(children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Versão',
                               style: TextStyle(
-                              color: Colors.black38,
-                              fontSize: 18,
-                              ),)
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'versão 1',
+                              style: TextStyle(
+                                color: Colors.black38,
+                                fontSize: 18,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 6,),
+                      ]),
+                    ),
+                    SizedBox(height: 6,),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: lista.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            children: [
+                              Opcao_config(
+                            cont: lista[index]),
+                            SizedBox(height: 6,),
                             ],
-                          )
-                        ]),
-                        
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Opcao_config(cont: conte5),
-                    SizedBox(
-                      height: 6,
-                    ),
+                          );
+                          
+                        }),
                   ],
                 )
               ],
             ),
           )
         ],
-      ),
-    ));
+          );/**/
+        }
+        return Center(child: const CircularProgressIndicator(
+          
+        ));
+      },
+    );
   }
 
   doContainer(String titulo, dynamic page) {

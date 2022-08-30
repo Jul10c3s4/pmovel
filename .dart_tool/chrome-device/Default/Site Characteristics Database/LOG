@@ -1,7 +1,8 @@
-2022/08/28-15:59:07.708 7468 Reusing MANIFEST C:\Users\julio\AppData\Local\Temp\flutter_tools.2fe75742\flutter_tools_chrome_device.7e8cb38f\Default\Site Characteristics Database/MANIFEST-000001
-2022/08/28-15:59:07.709 7468 Recovering log #3
-2022/08/28-15:59:07.709 7468 Level-0 table #6: started
-2022/08/28-15:59:07.722 7468 Level-0 table #6: 130 bytes OK
-2022/08/28-15:59:07.722 7468 Recovering log #6
-2022/08/28-15:59:07.723 7468 Reusing old log C:\Users\julio\AppData\Local\Temp\flutter_tools.2fe75742\flutter_tools_chrome_device.7e8cb38f\Default\Site Characteristics Database/000006.log 
-2022/08/28-15:59:07.733 7468 Delete type=0 #3
+2022/08/29-22:51:32.927 a004 Reusing MANIFEST C:\Users\julio\AppData\Local\Temp\flutter_tools.5520d726\flutter_tools_chrome_device.2d21fd\Default\Site Characteristics Database/MANIFEST-000001
+2022/08/29-22:51:32.928 a004 Recovering log #10
+2022/08/29-22:51:32.928 a004 Reusing old log C:\Users\julio\AppData\Local\Temp\flutter_tools.5520d726\flutter_tools_chrome_device.2d21fd\Default\Site Characteristics Database/000010.log 
+2022/08/29-22:51:32.928 a004 Delete type=0 #3
+2022/08/29-22:51:32.929 a004 Delete type=2 #4
+2022/08/29-22:51:32.929 a004 Delete type=2 #6
+2022/08/29-22:51:32.929 a004 Delete type=0 #6
+2022/08/29-22:51:32.929 a004 Delete type=2 #7
