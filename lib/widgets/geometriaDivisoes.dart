@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app/pages/topicosMatematica.dart';
-import 'package:app/domain/atributos_conteudos_geometrias';
+import '../domain/atibutosConteudos.dart';
+import '../pages/topicosMatematica.dart';
 
 class GeometriasDivisoes extends StatefulWidget {
 
