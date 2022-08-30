@@ -16,7 +16,6 @@ class VerMeuCard extends StatefulWidget {
 
 class _VerMeuCardState extends State<VerMeuCard> {
   CartaoResumo get pacote => widget.cartaoResumo;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,7 @@ class _VerMeuCardState extends State<VerMeuCard> {
         backgroundColor: const Color(0xff180c36),
         title: const Text('MEMSTUDY'),
       ),
-      backgroundColor: const Color(0xFF7940FF).withOpacity(0.4),
+      backgroundColor:  Colors.grey[300],
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -71,16 +70,17 @@ class _VerMeuCardState extends State<VerMeuCard> {
               'DESCRIÇÃO',
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
+            const SizedBox(height: 6),
             Container(
               padding: const EdgeInsets.all(6.0),
               decoration: BoxDecoration(
-                  color: const Color(0xff180c36),
+                  color: const Color(0xff6239db),
                   borderRadius: BorderRadius.circular(10)),
               height: 150,
               child: Text(
                 widget.cartaoResumo.descricao,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 15,
                   color: Colors.white,
                 ),
               ),
@@ -103,7 +103,7 @@ class _VerMeuCardState extends State<VerMeuCard> {
           ),
           child: Container(
             width: 300,
-            height: 400,
+            height: 350,
             child: Image.network(widget.cartaoResumo.image),
           ),
         ),
@@ -111,3 +111,4 @@ class _VerMeuCardState extends State<VerMeuCard> {
     );
   }
 }
+                  
