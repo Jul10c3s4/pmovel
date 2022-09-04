@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/pages/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
-//import 'package:app/pages/perfil_page.dart';
+import 'package:app/pages/perfil_page.dart';
 
 class NavDrawer extends StatefulWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -50,7 +50,7 @@ class _NavDrawerState extends State<NavDrawer> {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) => const PerfilPage()),
               ),
             },
           ),
