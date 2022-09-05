@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled4/domain/conteudos_das_materias.dart';
-import 'package:untitled4/widget/card_submateria_topicos_assuntos.dart';
+import 'package:app/domain/conteudos_das_materias.dart';
+import 'package:app/widgets/card_submateria_topicos_assuntos.dart';
 
 class AssuntosDaMateriaTopicalizados extends StatefulWidget {
 
