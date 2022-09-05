@@ -4,6 +4,7 @@ import 'package:app/pages/jogos_page.dart';
 import 'package:app/pages/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
 import 'package:app/pages/perfil_page.dart';
+import 'package:app/pages/card_materias.dart';
 
 class NavDrawer extends StatefulWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -76,11 +77,11 @@ class _NavDrawerState extends State<NavDrawer> {
           ),
           ListTile(
             leading: const Icon(Icons.folder),
-            title: const Text('Materias'),
+            title: const Text('Matérias'),
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Materias()),
+                MaterialPageRoute(builder: (context) => const  CardMaterias()),
               ),
             },
           ),
