@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled4/domain/conteudos_das_materias.dart';
+import 'package:app/domain/conteudos_das_materias.dart';
 
 class SubjectDatabaseContents{
 
