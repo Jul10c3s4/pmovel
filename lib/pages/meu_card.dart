@@ -1,3 +1,5 @@
+import 'package:app/data/bd4.dart';
+import 'package:app/pages/detalhes_card.dart';
 import 'package:flutter/material.dart';
 import 'package:app/domain/atributos_card.dart';
 import 'package:app/pages/assunto_page.dart';
@@ -12,22 +14,7 @@ class MeuCard extends StatefulWidget {
 }
 
 class _MeuCardState extends State<MeuCard> {
-  Atributos card1 = Atributos(
-    titulo: 'MEU PRIMEIRO CARD',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
-  );
-  Atributos dart = Atributos(
-    titulo: 'Aprenda Linguagem Dart',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
-  );
-  Atributos html = Atributos(
-    titulo: 'Aprenda Linguagem HTML',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
-  );
-  Atributos texto = Atributos(
-    titulo: 'Formatação de Texto',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
-  );
+  List<Atributos> lista = BD.lista;
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +31,11 @@ class _MeuCardState extends State<MeuCard> {
       backgroundColor: const Color(0xff6239db),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            const SizedBox(height: 16),
-            EstudosCard(detalhes: card1),
-            EstudosCard(detalhes: dart),
-            EstudosCard(detalhes: html),
-            EstudosCard(detalhes: texto),
-          ],
+        child: ListView.builder(
+          itemCount: lista.length,
+          itemBuilder: (BuildContext context, int index) {
+          return  EstudosCard(detalhes: lista[index]);
+          },
         ),
       ),
     );
