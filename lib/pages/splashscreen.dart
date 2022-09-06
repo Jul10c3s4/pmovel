@@ -1,3 +1,4 @@
+import 'dart:ui';
 
 import 'package:app/pages/home_page.dart';
 import 'package:app/pages/login.dart';
@@ -7,39 +8,34 @@ import 'package:flutter/src/widgets/framework.dart';
 //import 'package:splashscreen/splashscreen.dart';
 
 class Screen extends StatefulWidget {
-  const Screen({key}) : super(key: key);
-
+  final String rota;
+  const Screen({key, required this.rota}) : super(key: key);
   @override
   State<Screen> createState() => _ScreenState();
 }
 
 class _ScreenState extends State<Screen> {
+  void initState() {
+    super.initState();
+    animacao();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(); /*Stack(
-    children: <Widget>[
-      SplashScreen(
-        seconds: 10,
-        gradientBackground: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            Color(0xFF1E1040),
-            Colors.purple,
-          ],
-        ),
-        navigateAfterSeconds: Login(),
-        loaderColor: Colors.transparent,
-      ),
-      Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/splash.png"),
-            fit: BoxFit.contain,
-          ),
-        ),
-      ),
-    ],
-  );*/
+    return Scaffold(
+        backgroundColor: Color(0xFF1E1040),
+        body: Center(
+            child: Container(
+              child: Image.asset(
+                'assets/images/splash.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+));
+  }
+
+  void animacao() async {
+    await Future.delayed(const Duration(seconds: 4));
+    Navigator.pushReplacementNamed(context, widget.rota);
   }
 }

@@ -29,7 +29,7 @@ class BD {
 
   static Future<List<CartaoResumo>> getCartaoResumo() async {
     print("ANTES");
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 4));
     print("DEPOIS");
     return lista;
   }

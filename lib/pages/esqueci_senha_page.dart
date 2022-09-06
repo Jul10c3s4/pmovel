@@ -19,7 +19,9 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Color(0xFF3D2080),
-      body: Column(
+      body: ListView(
+        children: [
+          Column(
         children: [
           SizedBox(height: 5, width: 5,),
           Row(
@@ -34,7 +36,7 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
             ],
           ),
           SizedBox(
-            height: 30,
+            height: 5,
           ),
           Container(
             decoration: BoxDecoration(
@@ -65,13 +67,11 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
           SizedBox(
             height: 10,
           ),
-          Flexible(
-            child: Container(
+          Container(
                 child: Image.asset(
-              'images/help.png',
+              'assets/images/help.png',
               fit: BoxFit.cover,
             )),
-          ),
           SizedBox(
             height: 10,
           ),
@@ -142,6 +142,8 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
           )
         ],
       ),
+        ],
+      ) 
     ));
   }
 

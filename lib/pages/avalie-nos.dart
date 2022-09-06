@@ -39,7 +39,7 @@ class _AvalieState extends State<Avalie> {
                   Flexible(
             child: Container(
                 child: Image.asset(
-              'images/avaliar.png',
+              'assets/images/avaliar.png',
               fit: BoxFit.cover,
             )),
           ),

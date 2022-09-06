@@ -21,7 +21,9 @@ class _CriarcontaState extends State<Criarconta> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Color(0xFF3D2080),
-      body: Column(
+      body: ListView(
+        children: [
+          Column(
         children: [
           SizedBox(
             height: 5,
@@ -41,7 +43,7 @@ class _CriarcontaState extends State<Criarconta> {
             ],
           ),
           SizedBox(
-            height: 3,
+            height: 5,
           ),
           Container(
             decoration: BoxDecoration(
@@ -57,13 +59,11 @@ class _CriarcontaState extends State<Criarconta> {
               ),
             ),
           ),
-          Flexible(
-            child: Container(
+            Container(
                 child: Image.asset(
-              'images/lamp.png',
+              'assets/images/lamp.png',
               fit: BoxFit.cover,
             )),
-          ),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Form(
@@ -221,6 +221,8 @@ class _CriarcontaState extends State<Criarconta> {
                   ))),
         ],
       ),
+        ],
+      ) 
     ));
   }
 
@@ -257,7 +259,7 @@ class _CriarcontaState extends State<Criarconta> {
                             ),
                             content: Container(
                                 child: Image.asset(
-                              'images/parabens.png',
+                              'assets/images/parabens.png',
                               fit: BoxFit.cover,
                             )),
                             actions: [

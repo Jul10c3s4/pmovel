@@ -16,7 +16,9 @@ class _PerfilPageState extends State<PerfilPage> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF7940FF),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+        child:
+          Column(
         children: <Widget>[
           Container(
               decoration: const BoxDecoration(
@@ -125,6 +127,7 @@ class _PerfilPageState extends State<PerfilPage> {
               )),
         ],
       ),
+      )
     );
   }
 }

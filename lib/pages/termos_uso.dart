@@ -43,7 +43,7 @@ class _Termos_usoState extends State<Termos_uso> {
                   children: [
                     Container(
                             child: Image.asset(
-                          'images/termo.png',
+                          'assets/images/termo.png',
                           fit: BoxFit.cover,
                         )),
                   ],

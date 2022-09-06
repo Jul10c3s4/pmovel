@@ -2,6 +2,7 @@ import 'package:app/pages/config_page.dart';
 import 'package:app/pages/criar_conta.dart';
 import 'package:app/pages/esqueci_senha_page.dart';
 import 'package:app/pages/home_page.dart';
+import 'package:app/pages/splashscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,9 @@ class _LoginState extends State<Login> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: Color(0xFF3D2080),
-      body: Column(
+      body: ListView(
+        children: [
+          Column(
         children: [
           SizedBox(
             height: 30,
@@ -43,13 +46,11 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          Flexible(
-            child: Container(
+          Container(
                 child: Image.asset(
-              'images/cere_oi.png',
+              'assets/images/cere_oi.png',
               fit: BoxFit.cover,
             )),
-          ),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Form(
@@ -196,6 +197,8 @@ class _LoginState extends State<Login> {
                   ))),
         ],
       ),
+        ],
+      ), 
     ));
   }
 
@@ -211,7 +214,7 @@ class _LoginState extends State<Login> {
         //Usuarios(email: _usercontroller);
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
-          return const HomePage();
+          return const Screen(rota: "/homepage");
         }));
       } else {
         print('senha ou email incorreto!');

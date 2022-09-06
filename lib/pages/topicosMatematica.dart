@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../domain/atibutosConteudos.dart';
+
+import '../domain/conteudos_das_materias.dart';
 
 class PaginaDeConteudos extends StatefulWidget {
 

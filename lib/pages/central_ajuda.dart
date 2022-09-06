@@ -45,7 +45,7 @@ class _CentralAjudaState extends State<CentralAjuda> {
                       children: [
                         Container(
                             child: Image.asset(
-                          'images/cereDuvidas.png',
+                          'assets/images/cereDuvidas.png',
                           fit: BoxFit.cover,
                         )),
                       

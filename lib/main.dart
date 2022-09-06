@@ -22,7 +22,7 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Memstudy',
-      initialRoute: '/config',
+      initialRoute: '/splash',
       routes: <String, WidgetBuilder>{
         '/login': (context) => const Login(),
         '/esqueci': (context) => const EsqueciSenha(),
@@ -31,7 +31,7 @@ class MyWidget extends StatelessWidget {
         '/central-ajuda': (context) => const CentralAjuda(),
         '/sobre': (context) => const Sobre(),
         '/avalie-nos': (context) => const Avalie(),
-        '/splash':(context) => const Screen(),
+        '/splash':(context) => const Screen(rota: "/login"),
         '/termos_uso': ((context) => const Termos_uso())
       },
     );

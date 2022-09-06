@@ -40,7 +40,7 @@ class _SobreState extends State<Sobre> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 50,),
-                Row(
+                Wrap(
                   children: [
                     Text('Data de criação: ',
                       style: TextStyle(
