@@ -1,8 +1,17 @@
-2022/08/29-22:21:12.964 9ec4 Reusing MANIFEST C:\Users\julio\AppData\Local\Temp\flutter_tools.ece251fe\flutter_tools_chrome_device.dc411dc0\Default\Site Characteristics Database/MANIFEST-000001
-2022/08/29-22:21:12.965 9ec4 Recovering log #10
-2022/08/29-22:21:12.965 9ec4 Reusing old log C:\Users\julio\AppData\Local\Temp\flutter_tools.ece251fe\flutter_tools_chrome_device.dc411dc0\Default\Site Characteristics Database/000010.log 
-2022/08/29-22:21:12.966 9ec4 Delete type=0 #3
-2022/08/29-22:21:12.966 9ec4 Delete type=2 #4
-2022/08/29-22:21:12.966 9ec4 Delete type=2 #6
-2022/08/29-22:21:12.966 9ec4 Delete type=0 #6
-2022/08/29-22:21:12.966 9ec4 Delete type=2 #7
+2022/09/06-13:29:56.357 1a44 Log #3: 1 ops saved to Table #15 OK
+2022/09/06-13:29:56.360 1a44 Archiving C:\Users\Aluno\AppData\Local\Temp\flutter_tools.72d979c7\flutter_tools_chrome_device.78fd2101\Default\Site Characteristics Database/000003.log: OK
+2022/09/06-13:29:56.365 1a44 Log #6: 1 ops saved to Table #16 OK
+2022/09/06-13:29:56.367 1a44 Archiving C:\Users\Aluno\AppData\Local\Temp\flutter_tools.72d979c7\flutter_tools_chrome_device.78fd2101\Default\Site Characteristics Database/000006.log: OK
+2022/09/06-13:29:56.370 1a44 Log #10: 4 ops saved to Table #17 OK
+2022/09/06-13:29:56.370 1a44 Archiving C:\Users\Aluno\AppData\Local\Temp\flutter_tools.72d979c7\flutter_tools_chrome_device.78fd2101\Default\Site Characteristics Database/000010.log: OK
+2022/09/06-13:29:56.370 1a44 Table #4: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #6: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #7: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #8: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #13: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #14: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #15: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #16: 1 entries OK
+2022/09/06-13:29:56.371 1a44 Table #17: 4 entries OK
+2022/09/06-13:29:56.374 1a44 Archiving C:\Users\Aluno\AppData\Local\Temp\flutter_tools.72d979c7\flutter_tools_chrome_device.78fd2101\Default\Site Characteristics Database/MANIFEST-000001: OK
+2022/09/06-13:29:56.378 1a44 **** Repaired leveldb C:\Users\Aluno\AppData\Local\Temp\flutter_tools.72d979c7\flutter_tools_chrome_device.78fd2101\Default\Site Characteristics Database; recovered 9 files; 1363 bytes. Some data may have been lost. ****
