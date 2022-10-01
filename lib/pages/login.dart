@@ -18,6 +18,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController _usercontroller = TextEditingController();
   TextEditingController _passwordcontroller = TextEditingController();
+  bool visivel = true;
+  bool carregando = false;
   final _formkey = GlobalKey<FormState>();
 
   @override
@@ -75,6 +77,9 @@ class _LoginState extends State<Login> {
                           controller: _usercontroller,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
+                              setState(() {
+                                carregando = false;
+                              });
                               return 'Campo e-mail obrigatório';
                             }
                             return null;
@@ -85,9 +90,12 @@ class _LoginState extends State<Login> {
                             fontWeight: FontWeight.w500,
                           ),
                           decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.person_outlined, color: Color(0xFF1E1040),
+                              ),
                               hintText: 'aluno@gmail.com',
                               hintStyle: TextStyle(
-                                color: Color(0xFF5B30BF),
+                                color: Colors.grey,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 20,
                               ),
@@ -114,11 +122,17 @@ class _LoginState extends State<Login> {
                             borderRadius: BorderRadius.circular(10)),
                         child: TextFormField(
                           controller: _passwordcontroller,
-                          obscureText: true,
+                          obscureText: visivel,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
+                              setState(() {
+                                carregando = false;
+                              });
                               return 'Campo senha obrigatório';
                             } else if (value.length < 6) {
+                              setState(() {
+                                carregando = false;
+                              });
                               return 'Campo senha deve conter no mínimo 6 dígitos';
                             }
                             return null;
@@ -129,9 +143,15 @@ class _LoginState extends State<Login> {
                             fontWeight: FontWeight.normal,
                           ),
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.lock_sharp, color: Color(0xFF1E1040),),
+                            suffixIcon: IconButton(onPressed: (){
+                              setState(() {
+                                visivel = !visivel;
+                              });
+                            }, icon: Icon(visivel ? Icons.visibility : Icons.visibility_off, color: Color(0xFF1E1040),)),
                               hintText: '******',
                               hintStyle: TextStyle(
-                                color: Color(0xFF5B30BF),
+                                color: Colors.grey,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 20,
                               ),
@@ -161,14 +181,18 @@ class _LoginState extends State<Login> {
                       ),
                       SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: verificarLogin,
-                        child: Text(
+                        onPressed: (){
+                          setState(() {
+                            verificarLogin();
+                          });
+                          },
+                        child: !carregando ? Text(
                           'Entrar',
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        ) : Center(child: CircularProgressIndicator(color: Colors.white,),),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.purple.shade400,
                           padding: EdgeInsets.symmetric(vertical: 20),
@@ -202,7 +226,9 @@ class _LoginState extends State<Login> {
     ));
   }
 
-  void verificarLogin() {
+  void verificarLogin() async{
+    carregando = true;
+    await Future.delayed(const Duration(seconds: 2));
     if (_formkey.currentState!.validate()) {
       String userlogin = 'aluno@gmail.com';
       String passwordLogin = '123456';
@@ -217,7 +243,9 @@ class _LoginState extends State<Login> {
           return const Screen(rota: "/homepage");
         }));
       } else {
-        print('senha ou email incorreto!');
+        setState(() {
+          carregando = false;
+        });
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -233,7 +261,10 @@ class _LoginState extends State<Login> {
               actions: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    setState(() {
+                      Navigator.of(context).pop();
+                    });
+
                   },
                   child: Text(
                     'OK',

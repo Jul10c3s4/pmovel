@@ -22,7 +22,7 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Memstudy',
-      initialRoute: '/splash',
+      initialRoute: '/login',
       routes: <String, WidgetBuilder>{
         '/login': (context) => const Login(),
         '/esqueci': (context) => const EsqueciSenha(),
