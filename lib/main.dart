@@ -1,12 +1,12 @@
 
-import 'package:app/pages/avalie-nos.dart';
-import 'package:app/pages/central_ajuda.dart';
-import 'package:app/pages/config_page.dart';
-import 'package:app/pages/esqueci_senha_page.dart';
-import 'package:app/pages/login.dart';
+import 'package:app/pages/telas%20de%20configuracoes/avalie-nos.dart';
+import 'package:app/pages/telas%20de%20configuracoes/central_ajuda.dart';
+import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
+import 'package:app/pages/telas%20de%20login/esqueci_senha_page.dart';
+import 'package:app/pages/telas%20de%20login/login.dart';
 import 'package:app/pages/sobre.dart';
 import 'package:app/pages/splashscreen.dart';
-import 'package:app/pages/termos_uso.dart';
+import 'package:app/pages/telas%20de%20configuracoes/termos_uso.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/home_page.dart';
 //import 'package:app/pages/login_page.dart';

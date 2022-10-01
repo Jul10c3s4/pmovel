@@ -1,7 +1,7 @@
 import 'package:app/data/bd.dart';
 import 'package:app/data/bd3.dart';
 import 'package:app/domain/container.dart';
-import 'package:app/pages/login.dart';
+import 'package:app/pages/telas%20de%20login/login.dart';
 import 'package:app/widgets/opcao_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
