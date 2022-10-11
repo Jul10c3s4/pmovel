@@ -22,11 +22,11 @@ class _CardDetalhesState extends State<CardDetalhes> {
       body: Column(
         children: [
                 Text(
-                  pacote.titulo,
+                  pacote.titulo!,
                   style: const TextStyle(fontSize: 20),
                 ),
                 const SizedBox(height: 12),
-                Text(pacote.descricao),
+                Text(pacote.descricao!),
                 const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,),

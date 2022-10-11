@@ -30,29 +30,25 @@ class _EstudosCardState extends State<EstudosCard> {
           ),
         );
       },
-
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(children: [
+            Text(
+              widget.detalhes.titulo!,
+              style: const TextStyle(
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 12),
+            Text('descrição: ${widget.detalhes.descricao}'),
+          ]),
         ),
-        child: Column(
-          children: [
-                  Text(
-                    widget.detalhes.titulo,
-                    style: const TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                  Text('descrição: ${widget.detalhes.descricao}'),
-    ]
-    ),
-    ),
-    ),
+      ),
     );
-
   }
-  }
+}
