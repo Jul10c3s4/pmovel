@@ -1,3 +1,5 @@
+import 'package:app/data/userDao.dart';
+import 'package:app/domain/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -12,9 +14,9 @@ class Criarconta extends StatefulWidget {
 }
 
 class _CriarcontaState extends State<Criarconta> {
-  TextEditingController _usercontroller = TextEditingController();
+  TextEditingController _userEmailcontroller = TextEditingController();
   TextEditingController _passwordcontroller = TextEditingController();
-  TextEditingController _nameusercontroller = TextEditingController();
+  TextEditingController _userNamecontroller = TextEditingController();
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -85,7 +87,7 @@ class _CriarcontaState extends State<Criarconta> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         child: TextFormField(
-                          controller: _nameusercontroller,
+                          controller: _userNamecontroller,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Campo nome obrigatório';
@@ -126,7 +128,7 @@ class _CriarcontaState extends State<Criarconta> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         child: TextFormField(
-                          controller: _usercontroller,
+                          controller: _userEmailcontroller,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Campo e-mail obrigatório';
@@ -226,12 +228,12 @@ class _CriarcontaState extends State<Criarconta> {
     ));
   }
 
-  void verificarConta() {
+  void verificarConta(){
     if (_formkey.currentState!.validate()) {
-      String user = _usercontroller.text;
-      String nameuser = _nameusercontroller.text;
+      String userName = _userNamecontroller.text;
+      String userEmail = _userEmailcontroller.text;
+      String password = _passwordcontroller.text;
 
-      if (user != '' && nameuser != '') {
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -248,7 +250,9 @@ class _CriarcontaState extends State<Criarconta> {
               ),
               actions: [
                 TextButton(
-                  onPressed: () {
+                  onPressed: () async{
+                    User user = User(userName: userName, userEmail: userEmail, password: password);
+                    await UserDao().salvarUser(user: user);
                     showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -305,7 +309,7 @@ class _CriarcontaState extends State<Criarconta> {
             );
           },
         );
-      }
+
     }
   }
 }

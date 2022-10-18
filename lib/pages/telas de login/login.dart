@@ -1,3 +1,4 @@
+import 'package:app/data/userDao.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
 import 'package:app/pages/telas%20de%20login/criar_conta.dart';
 import 'package:app/pages/telas%20de%20login/esqueci_senha_page.dart';
@@ -230,14 +231,13 @@ class _LoginState extends State<Login> {
     carregando = true;
     await Future.delayed(const Duration(seconds: 2));
     if (_formkey.currentState!.validate()) {
-      String userlogin = 'aluno@gmail.com';
-      String passwordLogin = '123456';
 
       String user = _usercontroller.text;
       String password = _passwordcontroller.text;
 
-      if (userlogin == user && passwordLogin == password) {
-        //Usuarios(email: _usercontroller);
+      bool resultado = await UserDao().autenticar(username: user, password: password);
+      print(resultado);
+      if (resultado) {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
           return const Screen(rota: "/homepage");
@@ -281,6 +281,4 @@ class _LoginState extends State<Login> {
       }
     }
   }
-
-  void verSenha() {}
 }

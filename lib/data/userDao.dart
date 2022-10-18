@@ -15,9 +15,9 @@ class UserDao{
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
 
-    String sql = 'SELECT * FROM USER WHERE username = , AND password = ?;';
+    String sql = 'SELECT * FROM USER WHERE username = ? AND password = ?;';
 
-    final result = await db.rawQuery(sql, [username, password]);
+    final result = await db.rawQuery(sql,[username, password]);
 
     return result.isNotEmpty;
   }

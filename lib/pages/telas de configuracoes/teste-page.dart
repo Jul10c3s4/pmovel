@@ -12,12 +12,12 @@ class TestePage extends StatefulWidget {
 
 class _TestePageState extends State<TestePage> {
   AtributosDao atributosDao = AtributosDao();
-  List<Atributos> lista = [];
+  Future<List<Atributos>> lista = AtributosDao().listarAtributos();
 
-    initState(){
+    /*initState(){
       super.initState();
       _getAllAtributos();
-    }
+    }*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,40 +28,53 @@ class _TestePageState extends State<TestePage> {
         ),
         backgroundColor: Colors.purple,
         body:
-            buildListView(),
+            ListView(
+              children: [
+                buildListView(),
+              ],
+            )
         );
   }
 
   buildListView() {
-          return ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: lista.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    SizedBox(height: 10,),
-                    buildListtile(context, index)
-                  ],
-                );
-              });
+    return FutureBuilder<List<Atributos>> (
+        future: lista,
+        builder: (context, snapshot){
+          if(snapshot.hasData){
+            List<Atributos> lista = snapshot.data ?? [];
+            return ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: lista.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    children: [
+                      SizedBox(height: 10,),
+                      buildListtile(lista[index])
+                    ],
+                  );
+                });
+          }
+          return const Center(child: CircularProgressIndicator(color: Colors.blue,),);
+        });
+
         }
 
-  void _getAllAtributos() {
+  /*void _getAllAtributos() {
     atributosDao.listarAtributos().then((list){
       setState(() {
         lista = list;
         print('oi');
       });
     });
-  }
+  }*/
 
-  buildListtile(BuildContext context, int index) {
+  buildListtile(Atributos atributos) {
     return ListTile(
-      leading: Text('${lista[index].materia}'),
-      title: Text('${lista[index].titulo}'),
-      subtitle: Text('${lista[index].descricao}'),
-      tileColor: Colors.purple.shade400,
+      leading: Text('${atributos.materia}'),
+      title: Text('${atributos.titulo}'),
+      subtitle: Text('${atributos.descricao}'),
+      tileColor: Colors.white,
       hoverColor: Colors.white,
     );
   }
