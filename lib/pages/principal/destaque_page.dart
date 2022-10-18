@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/domain/cartao_resumo.dart';
-import 'package:app/pages/new_card.dart';
+import 'package:app/pages/card/new_card.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/widgets/cartao_resumo_card.dart';
 import 'package:app/widgets/ultimo_acesso_card.dart';

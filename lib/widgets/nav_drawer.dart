@@ -94,15 +94,7 @@ class _NavDrawerState extends State<NavDrawer> {
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
             onTap: () => {
-              Navigator.pushReplacementNamed(context, '/login')
-              /* GlobalMethods.warningDialog(
-                title: 'Sign out',
-                subtitle: 'Deseja sair?', 
-                fct: (){
-                  authInstance.signOut();
-                }
-                context: context 
-              ),*/
+              SharedPrefsHelper.logout();
             },
           ),
         ],
