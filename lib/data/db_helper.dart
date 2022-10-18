@@ -13,6 +13,7 @@ class DB_Helper{
       path, 
       version: 1, 
       onCreate: onCreate);
+    return database;
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async{
@@ -24,7 +25,7 @@ class DB_Helper{
       await db.execute(sqlUser);
 
     String sqlCard = 
-    'create table CARD(id INTEGER KEY, materia varchar(100), titulo varchar(100), descricao varchar(100));';
+    'create table CARD(id INTEGER KEY, materia varchar(100), titulo varchar(100), descricao TEXT);';
     await db.execute(sqlCard);
 
     sqlCard = 

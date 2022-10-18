@@ -4,19 +4,19 @@ class BD {
   static List<Atributos> lista = [
     Atributos(
     titulo: 'MEU PRIMEIRO CARD',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
+    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto', materia: '',
   ),
    Atributos(
     titulo: 'Aprenda Linguagem Dart',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
+    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto', materia: '',
   ),
     Atributos(
     titulo: 'Aprenda Linguagem HTML',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
+    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto', materia: '',
   ),
     Atributos(
     titulo: 'Formatação de Texto',
-    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto',
+    descricao: 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto', materia: '',
   ),
   ];
 

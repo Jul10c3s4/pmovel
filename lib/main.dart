@@ -2,6 +2,7 @@
 import 'package:app/pages/telas%20de%20configuracoes/avalie-nos.dart';
 import 'package:app/pages/telas%20de%20configuracoes/central_ajuda.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
+import 'package:app/pages/telas%20de%20configuracoes/teste-page.dart';
 import 'package:app/pages/telas%20de%20login/esqueci_senha_page.dart';
 import 'package:app/pages/telas%20de%20login/login.dart';
 import 'package:app/pages/sobre.dart';
@@ -22,8 +23,9 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Memstudy',
-      initialRoute: '/login',
+      initialRoute: '/splash',
       routes: <String, WidgetBuilder>{
+        '/teste':(context) => const TestePage(),
         '/login': (context) => const Login(),
         '/esqueci': (context) => const EsqueciSenha(),
         '/config': (context) => const TelaConfig(),
@@ -31,7 +33,7 @@ class MyWidget extends StatelessWidget {
         '/central-ajuda': (context) => const CentralAjuda(),
         '/sobre': (context) => const Sobre(),
         '/avalie-nos': (context) => const Avalie(),
-        '/splash':(context) => const Screen(rota: "/login"),
+        '/splash':(context) => const Screen(rota: "/teste"),
         '/termos_uso': ((context) => const Termos_uso())
       },
     );
