@@ -1,3 +1,4 @@
+import 'package:app/data/sharedPreferences.dart';
 import 'package:app/data/userDao.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
 import 'package:app/pages/telas%20de%20login/criar_conta.dart';
@@ -238,6 +239,7 @@ class _LoginState extends State<Login> {
       bool resultado = await UserDao().autenticar(username: user, password: password);
       print(resultado);
       if (resultado) {
+        SharedPrefsHelper().login();
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
           return const Screen(rota: "/homepage");

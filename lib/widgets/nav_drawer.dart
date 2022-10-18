@@ -1,3 +1,4 @@
+import 'package:app/data/sharedPreferences.dart';
 import 'package:app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/jogos_page.dart';
@@ -5,6 +6,8 @@ import 'package:app/pages/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
 import 'package:app/pages/perfil_page.dart';
 import 'package:app/pages/card_materias.dart';
+import 'package:app/data/sharedPreferences.dart';
+
 
 class NavDrawer extends StatefulWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -94,7 +97,9 @@ class _NavDrawerState extends State<NavDrawer> {
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
             onTap: () => {
+              SharedPrefsHelper().logout(),
               Navigator.pushReplacementNamed(context, '/login')
+
               /* GlobalMethods.warningDialog(
                 title: 'Sign out',
                 subtitle: 'Deseja sair?', 
