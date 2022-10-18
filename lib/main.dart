@@ -33,7 +33,7 @@ class MyWidget extends StatelessWidget {
         '/central-ajuda': (context) => const CentralAjuda(),
         '/sobre': (context) => const Sobre(),
         '/avalie-nos': (context) => const Avalie(),
-        '/splash':(context) => const Screen(rota: "/teste"),
+        '/splash':(context) => const Screen(rota: "/login"),
         '/termos_uso': ((context) => const Termos_uso())
       },
     );
