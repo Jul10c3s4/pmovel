@@ -12,9 +12,9 @@ class DB_Helper{
     Database database = await openDatabase(
       path, 
       version: 1, 
-      onCreate: onCreate;
-      return database;
+      onCreate: onCreate
     );
+    return database;
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async{
