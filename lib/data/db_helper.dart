@@ -13,7 +13,8 @@ class DB_Helper{
       path, 
       version: 1, 
       onCreate: onCreate;
-    return database;
+      return database;
+    );
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async{
