@@ -12,7 +12,7 @@ class DB_Helper{
     Database database = await openDatabase(
       path, 
       version: 1, 
-      onCreate: onCreate);
+      onCreate: onCreate;
     return database;
   }
 
