@@ -21,7 +21,7 @@ class DB_Helper{
     String sqlUser = "CREATE TABLE USER(userEmail varchar(100) PRIMARY KEY, userName varchar(100), password varchar(100))";
       await db.execute(sqlUser);
 
-    sqlUser = "INSERT INTO USER(username, password) VALUES ('aluno@gmail.com', '123456')";
+    sqlUser = "INSERT INTO USER(userName, userEmail, password) VALUES ('aluno', 'aluno@gmail.com', '123456')";
       await db.execute(sqlUser);
 
     String sqlCard = 

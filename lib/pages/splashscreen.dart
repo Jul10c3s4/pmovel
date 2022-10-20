@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app/data/sharedPreferences.dart';
 import 'package:app/pages/home_page.dart';
 import 'package:app/pages/telas%20de%20login/login.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -36,6 +37,15 @@ class _ScreenState extends State<Screen> {
 
   void animacao() async {
     await Future.delayed(const Duration(seconds: 4));
-    Navigator.pushReplacementNamed(context, widget.rota);
+
+    bool isLogged = await SharedPrefsHelper().getUser();
+    if(isLogged == true){
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context){
+            return const HomePage();
+          }));
+    }else{
+      Navigator.pushReplacementNamed(context, widget.rota);
+    }
   }
 }

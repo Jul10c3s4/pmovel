@@ -11,16 +11,30 @@ class UserDao{
     await db.insert('USER', user.toJson());
   }
 
-  Future<bool> autenticar({required String username, required String password}) async{
+  Future<bool> autenticar({required String userEmail, required String password}) async{
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
 
-    String sql = 'SELECT * FROM USER WHERE username = ? AND password = ?;';
+    String sql = 'SELECT * FROM USER WHERE userEmail = ? AND password = ?;';
 
-    final result = await db.rawQuery(sql,[username, password]);
+    final result = await db.rawQuery(sql,[userEmail, password]);
 
     return result.isNotEmpty;
   }
-      
+
+  Future<List<User>> listarUsers() async{
+    DB_Helper dbHelper = DB_Helper();
+    Database db = await dbHelper.initDB();
+
+    String sql = 'SELECT * FROM USER;';
+    final result = await db.rawQuery(sql);
+
+    List<User> lista = <User> [];
+    for(var json in result){
+      User user = User.fromJson(json);
+      lista.add(user);
+    }
+    return lista;
+  }
 
 }

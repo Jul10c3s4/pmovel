@@ -18,6 +18,7 @@ class _CriarcontaState extends State<Criarconta> {
   TextEditingController _passwordcontroller = TextEditingController();
   TextEditingController _userNamecontroller = TextEditingController();
   final _formkey = GlobalKey<FormState>();
+  bool loading = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -76,7 +77,7 @@ class _CriarcontaState extends State<Criarconta> {
                       Text(
                         'Nome: ',
                         style: TextStyle(
-                          color: Color(0xFF7940FF),
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 20,
                         ),
@@ -102,7 +103,7 @@ class _CriarcontaState extends State<Criarconta> {
                           decoration: InputDecoration(
                               hintText: 'usuario',
                               hintStyle: TextStyle(
-                                color: Color(0xFF5B30BF),
+                                color: Colors.grey,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 20,
                               ),
@@ -117,7 +118,7 @@ class _CriarcontaState extends State<Criarconta> {
                       Text(
                         'Email: ',
                         style: TextStyle(
-                          color: Color(0xFF7940FF),
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 20,
                         ),
@@ -130,8 +131,11 @@ class _CriarcontaState extends State<Criarconta> {
                         child: TextFormField(
                           controller: _userEmailcontroller,
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Campo e-mail obrigatório';
+                            if(value == null || value.isEmpty){
+                              return 'Campo email obrigatório!';
+                            }
+                            else if(!value!.contains('@')) {
+                              return 'Falta o @';
                             }
                             return null;
                           },
@@ -143,7 +147,7 @@ class _CriarcontaState extends State<Criarconta> {
                           decoration: InputDecoration(
                               hintText: 'aluno@gmail.com',
                               hintStyle: TextStyle(
-                                color: Color(0xFF5B30BF),
+                                color: Colors.grey,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 20,
                               ),
@@ -158,7 +162,7 @@ class _CriarcontaState extends State<Criarconta> {
                       Text(
                         'Senha: ',
                         style: TextStyle(
-                          color: Color(0xFF7940FF),
+                          color: Colors.black,
                           fontWeight: FontWeight.normal,
                           fontSize: 20,
                         ),
@@ -170,7 +174,7 @@ class _CriarcontaState extends State<Criarconta> {
                             borderRadius: BorderRadius.circular(10)),
                         child: TextFormField(
                           controller: _passwordcontroller,
-                          obscureText: true,
+                          obscureText: loading,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Campo senha obrigatório';
@@ -185,9 +189,18 @@ class _CriarcontaState extends State<Criarconta> {
                             fontWeight: FontWeight.normal,
                           ),
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.lock_sharp, color: Color(0xFF1E1040)),
+                            suffixIcon: IconButton(
+                              onPressed: (){
+                                setState((){
+                                  loading = !loading;
+                                });
+                              },
+                              icon: Icon(loading ? Icons.visibility : Icons.visibility_off, color: Color(0xFF1E1040)),
+                            ),
                               hintText: '******',
                               hintStyle: TextStyle(
-                                color: Color(0xFF5B30BF),
+                                color: Colors.grey,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 20,
                               ),
@@ -253,6 +266,7 @@ class _CriarcontaState extends State<Criarconta> {
                   onPressed: () async{
                     User user = User(userName: userName, userEmail: userEmail, password: password);
                     await UserDao().salvarUser(user: user);
+
                     showDialog(
                         context: context,
                         builder: (BuildContext context) {

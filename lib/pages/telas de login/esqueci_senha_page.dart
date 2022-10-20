@@ -85,7 +85,7 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
                     Text(
                       'Email:',
                       style: TextStyle(
-                        color: Color(0xFF7940FF),
+                        color: Colors.black,
                         fontWeight: FontWeight.w500,
                         fontSize: 20,
                       ),
@@ -103,6 +103,8 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
                           if (value == null || value.isEmpty) {
                             return 'Campo e-mail obrigatório';
                           }
+                          else if(!value!.contains('@')) {
+                            return 'Falta o @';}
                           return null;
                         },
                         style: TextStyle(
@@ -113,7 +115,7 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
                         decoration: InputDecoration(
                             hintText: 'aluno@gmail.com',
                             hintStyle: TextStyle(
-                              color: Color(0xFF5B30BF),
+                              color: Colors.grey,
                               fontWeight: FontWeight.w500,
                               fontSize: 20,
                             ),

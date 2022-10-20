@@ -1,3 +1,4 @@
+import 'package:app/domain/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsHelper{
@@ -22,4 +23,12 @@ class SharedPrefsHelper{
 
     return isLogged ?? false;
   }
-}
+
+  /*Future<User> getDados() async{
+    SharedPreferences sharedPrefs = await getInstance();
+    User user = sharedPrefs.get as User;
+
+    return user;
+  }*/
+
+  }
