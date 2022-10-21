@@ -4,7 +4,7 @@ import 'package:app/pages/card/new_card.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/widgets/cartao_resumo_card.dart';
 import 'package:app/widgets/ultimo_acesso_card.dart';
-import 'package:app/data/bd2.dart';
+import 'package:app/data/db_helper.dart';
 
 class DestaquePage extends StatefulWidget {
   const DestaquePage({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class DestaquePage extends StatefulWidget {
 }
 
 class _DestaquePageState extends State<DestaquePage> {
-  Future<List<CartaoResumo>> lista = BD.getCartaoResumo();
+  Future<List<CartaoResumo>> lista = BD.listarCartoes();
 
   @override
   Widget build(BuildContext context) {

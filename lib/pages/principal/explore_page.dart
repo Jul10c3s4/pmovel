@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:app/domain/cartao_resumo.dart';
 //import 'package:app/widgets/cartao_resumo_card.dart';
 import 'package:app/widgets/ultimo_acesso_card.dart';
-import 'package:app/data/bd2.dart';
+import 'package:app/data/db_helper.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -12,9 +12,8 @@ class ExplorePage extends StatefulWidget {
   State<ExplorePage> createState() => _ExplorePageState();
 }
 
-// BD.cardatabase
 class _ExplorePageState extends State<ExplorePage> {
-  List<CartaoResumo> lista = BD.lista;
+  Future<List<CartaoResumo>> lista = BD.listarCartoes();
 
   @override
   Widget build(BuildContext context) {

@@ -10,7 +10,7 @@ class NewCard extends StatefulWidget {
 class _NewCardState extends State<NewCard> {
   TextEditingController tituloController = new TextEditingController();
   TextEditingController descricaoController = new TextEditingController();
-  TextEditingController materiaController = new TextEditingController();
+  //TextEditingController materiaController = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   String nomeMateria = "";

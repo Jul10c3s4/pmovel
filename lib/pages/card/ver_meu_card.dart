@@ -15,7 +15,8 @@ class VerMeuCard extends StatefulWidget {
 }
 
 class _VerMeuCardState extends State<VerMeuCard> {
-  Future<List<CartaoResumo>> lista = CartaoDao.listarDao();
+  Future<List<CartaoResumo>> lista = CartaoDao.listarCartao();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
