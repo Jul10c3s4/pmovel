@@ -7,7 +7,7 @@ import 'package:sqflite/sqflite.dart';
 
 class AtributosDao{
 
-  Future<List<Atributos>> listarAtributos() async{
+  Future<List<Atributos>> listarAtributos() async {
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
 
@@ -19,6 +19,7 @@ class AtributosDao{
       Atributos atributos = Atributos.fromJson(json);
       lista.add(atributos);
     }
+    
     return lista;
   }
 
