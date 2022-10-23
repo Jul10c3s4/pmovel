@@ -1,5 +1,8 @@
-import 'package:app/pages/destaque_page.dart';
+import 'package:app/domain/atributos_card.dart';
+import 'package:app/pages/principal/destaque_page.dart';
 import 'package:flutter/material.dart';
+import 'package:app/data/atributosDao.dart';
+import 'package:app/domain/atributos_card.dart';
 
 class NewCard extends StatefulWidget {
   const NewCard({Key? key}) : super(key: key);
@@ -8,6 +11,9 @@ class NewCard extends StatefulWidget {
 }
 
 class _NewCardState extends State<NewCard> {
+  TextEditingController tituloController = new TextEditingController();
+  TextEditingController descricaoController = new TextEditingController();
+  TextEditingController materiaController = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   String nomeMateria = "";
@@ -52,11 +58,18 @@ class _NewCardState extends State<NewCard> {
                       ),
 
                       TextFormField(
+                        controller: tituloController,
                         decoration: const InputDecoration(
                           labelText: 'Título',
                           border: UnderlineInputBorder(),
                           prefixIconColor: Colors.white,
                         ),
+                        validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo e-mail obrigatório';
+                  }
+                  return null;
+                },
                       ),
                       const SizedBox(height: 28),
                       Row(
@@ -81,6 +94,7 @@ class _NewCardState extends State<NewCard> {
                                 });
                               },
                               value: _itemSelecionado),
+    
                         ],
                       ),
 
@@ -92,6 +106,13 @@ class _NewCardState extends State<NewCard> {
                           border: UnderlineInputBorder(),
                           labelText: 'Descrição',
                         ),
+                        controller: descricaoController,
+                        validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo e-mail obrigatório';
+                  }
+                  return null;
+                },
                       ),
 
                       const SizedBox(height: 16),
@@ -103,6 +124,13 @@ class _NewCardState extends State<NewCard> {
                           border: UnderlineInputBorder(),
                           labelText: 'Url da imagem desejada',
                         ),
+                        /*controller: 
+                        validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Campo e-mail obrigatório';
+                  }
+                  return null;
+                },*/
                       ),
                       const SizedBox(height: 35),
                       Row(
@@ -114,26 +142,7 @@ class _NewCardState extends State<NewCard> {
                               fixedSize: const Size(40, 30),
                               backgroundColor: const Color(0xff180c36),
                             ),
-                            onPressed: () => showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: const Text('Adicionar novo card'),
-                                content:
-                                const Text('Um novo card será adicionado.'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'Cancel'),
-                                    child: const Text('Cancel'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'OK'),
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            onPressed: onPressed(),
                             child: const Icon(Icons.check),
                           ),
                         ],
@@ -144,6 +153,36 @@ class _NewCardState extends State<NewCard> {
               ),
     );
   }
+
+  onPressed() async {
+    if (_formKey.currentState!.validate()) {
+      String tituloDigitado = tituloController.text;
+      String materiaDigitada = _itemSelecionado;
+      String descricaoDigitada = descricaoController.text;
+
+      Atributos atributos = Atributos(materia: materiaDigitada, titulo: tituloDigitado, descricao: descricaoDigitada);
+      await AtributosDao().salvarAtributos(atributos: atributos);
+
+      showSnackBar('Novo cartão foi salvo com sucesso!');
+      Navigator.pop(context);
+
+    } else {
+      showSnackBar("Erro na validação");
+    }
+  }
+
+  showSnackBar(String msg) {
+    final snackBar = SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.symmetric(
+        vertical: 80,
+        horizontal: 32,
+      ),
+      content: Text(msg),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
 
   dropDownItemSelected(String novoItem) {
     setState(() {

@@ -5,6 +5,13 @@ import 'package:sqflite/sqflite.dart';
 
 class AtributosDao{
 
+  Future<void> salvarAtributos({required Atributos atributos}) async {
+    DB_Helper dbHelper = DB_Helper();
+    Database db = await dbHelper.initDB();
+
+    await db.insert('CARD', atributos.toJson());
+  }
+
   Future<List<Atributos>> listarAtributos() async{
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();

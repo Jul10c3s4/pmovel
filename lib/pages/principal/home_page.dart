@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:app/pages/explore_page.dart';
+import 'package:app/pages/principal/explore_page.dart';
 import 'package:app/widgets/nav_drawer.dart';
-import 'package:app/pages/destaque_page.dart';
+import 'package:app/pages/principal/destaque_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
