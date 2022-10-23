@@ -15,4 +15,17 @@ class CardDef {
     this.image = "...",
     this.gabarito = "sem gabarito",
   });
+
+  CardDef.fromJson(Map<String, dynamic> json) {
+    titulo = json['titulo'];
+    descricao = json['descricao'];
+  }
+
+  Map<String, Object?> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+
+    data['titulo'] = this.titulo;
+    data['descricao'] = this.descricao;
+    return data;
+  }
 }

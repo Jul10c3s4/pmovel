@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import '../pergunta1.dart';
+import '../pergunta2.dart';
+import '../jogo_memoria.dart';
 import '../domain/half_card.dart';
 import '../domain/cartaoDefinitivo.dart';
 import '../data/bd.dart';
-import 'jogo_memoria.dart';
+import '../widget/selection_cardH_dialog.dart';
+import 'dart:async';
+import 'dart:core';
 
 class FCHPairPage extends StatefulWidget {
   @override
@@ -22,8 +27,6 @@ class _FCHPairPageState extends State<FCHPairPage> {
 
   @override
   Widget build(BuildContext context) {
-    testeCard.isFaceUp = true;
-
     return Scaffold(
       appBar: AppBar(
         title: Text("flashCardsHalfPair"),
@@ -31,135 +34,179 @@ class _FCHPairPageState extends State<FCHPairPage> {
       ),
       body: SafeArea(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFD0C3F1),
-                ),
-                height: 100,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 15,
-                  itemBuilder: (BuildContext context, int index) => SizedBox(
-                    height: 10,
-                    child: Card(
-                      child:
-                          Center(child: Text('Card Text' + index.toString())),
-                    ),
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFD0C3F1),
+              ),
+              height: 100,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 15,
+                itemBuilder: (BuildContext context, int index) => SizedBox(
+                  height: 10,
+                  child: Card(
+                    child: Center(child: Text('Card Text' + index.toString())),
                   ),
                 ),
               ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xFF6E39F5),
-                  ),
-                  padding: EdgeInsets.all(16),
-                  //margin: EdgeInsets.only(top: 16),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            comprarCard();
-                            buildShowCardDialog(
-                              context: context,
-                              listCardH: baralho,
-                              titulo: "baralho",
-                            );
-                          },
-                          child: buildCard(
-                            context: context,
-                            cardH:
-                                convertCardDInHalfCard([BD.cardDatabase[0]])[0],
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              //mostra o cards in the trash
-                              buildShowCardDialog(
-                                context: context,
-                                listCardH: trash,
-                                titulo: "trash",
-                              );
-                            });
-                          },
-                          child: buildCard(
-                            context: context,
-                            cardH: testeCard,
-                          ),
-                        ),
-                      ]),
-                ),
-              ),
-              Container(
+            ),
+            Expanded(
+              child: Container(
                 decoration: BoxDecoration(
                   color: Color(0xFF6E39F5),
                 ),
-                height: 50,
+                padding: EdgeInsets.all(16),
+                //margin: EdgeInsets.only(top: 16),
                 child: Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        if (hand1.length > 0) {
-                          int indice = hand1.length - 1;
-
-                          descartarCard(hand1, indice);
-                        }
-                      },
-                      child: Text(
-                        "descartar",
-                        style: TextStyle(
-                          color: Colors.black,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          comprarCard();
+                          buildShowCardDialog(
+                            context: context,
+                            listCardH: baralho,
+                            titulo: "baralho",
+                          );
+                        },
+                        child: buildCard(
+                          context: context,
+                          cardH:
+                              convertCardDInHalfCard([BD.cardDatabase[0]])[0],
                         ),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFB6CCD7),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            //mostra o cards in the trash
+                            buildShowCardDialog(
+                              context: context,
+                              listCardH: trash,
+                              titulo: "trash",
+                            );
+                          });
+                        },
+                        child: buildCard(
+                          context: context,
+                          cardH: testeCard,
+                        ),
                       ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        inputIndicesComparacao();
-                      },
-                      child: Text("comparar"),
-                    ),
-                  ],
-                ),
+                    ]),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFD0C3F1),
-                ),
-                height: 100,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: hand1.length,
-                  itemBuilder: (BuildContext context, int index) => SizedBox(
-                    height: 10,
-                    child: InkWell(
-                      splashColor: Colors.blue.withAlpha(30),
-                      onTap: () {
-                        //apareca alertDialog detalhando a carta
-                        buildAlertDCard(context: context, cardH: hand1[index]);
-                      },
-                      child: buildCard(
-                        context: context,
-                        cardH: hand1[index],
-                      ),
-                    ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xFF6E39F5),
+              ),
+              height: 50,
+              child: Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      List<bool> respostas = await showDialog<List<bool>>(
+                            context: context,
+                            builder: (context) => CustomDialog(
+                                options: retornaTextosDoHalfCard(hand1),
+                                qSelection: 1),
+                          ) ??
+                          [];
 
-                    //
-                    //Card(
-                    //  child:
-                    //      Center(child: Text('Card Text' + index.toString())),
-                    //),
+                      if (respostas.length > 0) {
+                        print(respostas.toString());
+
+                        int indice = -1;
+                        for (int i = 0; i < respostas.length; i++) {
+                          if (respostas[i] == true) {
+                            indice = i;
+                            break;
+                          }
+                        }
+
+                        descartarCard(hand1, indice);
+                      }
+                    },
+                    child: Text(
+                      "descartar",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      //inputIndicesComparacao();
+                      //
+                      if (hand1.length > 2) {
+                        List<bool> escolhas = await showDialog<List<bool>>(
+                              context: context,
+                              builder: (context) => CustomDialog(
+                                  options: retornaTextosDoHalfCard(hand1),
+                                  qSelection: 2),
+                            ) ??
+                            <bool>[];
+
+                        List<int> listaIndices = <int>[];
+                        for (int i = 0; i < escolhas.length; i++) {
+                          if (escolhas[i] == true) {
+                            listaIndices.add(i);
+                          }
+                        }
+
+                        if (hand1[listaIndices[0]]
+                            .equals(hand1[listaIndices[1]])) {
+                          print("são correspondentes esses cards");
+
+                          descartarCard(hand1, listaIndices[1]);
+                          descartarCard(hand1, listaIndices[0]);
+                        }
+                      }
+
+                      //converter a variável escolhas para CardHalf
+                      //--> usar método .equals() para verificar o correspondência entre eles
+                    },
+                    child: Text("comparar"),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFD0C3F1),
+              ),
+              height: 100,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: hand1.length,
+                itemBuilder: (BuildContext context, int index) => SizedBox(
+                  height: 10,
+                  child: InkWell(
+                    splashColor: Colors.blue.withAlpha(30),
+                    onTap: () {
+                      //apareca alertDialog detalhando a carta
+                      buildAlertDCard(context: context, cardH: hand1[index]);
+                    },
+                    child: buildCard(
+                      context: context,
+                      cardH: hand1[index],
+                    ),
+                  ),
+
+                  //
+                  //Card(
+                  //  child:
+                  //      Center(child: Text('Card Text' + index.toString())),
+                  //),
                 ),
               ),
-            ]),
+            ),
+          ],
+        ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
@@ -176,7 +223,7 @@ class _FCHPairPageState extends State<FCHPairPage> {
     //hand1
     setState(() {
       CardHalf cardRemovido = hand.removeAt(indice);
-      trash.add(cardRemovido);
+      trash.insert(0, cardRemovido);
     });
   }
 
@@ -243,25 +290,18 @@ class _FCHPairPageState extends State<FCHPairPage> {
               scrollDirection: Axis.horizontal,
               itemCount: listCardH.length,
               itemBuilder: (BuildContext context, int index) => SizedBox(
-                  height: 10,
-                  child: InkWell(
-                    onTap: () {
-                      //chamar um novo alertDialog
-                      buildAlertDCard(
-                          context: context, cardH: listCardH[index]);
-                    },
-                    child: buildCard(
-                      context: context,
-                      cardH: listCardH[index],
-                    ),
-                  )
-
-                  /*
-              Card(
-                child: Center(child: Text('Card Text' + index.toString())),
-              ),
-              */
+                height: 10,
+                child: InkWell(
+                  onTap: () {
+                    //chamar um novo alertDialog
+                    buildAlertDCard(context: context, cardH: listCardH[index]);
+                  },
+                  child: buildCard(
+                    context: context,
+                    cardH: listCardH[index],
                   ),
+                ),
+              ),
             ),
           ),
           actions: <Widget>[
@@ -292,96 +332,99 @@ class _FCHPairPageState extends State<FCHPairPage> {
   }
 
   /*
-  Future<List<int>>? showSelectionCardHDialog(BuildContext context) async {
-    Future<List<int>>? indicesSelecionado = await showDialog<Future<List<int>>>(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Center(
+  Future<List<int>> showSelectionCardHDialog(BuildContext context) async {
+    return showDialog<Future<List<int>>>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              "Selecione 2 cards",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                backgroundColor: Color(0xFF180C36),
+              ),
+            ),
+          ),
+          titlePadding: const EdgeInsets.all(8),
+          scrollable: true,
+          backgroundColor: Color(0xFF351B75),
+          content: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFD0C3F1),
+            ),
+            height: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: hand1.length,
+              itemBuilder: (BuildContext context, int index) => SizedBox(
+                height: 10,
+                child: InkWell(
+                  onTap: () {
+                    //Selecionar um card e deixar selecionado com uma borda amarela
+                    //para isso vai usar o operador ternário no parâmetro
+                    //X --> Container(decoration: BoxDecoretion(Border:X),),
+                    //os indices selecionados vão para a variavel indicesSelecionado
+
+                    buildAlertDCard(context: context, cardH: hand1[index]);
+                  },
+                  child: buildCard(
+                    context: context,
+                    cardH: hand1[index],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            new TextButton(
+              onPressed: () {
+                Navigator.pop(
+                  context,
+                  [0, 1, 2, 3, 4],
+
+                  //valor que será recebidd por indicesSelecionados
+                  //
+                );
+              },
               child: Text(
-                "Selecione 2 cards",
+                "OK",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
-                  backgroundColor: Color(0xFF180C36),
                 ),
               ),
             ),
-            titlePadding: const EdgeInsets.all(8),
-            scrollable: true,
-            backgroundColor: Color(0xFF351B75),
-            content: Container(
-              decoration: BoxDecoration(
-                color: Color(0xFFD0C3F1),
-              ),
-              height: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: hand1.length,
-                itemBuilder: (BuildContext context, int index) => SizedBox(
-                  height: 10,
-                  child: InkWell(
-                    onTap: () {
-                      //Selecionar um card e deixar selecionado com uma borda amarela
-                      //para isso vai usar o operador ternário no parâmetro
-                      //X --> Container(decoration: BoxDecoretion(Border:X),),
-                      //os indices selecionados vão para a variavel indicesSelecionado
-
-                      buildAlertDCard(context: context, cardH: hand1[index]);
-                    },
-                    child: buildCard(
-                      context: context,
-                      cardH: hand1[index],
-                    ),
-                  ),
+            new TextButton(
+              child: new Text(
+                "Fechar",
+                style: TextStyle(
+                  color: Colors.white,
                 ),
               ),
+              onPressed: () {
+                Navigator.of(context).pop(
+                  [4, 3],
+                );
+              },
             ),
-            actions: <Widget>[
-              new TextButton(
-                onPressed: () {
-                  Navigator.pop(
-                    context,
-                    [0, 1, 2, 3, 4],
-
-                    //valor que será recebidd por indicesSelecionados
-                    //
-                  );
-                },
-                child: Text(
-                  "OK",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              new TextButton(
-                child: new Text(
-                  "Fechar",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop(
-                    [4, 3],
-                  );
-                },
-              ),
-            ]
-          );
-          //
-            fazer um alertDialog que contenha um ListView.builder() 
-            que contenha todos os cards da hand1, 
-            só que com o InkWell programado para selecionar os cards
-            que aparecerem na tela
-          //
-        });
+          ]
+        );
+        //
+          fazer um alertDialog que contenha um ListView.builder() 
+          que contenha todos os cards da hand1, 
+          só que com o InkWell programado para selecionar os cards
+          que aparecerem na tela, acrescentando uma borda amarela para os cards selecionados
+          e um botão para submeter a lista com os cards que foram selecionados
+          e retornar esse valor numa variável
+        //
+      });
 
     return indicesSelecionado;
   }
   */
 
+  //não mais usado no código
   void inputIndicesComparacao() {
     Future<List<int>?> indicesEscolhidos = showDialog<List<int>>(
         context: context,
@@ -438,7 +481,7 @@ class _FCHPairPageState extends State<FCHPairPage> {
                         //
 
                         /*
-                        showDialog<String>(
+                        showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
                               title: Center(
@@ -529,6 +572,16 @@ List<CardHalf> makeCardsHFaceUp(List<CardHalf> listaInput) {
   });
 
   return lista2;
+}
+
+//algo parecido com a função map() do JS
+List<String> retornaTextosDoHalfCard(List<CardHalf> l) {
+  List<String> ls = [];
+  for (int i = 0; i < l.length; i++) {
+    ls.add(l[i].text);
+  }
+
+  return ls;
 }
 
 //mostra um AlertDialog com um ListView.builder()
