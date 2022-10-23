@@ -16,8 +16,10 @@ class _AssuntoPageState extends State<AssuntoPage> {
       ),
       body: const Center(
         child: Text(
-          'textotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotextotexto',
-          style: TextStyle(fontSize: 30),
+          'PAGINA QUE IRÁ CONTER O ASSUNTO',
+          style: TextStyle(
+            fontSize: 30
+        ),
         ),
       ),
     );

@@ -1,0 +1,34 @@
+import 'package:app/domain/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SharedPrefsHelper{
+
+  getInstance(){
+    return SharedPreferences.getInstance();
+  }
+
+  login() async{
+    SharedPreferences sharedPrefs = await getInstance();
+    await sharedPrefs.setBool('USER', true);
+  }
+
+  logout() async{
+    SharedPreferences sharedPrefs = await getInstance();
+    await sharedPrefs.setBool('USER', false);
+  }
+
+  Future<bool> getUser() async{
+    SharedPreferences sharedPrefs = await getInstance();
+    bool? isLogged = sharedPrefs.getBool('USER');
+
+    return isLogged ?? false;
+  }
+
+  /*Future<User> getDados() async{
+    SharedPreferences sharedPrefs = await getInstance();
+    User user = sharedPrefs.get as User;
+
+    return user;
+  }*/
+
+  }

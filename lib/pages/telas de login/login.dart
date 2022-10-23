@@ -1,3 +1,6 @@
+import 'package:app/data/sharedPreferences.dart';
+import 'package:app/data/userDao.dart';
+import 'package:app/domain/user.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
 import 'package:app/pages/telas%20de%20login/criar_conta.dart';
 import 'package:app/pages/telas%20de%20login/esqueci_senha_page.dart';
@@ -16,7 +19,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController _usercontroller = TextEditingController();
+  TextEditingController _userEmailcontroller = TextEditingController();
   TextEditingController _passwordcontroller = TextEditingController();
   bool visivel = true;
   bool carregando = false;
@@ -63,7 +66,7 @@ class _LoginState extends State<Login> {
                       Text(
                         'Email: ',
                         style: TextStyle(
-                          color: Color(0xFF7940FF),
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 20,
                         ),
@@ -74,14 +77,13 @@ class _LoginState extends State<Login> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         child: TextFormField(
-                          controller: _usercontroller,
+                          controller: _userEmailcontroller,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              setState(() {
-                                carregando = false;
-                              });
                               return 'Campo e-mail obrigatório';
                             }
+                            else if(!value!.contains('@')) {
+                            return 'Falta o @';}
                             return null;
                           },
                           style: TextStyle(
@@ -110,8 +112,8 @@ class _LoginState extends State<Login> {
                       Text(
                         'Senha: ',
                         style: TextStyle(
-                          color: Color(0xFF7940FF),
-                          fontWeight: FontWeight.normal,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
                           fontSize: 20,
                         ),
                       ),
@@ -170,7 +172,7 @@ class _LoginState extends State<Login> {
                       InkWell(
                         child: Text(
                           'Esqueci a senha',
-                          style: TextStyle(color: Color(0xFF7940FF)),
+                          style: TextStyle(color: Color(0xFF7940FF), fontWeight: FontWeight.bold),
                         ),
                         onTap: () {
                           Navigator.pushReplacement(context,
@@ -206,7 +208,7 @@ class _LoginState extends State<Login> {
                           InkWell(
                         child: Text(
                           'Criar conta',
-                          style: TextStyle(color: Color(0xFF7940FF)),
+                          style: TextStyle(color: Color(0xFF7940FF), fontWeight: FontWeight.bold),
                         ),
                         onTap: () {
                           Navigator.pushReplacement(context,
@@ -230,18 +232,20 @@ class _LoginState extends State<Login> {
     carregando = true;
     await Future.delayed(const Duration(seconds: 2));
     if (_formkey.currentState!.validate()) {
-      String userlogin = 'aluno@gmail.com';
-      String passwordLogin = '123456';
 
-      String user = _usercontroller.text;
+      String email = _userEmailcontroller.text;
       String password = _passwordcontroller.text;
 
-      if (userlogin == user && passwordLogin == password) {
-        //Usuarios(email: _usercontroller);
+      bool resultado = await UserDao().autenticar(userEmail: email, password: password);
+
+      print(resultado);
+      if (resultado) {
+        SharedPrefsHelper().login();
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
           return const Screen(rota: "/homepage");
-        }));
+        }),
+    );
       } else {
         setState(() {
           carregando = false;
@@ -281,6 +285,4 @@ class _LoginState extends State<Login> {
       }
     }
   }
-
-  void verSenha() {}
 }
