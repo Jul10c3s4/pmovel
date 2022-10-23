@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/domain/cartao_resumo.dart';
-import 'package:app/pages/ver_meu_card.dart';
+import 'package:app/pages/card/ver_meu_card.dart';
 
 class CardUltimoAcesso extends StatefulWidget {
   final CartaoResumo cartaoResumo;
@@ -47,14 +47,14 @@ class _CardUltimoAcessoState extends State<CardUltimoAcesso> {
                 ],
               ),
             ),
-            buildImage(),
+            //buildImage(),
           ],
         ),
       ),
     );
   }
 
-  buildImage() {
+  /*buildImage() {
     return Stack(
       children: [
         ClipRRect(
@@ -69,5 +69,5 @@ class _CardUltimoAcessoState extends State<CardUltimoAcesso> {
         ),
       ],
     );
-  }
+  }*/
 }

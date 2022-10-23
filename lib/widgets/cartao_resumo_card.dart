@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/domain/cartao_resumo.dart';
-import 'package:app/pages/ver_meu_card.dart';
+import 'package:app/pages/card/ver_meu_card.dart';
 
 class CardCartaoResumo extends StatefulWidget {
   final CartaoResumo cartaoResumo;
@@ -62,14 +62,14 @@ class _CardCartaoResumoState extends State<CardCartaoResumo> {
               ),
             ),
             const SizedBox(width: 24),
-            buildImage(),
+            //buildImage(),
           ],
         ),
       ),
     );
   }
 
-  buildImage() {
+  /*buildImage() {
     return Stack(
       children: [
         ClipRRect(
@@ -85,5 +85,5 @@ class _CardCartaoResumoState extends State<CardCartaoResumo> {
         ),
       ],
     );
-  }
+  }*/
 }

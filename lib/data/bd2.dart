@@ -1,5 +1,5 @@
 import 'package:app/domain/cartao_resumo.dart';
-
+/*
 class BD {
   static List<CartaoResumo> lista = [
     CartaoResumo(
@@ -34,3 +34,4 @@ class BD {
     return lista;
   }
 }
+*/
