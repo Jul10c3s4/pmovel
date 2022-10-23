@@ -1,10 +1,11 @@
+import 'package:app/data/cartaoDao.dart';
+import 'package:app/widgets/ultimo_acesso_card.dart';
 import 'package:flutter/material.dart';
 import 'package:app/domain/cartao_resumo.dart';
 import 'package:app/pages/card/new_card.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/widgets/cartao_resumo_card.dart';
-import 'package:app/widgets/ultimo_acesso_card.dart';
-import 'package:app/data/db_helper.dart';
+import 'package:app/data/cartaoDao.dart';
 
 class DestaquePage extends StatefulWidget {
   const DestaquePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class DestaquePage extends StatefulWidget {
 }
 
 class _DestaquePageState extends State<DestaquePage> {
-  Future<List<CartaoResumo>> lista = BD.listarCartoes();
+  Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +25,8 @@ class _DestaquePageState extends State<DestaquePage> {
         children: [
           const SizedBox(height: 20),
           Column(
-            children: const [
-              ListTile(
+            children:  [
+              const ListTile(
                 leading: Icon(Icons.access_time, color: Colors.white),
                 title: Text(
                   'Último acesso',
@@ -34,7 +35,7 @@ class _DestaquePageState extends State<DestaquePage> {
                   ),
                 ),
               ),
-              //CardUltimoAcesso(cartaoResumo: lista[2]),
+              buildUltimoAcesso(),
             ],
           ),
           const SizedBox(height: 15),
@@ -123,6 +124,21 @@ class _DestaquePageState extends State<DestaquePage> {
           return JogosPage();
         },
       ),
+    );
+  }
+
+  buildUltimoAcesso() {
+    return FutureBuilder<List<CartaoResumo>>(
+      future: lista,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<CartaoResumo> lista = snapshot.data ?? [];
+
+          return CardCartaoResumo(cartaoResumo: lista[1]);
+        }
+
+        return Center(child: const CircularProgressIndicator());
+      },
     );
   }
 

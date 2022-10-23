@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/domain/cartao_resumo.dart';
+import 'package:app/data/cartaoDao.dart';
 
 class VerMeuCard extends StatefulWidget {
   final CartaoResumo cartaoResumo;
@@ -15,7 +16,7 @@ class VerMeuCard extends StatefulWidget {
 }
 
 class _VerMeuCardState extends State<VerMeuCard> {
-  Future<List<CartaoResumo>> lista = CartaoDao.listarCartao();
+  Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
   
   @override
   Widget build(BuildContext context) {
@@ -87,14 +88,14 @@ class _VerMeuCardState extends State<VerMeuCard> {
               ),
             ),
             const SizedBox(height: 4.0),
-            buildImage(),
+            //buildImage(),
           ],
         ),
       ),
     );
   }
 
-  buildImage() {
+  /*buildImage() {
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
@@ -110,6 +111,6 @@ class _VerMeuCardState extends State<VerMeuCard> {
         ),
       ],
     );
-  }
+  }*/
 }
                   

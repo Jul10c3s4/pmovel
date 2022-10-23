@@ -1,5 +1,8 @@
+import 'package:app/domain/atributos_card.dart';
 import 'package:app/pages/principal/destaque_page.dart';
 import 'package:flutter/material.dart';
+import 'package:app/data/atributosDao.dart';
+import 'package:app/domain/atributos_card.dart';
 
 class NewCard extends StatefulWidget {
   const NewCard({Key? key}) : super(key: key);
@@ -10,7 +13,7 @@ class NewCard extends StatefulWidget {
 class _NewCardState extends State<NewCard> {
   TextEditingController tituloController = new TextEditingController();
   TextEditingController descricaoController = new TextEditingController();
-  //TextEditingController materiaController = new TextEditingController();
+  TextEditingController materiaController = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   String nomeMateria = "";
@@ -103,7 +106,7 @@ class _NewCardState extends State<NewCard> {
                           border: UnderlineInputBorder(),
                           labelText: 'Descrição',
                         ),
-                        controller: descricaoController;
+                        controller: descricaoController,
                         validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Campo e-mail obrigatório';
@@ -139,7 +142,7 @@ class _NewCardState extends State<NewCard> {
                               fixedSize: const Size(40, 30),
                               backgroundColor: const Color(0xff180c36),
                             ),
-                            onPressed: onPressed();
+                            onPressed: onPressed(),
                             child: const Icon(Icons.check),
                           ),
                         ],
@@ -154,11 +157,11 @@ class _NewCardState extends State<NewCard> {
   onPressed() async {
     if (_formKey.currentState!.validate()) {
       String tituloDigitado = tituloController.text;
-      String materiaDigitada = _itemSelecionado.text;
+      String materiaDigitada = _itemSelecionado;
       String descricaoDigitada = descricaoController.text;
 
-      CartaoResumo cartao = CartaoResumo(titulo: tituloDigitado, materia: materiaDigitada, descricao: descricaoDigitada);
-      await CartaoDao().salvarCartaoResumo(cartaoResumo: cartao);
+      Atributos atributos = Atributos(materia: materiaDigitada, titulo: tituloDigitado, descricao: descricaoDigitada);
+      await AtributosDao().salvarAtributos(atributos: atributos);
 
       showSnackBar('Novo cartão foi salvo com sucesso!');
       Navigator.pop(context);
@@ -187,27 +190,3 @@ class _NewCardState extends State<NewCard> {
     });
   }
 }
-
-
-/*
-() => showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: const Text('Adicionar novo card'),
-                                content:
-                                const Text('Um novo card será adicionado.'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'Cancel'),
-                                    child: const Text('Cancel'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'OK'),
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              ),
-                            ),
-*/
