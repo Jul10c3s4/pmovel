@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/prmo/app/BuildConfig.java
- com.prmo.app.BuildConfig

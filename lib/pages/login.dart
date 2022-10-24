@@ -1,7 +1,7 @@
 import 'package:app/domain/usuarios.dart';
 import 'package:app/pages/config_page.dart';
 import 'package:app/pages/esqueci_senha_page.dart';
-import 'package:app/pages/home_page.dart';
+import 'package:app/pages/principal/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

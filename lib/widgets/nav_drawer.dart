@@ -1,10 +1,10 @@
 import 'package:app/data/sharedPreferences.dart';
+import 'package:app/pages/perfil/perfil_page.dart';
 import 'package:app/pages/principal/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/jogos_page.dart';
 import 'package:app/pages/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
-import 'package:app/pages/perfil_page.dart';
 import 'package:app/pages/card_materias.dart';
 import 'package:app/data/sharedPreferences.dart';
 
