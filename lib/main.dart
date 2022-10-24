@@ -10,7 +10,10 @@ import 'package:app/pages/sobre.dart';
 import 'package:app/pages/splashscreen.dart';
 import 'package:app/pages/telas%20de%20configuracoes/termos_uso.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 //import 'package:app/pages/login_page.dart';
+=======
+>>>>>>> 5164565e8fe0033b5f02eff4c0c277ca24a395f1
 
 void main() {
   runApp(MyWidget());
