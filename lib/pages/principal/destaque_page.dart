@@ -152,7 +152,7 @@ class _DestaquePageState extends State<DestaquePage> {
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: lista.length,
+            itemCount: 3,
             itemBuilder: (BuildContext context, int index) {
               return CardCartaoResumo(cartaoResumo: lista[index]);
             },

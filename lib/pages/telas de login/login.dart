@@ -4,7 +4,6 @@ import 'package:app/domain/user.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
 import 'package:app/pages/telas%20de%20login/criar_conta.dart';
 import 'package:app/pages/telas%20de%20login/esqueci_senha_page.dart';
-import 'package:app/pages/home_page.dart';
 import 'package:app/pages/splashscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

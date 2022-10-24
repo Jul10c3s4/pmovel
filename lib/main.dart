@@ -1,4 +1,5 @@
 
+import 'package:app/pages/principal/home_page.dart';
 import 'package:app/pages/telas%20de%20configuracoes/avalie-nos.dart';
 import 'package:app/pages/telas%20de%20configuracoes/central_ajuda.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
@@ -9,7 +10,6 @@ import 'package:app/pages/sobre.dart';
 import 'package:app/pages/splashscreen.dart';
 import 'package:app/pages/telas%20de%20configuracoes/termos_uso.dart';
 import 'package:flutter/material.dart';
-import 'package:app/pages/home_page.dart';
 //import 'package:app/pages/login_page.dart';
 
 void main() {
