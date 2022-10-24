@@ -1,4 +1,4 @@
-import 'package:app/data/bd4.dart';
+import 'package:app/data/atributosDao.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/meusCards/detalhes_card.dart';
 import 'package:app/domain/atributos_card.dart';
@@ -14,7 +14,7 @@ class MeuCard extends StatefulWidget {
 }
 
 class _MeuCardState extends State<MeuCard> {
-  List<Atributos> lista = BD.lista;
+  Future<List<Atributos>> lista = AtributosDao().listarAtributos();
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +31,42 @@ class _MeuCardState extends State<MeuCard> {
       backgroundColor: const Color(0xff6239db),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: lista.length,
-          itemBuilder: (BuildContext context, int index) {
-          return  EstudosCard(detalhe: lista[index]);
-          },
-        ),
+        child: Column(
+          children: [
+            const ListTile(
+              title: Text(
+                'Aqui estão seus cards',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            buildListView()
+          ],
+        )
       ),
+    );
+  }
+
+  buildListView() {
+    return FutureBuilder<List<Atributos>>(
+      future: lista,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<Atributos> lista = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: lista.length,
+            itemBuilder: (BuildContext context, int index) {
+              return EstudosCard(detalhes: lista[index]);
+            },
+          );
+        }
+
+        return Center(child: const CircularProgressIndicator());
+      },
     );
   }
 
