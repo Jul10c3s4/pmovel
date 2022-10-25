@@ -29,23 +29,20 @@ class _MeuCardState extends State<MeuCard> {
         ),
       ),
       backgroundColor: const Color(0xff6239db),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      body: ListView(
           children: [
             const ListTile(
               title: Text(
                 'Aqui estão seus cards',
                 style: TextStyle(
                   color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-            buildListView()
-          ],
-        )
-      ),
-    );
+                buildListView()
+            ],
+          ),
+        );
   }
 
   buildListView() {
@@ -80,4 +77,3 @@ class _MeuCardState extends State<MeuCard> {
       ),
     );
   }
-}
