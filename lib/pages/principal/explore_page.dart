@@ -33,7 +33,7 @@ class _ExplorePageState extends State<ExplorePage> {
         if (snapshot.hasData) {
           List<CartaoResumo> lista = snapshot.data ?? [];
 
-          GridView.builder(
+          return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
               mainAxisSpacing: 2,
