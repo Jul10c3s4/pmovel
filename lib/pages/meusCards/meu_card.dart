@@ -42,7 +42,7 @@ class _MeuCardState extends State<MeuCard> {
                 buildListView()
             ],
           ),
-       bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -93,3 +93,4 @@ class _MeuCardState extends State<MeuCard> {
       ),
     );
   }
+}
