@@ -2,9 +2,9 @@ import '../domain/cartaoDefinitivo.dart';
 import '../data/bd.dart';
 
 class CardHalf {
-  final String text;
-  final bool isTituloFace;
-  bool isFaceUp;
+  late String text;
+  late bool isTituloFace;
+  late bool isFaceUp;
   bool isClear =
       false; //no jogo da memoria diz se o par de cartas já foi encontrado
 
@@ -37,5 +37,18 @@ class CardHalf {
     }
 
     return false;
+  }
+
+  CardHalf.fromJson(Map<String, dynamic> json) {
+    this.text = json['text'] ?? "invalid";
+    this.isTituloFace = json['isTituloFace'] ?? "invalid";
+    this.isFaceUp = true;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['text'] = this.text;
+    data['isTituloFace'] = this.isTituloFace;
+    return data;
   }
 }

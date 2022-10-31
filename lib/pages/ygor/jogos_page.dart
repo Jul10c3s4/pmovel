@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../lib/pages/telas_jogos/pergunta1.dart';
-import '../pages/telas_jogos/pergunta2.dart';
-import '../pages/telas_jogos/jogo_memoria.dart';
-import '../pages/telas_jogos/flashCardsHalfPair.dart';
-import '../pages/telas_jogos/estatisticasPage.dart';
+import '../pages/pergunta1.dart';
+import '../pages/pergunta2.dart';
+import '../pages/jogo_memoria.dart';
+import '../pages/flashCardsHalfPair.dart';
+import '../pages/estatisticasPage.dart';
 
 class JogosPage extends StatefulWidget {
   @override

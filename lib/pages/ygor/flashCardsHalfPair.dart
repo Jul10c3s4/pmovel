@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../pergunta1.dart';
-import '../pergunta2.dart';
-import '../jogo_memoria.dart';
+import '../pages/pergunta1.dart';
+import '../pages/pergunta2.dart';
+import '../pages/jogo_memoria.dart';
 import '../domain/half_card.dart';
 import '../domain/cartaoDefinitivo.dart';
 import '../data/bd.dart';
+import '../data/sharedPreferences.dart';
 import '../widget/selection_cardH_dialog.dart';
 import 'dart:async';
 import 'dart:core';
@@ -15,8 +16,6 @@ class FCHPairPage extends StatefulWidget {
 }
 
 class _FCHPairPageState extends State<FCHPairPage> {
-  CardHalf testeCard = convertCardDInHalfCard([BD.cardDatabase[0]])[1];
-
   List<CardHalf> baralho = makeCardsHFaceUp(getHalfCard(5));
   List<CardHalf> hand1 = [];
   List<CardHalf> hand2 = [];
@@ -91,7 +90,8 @@ class _FCHPairPageState extends State<FCHPairPage> {
                         },
                         child: buildCard(
                           context: context,
-                          cardH: testeCard,
+                          cardH:
+                              new CardHalf(text: "vazio", isTituloFace: false),
                         ),
                       ),
                     ]),
@@ -102,7 +102,8 @@ class _FCHPairPageState extends State<FCHPairPage> {
                 color: Color(0xFF6E39F5),
               ),
               height: 50,
-              child: Row(
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   ElevatedButton(
                     onPressed: () async {
@@ -142,7 +143,7 @@ class _FCHPairPageState extends State<FCHPairPage> {
                     onPressed: () async {
                       //inputIndicesComparacao();
                       //
-                      if (hand1.length > 2) {
+                      if (hand1.length >= 2) {
                         List<bool> escolhas = await showDialog<List<bool>>(
                               context: context,
                               builder: (context) => CustomDialog(
@@ -170,7 +171,82 @@ class _FCHPairPageState extends State<FCHPairPage> {
                       //converter a variável escolhas para CardHalf
                       //--> usar método .equals() para verificar o correspondência entre eles
                     },
-                    child: Text("comparar"),
+                    child: Text(
+                      "comparar",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await SharedPrefsHelper.saveStateFHCP(
+                        /*
+                        deck: CardDef.remakeCardDListByCardHList(
+                            baralho, BD.cardDatabase),
+                        hand: CardDef.remakeCardDListByCardHList(
+                            hand1, BD.cardDatabase),
+                        trash: CardDef.remakeCardDListByCardHList(
+                            trash, BD.cardDatabase),
+                        */
+                        deck: baralho,
+                        hand: hand1,
+                        trash: trash,
+                      );
+                    },
+                    child: Text(
+                      "save",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      //await SharedPrefsHelper.cleanStateFCHP();
+                    },
+                    child: Text(
+                      "reset",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      List<List<CardHalf>> databaseDoEstadoDeJogo =
+                          await SharedPrefsHelper.getStateFHCP();
+
+                      print("estado a seguir vai ser carregado{ ");
+                      print(databaseDoEstadoDeJogo[0].join("==="));
+                      print(databaseDoEstadoDeJogo[1].join("==="));
+                      print(databaseDoEstadoDeJogo[2].join("==="));
+                      print("}");
+
+                      setState(() {
+                        baralho = databaseDoEstadoDeJogo[0];
+                        hand1 = databaseDoEstadoDeJogo[1];
+                        trash = databaseDoEstadoDeJogo[2];
+                      });
+                    },
+                    child: Text(
+                      "load",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
                   ),
                 ],
               ),
@@ -208,7 +284,7 @@ class _FCHPairPageState extends State<FCHPairPage> {
           ],
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods. Dialog
     );
   }
 
@@ -329,221 +405,6 @@ class _FCHPairPageState extends State<FCHPairPage> {
             ),
           ]),
     );
-  }
-
-  /*
-  Future<List<int>> showSelectionCardHDialog(BuildContext context) async {
-    return showDialog<Future<List<int>>>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Center(
-            child: Text(
-              "Selecione 2 cards",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                backgroundColor: Color(0xFF180C36),
-              ),
-            ),
-          ),
-          titlePadding: const EdgeInsets.all(8),
-          scrollable: true,
-          backgroundColor: Color(0xFF351B75),
-          content: Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFD0C3F1),
-            ),
-            height: 100,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: hand1.length,
-              itemBuilder: (BuildContext context, int index) => SizedBox(
-                height: 10,
-                child: InkWell(
-                  onTap: () {
-                    //Selecionar um card e deixar selecionado com uma borda amarela
-                    //para isso vai usar o operador ternário no parâmetro
-                    //X --> Container(decoration: BoxDecoretion(Border:X),),
-                    //os indices selecionados vão para a variavel indicesSelecionado
-
-                    buildAlertDCard(context: context, cardH: hand1[index]);
-                  },
-                  child: buildCard(
-                    context: context,
-                    cardH: hand1[index],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          actions: <Widget>[
-            new TextButton(
-              onPressed: () {
-                Navigator.pop(
-                  context,
-                  [0, 1, 2, 3, 4],
-
-                  //valor que será recebidd por indicesSelecionados
-                  //
-                );
-              },
-              child: Text(
-                "OK",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            new TextButton(
-              child: new Text(
-                "Fechar",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(
-                  [4, 3],
-                );
-              },
-            ),
-          ]
-        );
-        //
-          fazer um alertDialog que contenha um ListView.builder() 
-          que contenha todos os cards da hand1, 
-          só que com o InkWell programado para selecionar os cards
-          que aparecerem na tela, acrescentando uma borda amarela para os cards selecionados
-          e um botão para submeter a lista com os cards que foram selecionados
-          e retornar esse valor numa variável
-        //
-      });
-
-    return indicesSelecionado;
-  }
-  */
-
-  //não mais usado no código
-  void inputIndicesComparacao() {
-    Future<List<int>?> indicesEscolhidos = showDialog<List<int>>(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              title: Center(
-                child: Text(
-                  "Selecione 2 cards",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    backgroundColor: Color(0xFF180C36),
-                  ),
-                ),
-              ),
-              titlePadding: const EdgeInsets.all(8),
-              scrollable: true,
-              backgroundColor: Color(0xFF351B75),
-              content: Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFD0C3F1),
-                ),
-                height: 200,
-                child: Column(children: [
-                  TextField(
-                    controller: comparar1_controller,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'card1-index',
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  TextField(
-                      controller: comparar2_controller,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "card2-index",
-                      )),
-                ]),
-              ),
-              actions: <Widget>[
-                new TextButton(
-                  onPressed: () {
-                    int card1Index = int.parse(comparar1_controller.text);
-                    int card2Index = int.parse(comparar2_controller.text);
-                    comparar1_controller.text = "";
-                    comparar2_controller.text = "";
-
-                    if ((card1Index < hand1.length && card1Index >= 0) &&
-                        (card2Index < hand1.length && card2Index >= 0) &&
-                        (card1Index != card2Index)) {
-                      if (hand1[card1Index].equals(hand1[card2Index])) {
-                        //rodar método fazerPar
-                        //
-
-                        /*
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                              title: Center(
-                                child: Text(
-                                  "mensagem",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    backgroundColor: Color(0xFF180C36),
-                                  ),
-                                ),
-                              ),
-                              titlePadding: const EdgeInsets.all(8),
-                              scrollable: true,
-                              backgroundColor: Color(0xFF351B75),
-                              content: Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFD0C3F1),
-                                ),
-                                height: 100,
-                                child: Text("VOCE FEZ UM PAR"),
-                              ),
-                              actions: <Widget>[
-                                new TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text(
-                                    "OK",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ]),
-                        );
-                        */
-                      }
-                    }
-
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    "OK",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                new TextButton(
-                  child: new Text(
-                    "Fechar",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ]);
-        });
   }
 }
 
