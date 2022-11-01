@@ -13,7 +13,7 @@ class NewCard extends StatefulWidget {
 class _NewCardState extends State<NewCard> {
   TextEditingController tituloController = new TextEditingController();
   TextEditingController descricaoController = new TextEditingController();
-  TextEditingController materiaController = new TextEditingController();
+  //TextEditingController materiaController = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   String nomeMateria = "";
@@ -40,7 +40,11 @@ class _NewCardState extends State<NewCard> {
                   decoration: const BoxDecoration(
                     color: Colors.white10,
                   ),
-                  child: Column(
+                  child: ListView(
+                    children: [
+                      Form(
+                        key: _formKey,
+                        child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
@@ -109,7 +113,7 @@ class _NewCardState extends State<NewCard> {
                         controller: descricaoController,
                         validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Campo e-mail obrigatório';
+                    return 'Campo obrigatório';
                   }
                   return null;
                 },
@@ -117,7 +121,7 @@ class _NewCardState extends State<NewCard> {
 
                       const SizedBox(height: 16),
                       //inputar link externo
-                      TextFormField(
+                      /*TextFormField(
                         cursorColor: Colors.purple,
                         keyboardType: TextInputType.url,
                         decoration: const InputDecoration(
@@ -131,7 +135,7 @@ class _NewCardState extends State<NewCard> {
                   }
                   return null;
                 },*/
-                      ),
+                      ),*/
                       const SizedBox(height: 35),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -142,19 +146,23 @@ class _NewCardState extends State<NewCard> {
                               fixedSize: const Size(40, 30),
                               backgroundColor: const Color(0xff180c36),
                             ),
-                            onPressed: onPressed(),
+                            onPressed: onPressed,
                             child: const Icon(Icons.check),
                           ),
                         ],
                       ),
                     ],
-                  ),
+                  ),)
+                      
+                    ],
+                  ) 
+                  
                 ),
               ),
     );
   }
 
-  onPressed() async {
+  void onPressed() async {
     if (_formKey.currentState!.validate()) {
       String tituloDigitado = tituloController.text;
       String materiaDigitada = _itemSelecionado;

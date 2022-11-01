@@ -275,11 +275,10 @@ class _CriarcontaState extends State<Criarconta> {
                               'Parabéns sua conta foi criada!',
                               style: TextStyle(color: Colors.green),
                             ),
-                            content: Container(
-                                child: Image.asset(
-                              'assets/images/parabens.png',
-                              fit: BoxFit.cover,
-                            )),
+                            content: Image.asset(
+                              'assets/images/contacriada.gif',
+                              fit: BoxFit.fill,),
+                            
                             actions: [
                               TextButton(
                                 onPressed: () {

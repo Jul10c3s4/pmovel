@@ -10,7 +10,7 @@ class BD {
    Atributos(
     titulo: 'Conjunções subordinadas',
     descricao: 'As conjunções subordinativas são termos que ligam duas orações sintaticamente dependentes, ou seja, são palavras invariáveis,cuja a função é unir orações,sendo que uma das orações irá exercer o papel de principal e a outra de subordinada(dependente da primeira para o seu sentido ser completo...',
-    materia: 'Portugues',
+    materia: 'PORTUGUÊS',
   ),
     Atributos(
     titulo: 'Linguagem HTML',
@@ -20,7 +20,7 @@ class BD {
     Atributos(
     titulo: 'Formatação de Texto',
     descricao: 'segundo a norma ABNT, os textos devem estar em formato justificado, na fonte Arial ou Times New Romans tamanho 10 ou 12, com espaçamento de 1,5 entre as linhas...',
-    materia: 'Português',
+    materia: 'PORTUGUÊS',
   ),
   ];
 

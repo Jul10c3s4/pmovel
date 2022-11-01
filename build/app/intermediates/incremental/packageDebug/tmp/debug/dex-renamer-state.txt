@@ -1,4 +1,8 @@
-#Wed Oct 19 22:11:45 BRT 2022
-base.0=C\:\\Users\\julio\\StudioProjects\\pmovel\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+<<<<<<< HEAD
+#Mon Oct 24 12:02:14 BRT 2022
+=======
+#Mon Oct 24 10:58:20 BRT 2022
+>>>>>>> 5164565e8fe0033b5f02eff4c0c277ca24a395f1
+base.0=C\:\\Users\\Aluno\\StudioProjects\\pmovel\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
