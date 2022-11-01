@@ -1,8 +1,9 @@
-import 'package:app/pages/pergunta1.dart';
-import 'package:app/pages/pergunta2.dart';
 import 'package:flutter/material.dart';
-import 'flashCardsHalfPair.dart';
-import 'jogo_memoria.dart';
+import '../pages/pergunta1.dart';
+import '../pages/pergunta2.dart';
+import '../pages/jogo_memoria.dart';
+import '../pages/flashCardsHalfPair.dart';
+import '../pages/estatisticasPage.dart';
 
 class JogosPage extends StatefulWidget {
   @override
@@ -12,26 +13,12 @@ class JogosPage extends StatefulWidget {
 class _JogosPageState extends State<JogosPage> {
   @override
   Widget build(BuildContext context) {
-    // than having to individually change instances of widgets.
+    //DB_Helper.initDB();
+
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text("Jogos"),
         backgroundColor: Color(0xFF180C36),
-        /*centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          tooltip: 'back',
-          onPressed: () {},
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            tooltip: 'more',
-            onPressed: () {},
-          ),
-        ],*/
       ),
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Container(
@@ -126,6 +113,28 @@ class _JogosPageState extends State<JogosPage> {
                     ),
                   ),
                   SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return new EstatisticasPage();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Estatísticas",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                  ),
+                  SizedBox(height: 16),
                 ]),
           ),
         ),
@@ -142,6 +151,8 @@ class _JogosPageState extends State<JogosPage> {
         },
       ),
     );
+
+    //showSnackBar(CardDefDao.listarTudo()[1]["title"]);
   }
 
   void onPressedButton2() {
@@ -164,5 +175,17 @@ class _JogosPageState extends State<JogosPage> {
         },
       ),
     );
+  }
+
+  showSnackBar(String msg) {
+    final snackBar = SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.symmetric(
+        vertical: 80,
+        horizontal: 32,
+      ),
+      content: Text(msg),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

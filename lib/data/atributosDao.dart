@@ -1,9 +1,12 @@
 
 import 'package:app/data/db_helper.dart';
 import 'package:app/domain/atributos_card.dart';
+import 'package:app/domain/cartaoDefinitivo.dart';
 import 'package:sqflite/sqflite.dart';
 
+
 class AtributosDao{
+
 
   Future<void> salvarAtributos({required Atributos atributos}) async {
     DB_Helper dbHelper = DB_Helper();
@@ -24,6 +27,23 @@ class AtributosDao{
       Atributos atributos = Atributos.fromJson(json);
       lista.add(atributos);
     }
+    
+    return lista;
+  }
+
+  static Future<List<CardDef>> listarCardDef() async{
+    DB_Helper dbHelper = new DB_Helper();
+    Database db = await dbHelper.initDB();
+
+    String sql = 'SELECT * FROM CARD;';
+    final result = await db.rawQuery(sql);
+
+    List<CardDef> lista = new <CardDef>[];
+    for(var json in result){
+      CardDef c = new CardDef.fromJson(json);
+      lista.add(c);
+    }
+
     return lista;
   }
 }
