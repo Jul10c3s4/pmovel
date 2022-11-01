@@ -18,135 +18,142 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xFF3D2080),
-      body: ListView(
-        children: [
-          Column(
-        children: [
-          SizedBox(height: 5, width: 5,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(onPressed: (){
-                Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                            return const Login();
-                          }));
-              }, icon: Icon(Icons.arrow_back))
-            ],
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                color: Color(0xFF1E1040),
-                borderRadius: BorderRadius.circular(20)),
-            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
-            child: Text(
-              'Esqueci a senha',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Nova Senha',
-                style: TextStyle(color: Color(0xFF7940FF), fontSize: 15),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-                child: Image.asset(
-              'assets/images/help.png',
-              fit: BoxFit.cover,
-            )),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Form(
-                key: _formkey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+            backgroundColor: Color(0xFF3D2080),
+            body: ListView(
+              children: [
+                Column(
                   children: [
-                    Text(
-                      'Email:',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),
+                    SizedBox(
+                      height: 5,
+                      width: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const Login();
+                              }));
+                            },
+                            icon: Icon(Icons.arrow_back))
+                      ],
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Container(
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: TextFormField(
-                        controller: _userController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Campo e-mail obrigatório';
-                          }
-                          else if(!value!.contains('@')) {
-                            return 'Falta o @';}
-                          return null;
-                        },
+                          color: Color(0xFF1E1040),
+                          borderRadius: BorderRadius.circular(20)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 60, vertical: 15),
+                      child: Text(
+                        'Esqueci a senha',
                         style: TextStyle(
-                          color: Color(0xFF5B30BF),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
                         ),
-                        decoration: InputDecoration(
-                            hintText: 'aluno@gmail.com',
-                            hintStyle: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 20,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            )),
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 5,
                     ),
-                    ElevatedButton(
-                      onPressed: verificarLogin,
-                      child: Text(
-                        'Enviar',
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.purple.shade400,
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Nova Senha',
+                          style:
+                              TextStyle(color: Color(0xFF7940FF), fontSize: 15),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                        child: Image.asset(
+                      'assets/images/help.png',
+                      fit: BoxFit.cover,
+                    )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Form(
+                          key: _formkey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Text(
+                                'Email:',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: TextFormField(
+                                  controller: _userController,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Campo e-mail obrigatório';
+                                    } else if (value.contains('@') == false) {
+                                      return 'Falta o @';
+                                    }
+                                    return null;
+                                  },
+                                  style: TextStyle(
+                                    color: Color(0xFF5B30BF),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  decoration: InputDecoration(
+                                      hintText: 'aluno@gmail.com',
+                                      hintStyle: TextStyle(
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 20,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      )),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              ElevatedButton(
+                                onPressed: verificarLogin,
+                                child: Text(
+                                  'Enviar',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.purple.shade400,
+                                  padding: EdgeInsets.symmetric(vertical: 20),
+                                ),
+                              )
+                            ],
+                          )),
                     )
                   ],
-                )),
-          )
-        ],
-      ),
-        ],
-      ) 
-    ));
+                ),
+              ],
+            )));
   }
 
   void verificarLogin() {
@@ -160,9 +167,7 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
             return AlertDialog(
               title: Text(
                 'Confirmação de Email',
-                style: TextStyle(
-                  color: Colors.green
-                ),
+                style: TextStyle(color: Colors.green),
               ),
               content: Text(
                 'Tem certeza que o email (${user}) está correto ?',
@@ -174,18 +179,17 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                            return const Login();
-                          }));
+                        MaterialPageRoute(builder: (context) {
+                      return const Login();
+                    }));
                   },
                   child: Text(
                     'Confirmar',
                     style: TextStyle(color: Colors.white),
                   ),
                   style: TextButton.styleFrom(
-                    primary: Colors.blue.shade400,
-                    backgroundColor: Colors.blue.shade400
-                  ),
+                      primary: Colors.blue.shade400,
+                      backgroundColor: Colors.blue.shade400),
                 ),
                 TextButton(
                   onPressed: () {
@@ -196,9 +200,7 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
                     style: TextStyle(color: Colors.white),
                   ),
                   style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: Colors.red            
-                  ),
+                      primary: Colors.white, backgroundColor: Colors.red),
                 )
               ],
             );

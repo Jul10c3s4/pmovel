@@ -2,14 +2,13 @@ import 'package:app/data/sharedPreferences.dart';
 import 'package:app/pages/perfil/perfil_page.dart';
 import 'package:app/pages/principal/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app/pages/jogos_page.dart';
+import 'package:app/pages/ygor/jogos_page.dart';
 import 'package:app/pages/meusCards/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
 import 'package:app/pages/card_materias.dart';
 import 'package:app/data/sharedPreferences.dart';
 
 import '../pages/perfil/perfil_page.dart';
-
 
 class NavDrawer extends StatefulWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -86,7 +85,7 @@ class _NavDrawerState extends State<NavDrawer> {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const  CardMaterias()),
+                MaterialPageRoute(builder: (context) => const CardMaterias()),
               ),
             },
           ),
@@ -100,7 +99,7 @@ class _NavDrawerState extends State<NavDrawer> {
             title: const Text('Logout'),
             onTap: () => {
               SharedPrefsHelper().logout(),
-              Navigator.pushReplacementNamed(context, '/login')         
+              Navigator.pushReplacementNamed(context, '/login')
             },
           ),
         ],

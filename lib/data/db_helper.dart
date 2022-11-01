@@ -5,23 +5,8 @@ import 'package:app/data/database_contents.dart';
 import 'package:app/data/request_data.dart';
 import 'package:app/domain/json_data.dart';
 
-class DB_Helper{
-
+class DB_Helper {
   static List subjectList = DatabaseContents.subjects_contents;
-
-  static int portugueseLength = DatabaseContents.portuguese_contents.length;
-  static int mathsLength = DatabaseContents.maths_contents.length;
-  static int historyLength = DatabaseContents.history_contents.length;
-  static int geografyLength = DatabaseContents.geografy_contents.length;
-  static int philosophyLength = DatabaseContents.philosophy_contents.length;
-  static int sociologyLength = DatabaseContents.sociology_contents.length;
-  static int physicalLength = DatabaseContents.physical_contents.length;
-  static int chemistryLenght = DatabaseContents.chemistry_contents.length;
-  static int biologyLenght = DatabaseContents.biology_contents.length;
-  static int programmingLenght = DatabaseContents.programming_contents.length;
-  static int businessLenght = DatabaseContents.business_contents.length;
-
-  static int totalLenght = portugueseLength + mathsLength + historyLength + geografyLength + philosophyLength + sociologyLength + physicalLength + chemistryLenght + biologyLenght + programmingLenght + businessLenght;
 
   initDB() async {
     String databasePath = await getDatabasesPath();
@@ -65,41 +50,42 @@ class DB_Helper{
         "INSERT INTO CARD(materia, titulo, descricao,) VALUES ('HISTORIA', '1º Guerra Mundial', 'A Primeira Guerra Mundial foi um conflito bélico global centrado na Europa, que começou em 28 de julho de 1914 e durou até 11 de...');";
     await db.execute(sqlCard);
 
-    sqlCard = 
-    "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'MEU PRIMEIRO TESTE', 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto...');";
+    sqlCard =
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'MEU PRIMEIRO TESTE', 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto...');";
     await db.execute(sqlCard);
 
-    sqlCard = 
-    "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'Conjunções subordinadas', 'As conjunções subordinativas são termos que ligam duas orações sintaticamente dependentes...');";
+    sqlCard =
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'Conjunções subordinadas', 'As conjunções subordinativas são termos que ligam duas orações sintaticamente dependentes...');";
     await db.execute(sqlCard);
 
-    sqlCard = 
-    "INSERT INTO CARD(materia, titulo, descricao) VALUES ('LÓGICA DE PROGRAMAÇÃO', 'Linguagem HTML', 'HTML é o componente base da web. Isso quer dizer que ele permite a construção de websites e a inserção de novos conteúdos, como imagens e vídeos, por meio dos hipertextos...');";
+    sqlCard =
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('LÓGICA DE PROGRAMAÇÃO', 'Linguagem HTML', 'HTML é o componente base da web. Isso quer dizer que ele permite a construção de websites e a inserção de novos conteúdos, como imagens e vídeos, por meio dos hipertextos...');";
     await db.execute(sqlCard);
 
-    sqlCard = 
-    "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'Formatação de Texto', 'segundo a norma ABNT, os textos devem estar em formato justificado, na fonte Arial ou Times New Romans tamanho 10 ou 12, com espaçamento de 1,5 entre as linhas...');";
+    sqlCard =
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'Formatação de Texto', 'segundo a norma ABNT, os textos devem estar em formato justificado, na fonte Arial ou Times New Romans tamanho 10 ou 12, com espaçamento de 1,5 entre as linhas...');";
     await db.execute(sqlCard);
 
-    String sql = "create table SubjectAtributes(id INTERGER PRIMARY KEY, title varchar(40), iconName varchar(40),  titleAppBar varchar(40), imageLink varchar(300), concept varchar(500))";
+    String sql =
+        "create table SubjectAtributes(id INTERGER PRIMARY KEY, title varchar(40), iconName varchar(40),  titleAppBar varchar(40), imageLink varchar(300), concept varchar(500))";
     await db.execute(sql);
-    await insertIntoDatas(db: db, totalLength: totalLenght);    
+    await insertIntoDatas(db: db);
+  }
 
-    Future<FutureOr<void>> insertIntoDatas({
+  Future<FutureOr<void>> insertIntoDatas({
     required Database db,
-    required int totalLength,
-    }) async{
-      List <Json> objectsSubList = [];
-      String sql;
-      int count = 0;
+  }) async {
+    List<Json> objectsSubList = [];
+    String sql;
+    int count = 0;
 
-      for (var i in subjectList) {
-        for (var j in i) {
-          sql = "insert into SubjectAtributes(id, title, iconName, titleAppBar, imageLink, concept) VALUES ('$count', '${j.titulo}', '${j.icon}', '${j.titleAppBar}', '${j.imagem}', '${j.conceito}');";
-          await db.execute(sql);
-          Request().fullFillObjects(db: db, count: count, list: objectsSubList);
-          count++;
-        }
+    for (var i in subjectList) {
+      for (var j in i) {
+        sql =
+            "insert into SubjectAtributes(id, title, iconName, titleAppBar, imageLink, concept) VALUES ('$count', '${j.titulo}', '${j.icon}', '${j.titleAppBar}', '${j.imagem}', '${j.conceito}');";
+        await db.execute(sql);
+        Request().fullFillObjects(db: db, count: count, list: objectsSubList);
+        count++;
       }
     }
   }

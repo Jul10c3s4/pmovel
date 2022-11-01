@@ -32,219 +32,245 @@ class _LoginState extends State<Login> {
       body: ListView(
         children: [
           Column(
-        children: [
-          SizedBox(
-            height: 30,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                color: Color(0xFF1E1040),
-                borderRadius: BorderRadius.circular(20)),
-            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
-            child: Text(
-              'Login',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
+            children: [
+              SizedBox(
+                height: 30,
               ),
-            ),
-          ),
-          Container(
-                child: Image.asset(
-              'assets/images/cere_oi.png',
-              fit: BoxFit.cover,
-            )),
-          Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Form(
-                  key: _formkey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Email: ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: TextFormField(
-                          controller: _userEmailcontroller,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Campo e-mail obrigatório';
-                            }
-                            else if(!value!.contains('@')) {
-                            return 'Falta o @';}
-                            return null;
-                          },
-                          style: TextStyle(
-                            color: Color(0xFF5B30BF),
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
+              Container(
+                decoration: BoxDecoration(
+                    color: Color(0xFF1E1040),
+                    borderRadius: BorderRadius.circular(20)),
+                padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+              ),
+              Container(
+                  child: Image.asset(
+                'assets/images/cere_oi.png',
+                fit: BoxFit.cover,
+              )),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Form(
+                      key: _formkey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'Email: ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20,
+                            ),
                           ),
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.person_outlined, color: Color(0xFF1E1040),
-                              ),
-                              hintText: 'aluno@gmail.com',
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
+                          SizedBox(height: 5),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: TextFormField(
+                              controller: _userEmailcontroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Campo e-mail obrigatório';
+                                } else if (value.contains('@') == false) {
+                                  return 'Falta o @';
+                                }
+                                return null;
+                              },
+                              style: TextStyle(
+                                color: Color(0xFF5B30BF),
+                                fontSize: 20,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 20,
                               ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Senha: ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: TextFormField(
-                          controller: _passwordcontroller,
-                          obscureText: visivel,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              setState(() {
-                                carregando = false;
-                              });
-                              return 'Campo senha obrigatório';
-                            } else if (value.length < 6) {
-                              setState(() {
-                                carregando = false;
-                              });
-                              return 'Campo senha deve conter no mínimo 6 dígitos';
-                            }
-                            return null;
-                          },
-                          style: TextStyle(
-                            color: Color(0xFF5B30BF),
-                            fontSize: 20,
-                            fontWeight: FontWeight.normal,
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.person_outlined,
+                                    color: Color(0xFF1E1040),
+                                  ),
+                                  hintText: 'aluno@gmail.com',
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  )),
+                            ),
                           ),
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock_sharp, color: Color(0xFF1E1040),),
-                            suffixIcon: IconButton(onPressed: (){
-                              setState(() {
-                                visivel = !visivel;
-                              });
-                            }, icon: Icon(visivel ? Icons.visibility : Icons.visibility_off, color: Color(0xFF1E1040),)),
-                              hintText: '******',
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.normal,
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Senha: ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: TextFormField(
+                              controller: _passwordcontroller,
+                              obscureText: visivel,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  setState(() {
+                                    carregando = false;
+                                  });
+                                  return 'Campo senha obrigatório';
+                                } else if (value.length < 6) {
+                                  setState(() {
+                                    carregando = false;
+                                  });
+                                  return 'Campo senha deve conter no mínimo 6 dígitos';
+                                }
+                                return null;
+                              },
+                              style: TextStyle(
+                                color: Color(0xFF5B30BF),
                                 fontSize: 20,
+                                fontWeight: FontWeight.normal,
                               ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      /*Navigator.pushReplacement(context,
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.lock_sharp,
+                                    color: Color(0xFF1E1040),
+                                  ),
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          visivel = !visivel;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        visivel
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Color(0xFF1E1040),
+                                      )),
+                                  hintText: '******',
+                                  hintStyle: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 20,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  )),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          /*Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
           return const HomePage();
         })); */
-                      InkWell(
-                        child: Text(
-                          'Esqueci a senha',
-                          style: TextStyle(color: Color(0xFF7940FF), fontWeight: FontWeight.bold),
-                        ),
-                        onTap: () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const EsqueciSenha();
-                          }));
-                        },
-                      ),
-                      SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: (){
-                          setState(() {
-                            verificarLogin();
-                          });
-                          },
-                        child: !carregando ? Text(
-                          'Entrar',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ) : Center(child: CircularProgressIndicator(color: Colors.white,),),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.purple.shade400,
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                        ),
-                      ),
-                      SizedBox(height: 10,),
-                      Row(
-                        children: [
-                          Text('Não possui uma conta?'),
-                          SizedBox(width: 10,),
                           InkWell(
-                        child: Text(
-                          'Criar conta',
-                          style: TextStyle(color: Color(0xFF7940FF), fontWeight: FontWeight.bold),
-                        ),
-                        onTap: () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const Criarconta();
-                          }));
-                        },
-                      ),
+                            child: Text(
+                              'Esqueci a senha',
+                              style: TextStyle(
+                                  color: Color(0xFF7940FF),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onTap: () {
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const EsqueciSenha();
+                              }));
+                            },
+                          ),
+                          SizedBox(height: 20),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                verificarLogin();
+                              });
+                            },
+                            child: !carregando
+                                ? Text(
+                                    'Entrar',
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                : Center(
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.purple.shade400,
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text('Não possui uma conta?'),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              InkWell(
+                                child: Text(
+                                  'Criar conta',
+                                  style: TextStyle(
+                                      color: Color(0xFF7940FF),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                onTap: () {
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const Criarconta();
+                                  }));
+                                },
+                              ),
+                            ],
+                          )
                         ],
-                      )
-                    ],
-                  ))),
+                      ))),
+            ],
+          ),
         ],
       ),
-        ],
-      ), 
     ));
   }
 
-  void verificarLogin() async{
+  void verificarLogin() async {
     carregando = true;
     await Future.delayed(const Duration(seconds: 2));
     if (_formkey.currentState!.validate()) {
-
       String email = _userEmailcontroller.text;
       String password = _passwordcontroller.text;
 
-      bool resultado = await UserDao().autenticar(userEmail: email, password: password);
+      bool resultado =
+          await UserDao().autenticar(userEmail: email, password: password);
 
       print(resultado);
       if (resultado) {
-        SharedPrefsHelper().login();
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) {
-          return const Screen(rota: "/homepage");
-        }),
-    );
+        SharedPrefsHelper().login(email);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return const Screen(rota: "/homepage");
+          }),
+        );
       } else {
         setState(() {
           carregando = false;
@@ -267,7 +293,6 @@ class _LoginState extends State<Login> {
                     setState(() {
                       Navigator.of(context).pop();
                     });
-
                   },
                   child: Text(
                     'OK',

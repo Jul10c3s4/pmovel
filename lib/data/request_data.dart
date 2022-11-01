@@ -1,14 +1,13 @@
 import 'package:sqflite/sqlite_api.dart';
-import 'package:untitled4/domain/json_data.dart';
+import 'package:app/domain/json_data.dart';
 
-class Request{
-
+class Request {
   List atributesList = [];
 
-  Future<void>  fullFillObjects({
+  Future<void> fullFillObjects({
     required Database db,
     required int count,
-    required List <Json> list,
+    required List<Json> list,
   }) async {
     String sql;
     sql = 'SELECT * '
@@ -23,7 +22,7 @@ class Request{
     print(list[count].titleAppBar);
   }
 
-  Future <List> buildSubjectList({
+  Future<List> buildSubjectList({
     required listLength,
     required String appBarName,
     required Database db,
