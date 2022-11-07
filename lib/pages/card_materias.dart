@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:app/data/DBHelper.dart';
 import 'package:app/data/database_contents.dart';
+import 'package:app/data/caller_database.dart';
 import 'package:app/data/subject_database.dart';
 import 'package:app/domain/conteudos_das_materias.dart';
 import 'package:app/pages/card_submateria.dart';
@@ -13,7 +16,11 @@ class CardMaterias extends StatefulWidget {
 
 class _CardMaterias extends State <CardMaterias> {
   @override
+
   Widget build(BuildContext context) {
+
+    CallDatabase().buildDatabase();
+
     return Scaffold(
       backgroundColor: Color(0xFF6E39F5),
       appBar: AppBar(
@@ -29,39 +36,50 @@ class _CardMaterias extends State <CardMaterias> {
       ),
       body: ListView(
         children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Column(
-                children: [
-                  buildSearchFunction(lupa: SubjectDatabaseContents.lupa),
-                  //const Divider(height: 60),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.portuguese, listaMaterias: DatabaseContents.portuguese_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.math, listaMaterias: DatabaseContents.maths_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.history, listaMaterias: DatabaseContents.history_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.geografy, listaMaterias: DatabaseContents.geografy_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.philosophy, listaMaterias: DatabaseContents.philosophy_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.sociology, listaMaterias: DatabaseContents.sociology_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.physical, listaMaterias: DatabaseContents.physical_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.chemistry, listaMaterias: DatabaseContents.chemistry_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.biology, listaMaterias: DatabaseContents.biology_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.programming, listaMaterias: DatabaseContents.programming_contents),
-                  const SizedBox(height: 60),
-                  buildBody(materia: SubjectDatabaseContents.business, listaMaterias: DatabaseContents.business_contents),
-                  const SizedBox(height: 60),
-                ],
-              ),
-            ),
+          FutureBuilder(
+              future: SubjectDatabaseContents.getSubjectsList(),
+              builder: (context, snapshot) {
+                if(snapshot.hasData){
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Column(
+                        children: [
+                          buildSearchFunction(lupa: SubjectDatabaseContents.lupa),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: SubjectDatabaseContents.subjects.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    const SizedBox(height: 60),
+                                    //buildBody(materia: SubjectDatabaseContents.subjects[index], listaMaterias: Request().buildSubjectList(listLength: DatabaseContents.subjects_contents[index].length, appBarName: DatabaseContents.subjects_contents[index][0].titleAppBar)),
+                                    //buildBody(materia: SubjectDatabaseContents.subjects[index], listaMaterias: DatabaseContents.subjects_contents[index], title: Request().atributesList[0].titleAppBar),
+                                    buildBody(materia: SubjectDatabaseContents.subjects[index], listaMaterias: DatabaseContents.subjects_contents[index]),
+                                  ],
+                                );
+                              }
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                else{
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(150),
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              }
           ),
         ],
       ),
@@ -97,6 +115,8 @@ class _CardMaterias extends State <CardMaterias> {
   }
 
   buildBody({
+    //required String title,
+    //required IconData icon,
     required Materias materia,
     required List listaMaterias,
   }) {
