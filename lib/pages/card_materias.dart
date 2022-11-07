@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:app/data/DBHelper.dart';
 import 'package:app/data/database_contents.dart';
 import 'package:app/data/caller_database.dart';
 import 'package:app/data/subject_database.dart';
