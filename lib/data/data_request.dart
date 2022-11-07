@@ -1,12 +1,12 @@
-import 'package:app/data/DBHelper.dart';
 import 'package:app/domain/genre.dart';
 import 'package:app/domain/music.dart';
 import 'package:sqflite/sqflite.dart';
+import '../data/db_helper.dart';
 
 class DataRequest{
 
   Future<List<Music>> buildDatabase() async {
-    DBHelper dbHelper = DBHelper();
+    DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
 
     String sql = "SELECT * FROM StudyMusics;";
@@ -23,7 +23,7 @@ class DataRequest{
   }
 
   Future<List> retrieveGenreDatas() async {
-    DBHelper dbHelper = DBHelper();
+    DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
 
     List<MusicGenre> lofiList = <MusicGenre> [];
