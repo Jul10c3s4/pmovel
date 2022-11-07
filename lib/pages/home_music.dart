@@ -1,9 +1,9 @@
+import 'package:app/widgets/genre_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:app/data/data_request.dart';
 import 'package:app/domain/music.dart';
-import 'package:app/widget/genre_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeMusic extends StatefulWidget {
@@ -16,8 +16,7 @@ class _HomeMusic extends State <HomeMusic> {
   @override
   Future<List<Music>> musicList = DataRequest().buildDatabase();
   Future<List> musicGenreList = DataRequest().retrieveGenreDatas();
-  int count = -1;
-
+  
   Future<void> launchUrlMusic({required String urlString}) async{
     final Uri url = Uri.parse(urlString);
     if (await canLaunchUrl(url)) {
