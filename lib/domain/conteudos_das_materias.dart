@@ -26,4 +26,16 @@ class Conteudos {
 
   Conteudos(
       this.titulo, this.icon, this.titleAppBar, this.imagem, this.conceito);
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    String iconString = icon.toString();
+
+    data['title'] = titulo;
+    data['iconName'] = iconString;
+    data['titleAppBar'] = titleAppBar;
+    data['imageLink'] = imagem;
+    data['concept'] = conceito;
+    return data;
+  }
 }
