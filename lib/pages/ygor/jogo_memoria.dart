@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../data/bd.dart';
-import '../domain/cartaoDefinitivo.dart';
-import '../domain/half_card.dart';
+import 'package:app/data/bd.dart';
+import 'package:app/domain/cartaoDefinitivo.dart';
+import 'package:app/domain/half_card.dart';
 
 class JogoMemoriaPage extends StatefulWidget {
   List<CardDef> lista = BD.cardDatabase;

@@ -2,6 +2,7 @@ import 'package:app/data/sharedPreferences.dart';
 import 'package:app/pages/home_music.dart';
 import 'package:app/pages/perfil/perfil_page.dart';
 import 'package:app/pages/principal/home_page.dart';
+import 'package:app/pages/ygor/jogos_page.dart';
 import 'package:flutter/material.dart';
 //import 'package:app/pages/jogos_page.dart';
 import 'package:app/pages/meusCards/meu_card.dart';
@@ -71,7 +72,7 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
             },
           ),
-          /*
+
           ListTile(
             leading: const Icon(Icons.games_outlined),
             title: const Text('Jogos'),
@@ -82,7 +83,7 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
             },
           ),
-          * */
+
           ListTile(
             leading: const Icon(Icons.folder),
             title: const Text('Matérias'),

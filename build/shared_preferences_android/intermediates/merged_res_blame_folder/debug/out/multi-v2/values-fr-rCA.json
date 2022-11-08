@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\pmovel\\build\\shared_preferences_android\\intermediates\\res\\merged\\debug\\values-fr-rCA\\values-fr-rCA.xml",
+            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\studyapp\\pmovel\\build\\shared_preferences_android\\intermediates\\res\\merged\\debug\\values-fr-rCA\\values-fr-rCA.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\cbbd95a71c37efdfc64418cb4f36b641\\transformed\\core-1.6.0\\res\\values-fr-rCA\\values-fr-rCA.xml",
@@ -16,7 +16,7 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\pmovel\\build\\shared_preferences_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
+            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\studyapp\\pmovel\\build\\shared_preferences_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\cbbd95a71c37efdfc64418cb4f36b641\\transformed\\core-1.6.0\\res\\values-fr-rCA\\values-fr-rCA.xml",

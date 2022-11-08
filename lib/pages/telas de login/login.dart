@@ -239,7 +239,7 @@ class _LoginState extends State<Login> {
 
       print(resultado);
       if (resultado) {
-        SharedPrefsHelper().login();
+        SharedPrefsHelper().login(email);
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
           return const Screen(rota: "/homepage");
@@ -274,7 +274,7 @@ class _LoginState extends State<Login> {
                     style: TextStyle(color: Colors.white),
                   ),
                   style: ElevatedButton.styleFrom(
-                    onPrimary: Colors.blue.shade400,
+                    backgroundColor: Colors.blue.shade400,
                   ),
                 )
               ],

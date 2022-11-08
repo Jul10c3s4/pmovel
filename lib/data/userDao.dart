@@ -17,7 +17,7 @@ class UserDao{
 
     String sql = 'SELECT * FROM USER WHERE userEmail = ? AND password = ?;';
 
-    final result = await db.rawQuery(sql,[userEmail, password]);
+    final result = await db.rawQuery(sql, [userEmail, password]);
 
     return result.isNotEmpty;
   }

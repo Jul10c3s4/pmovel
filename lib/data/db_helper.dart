@@ -9,8 +9,8 @@ class DB_Helper{
 
   initDB() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, "card.db");
-
+    String path = join(databasePath, "card4.db");
+    print(path);
     Database database = await openDatabase(
       path,
       version: 2,
@@ -18,6 +18,7 @@ class DB_Helper{
       onUpgrade: onUpgrade,
     );
     return database;
+
   }
 
   Future<FutureOr<void>> onCreate(Database db, int version) async {
@@ -29,12 +30,16 @@ class DB_Helper{
     await db.execute(sqlCreateMusic);
     await insertIntoTables(db);
 
+
+
+
+
     String sqlUser =
-        "CREATE TABLE USER(username varchar(100) PRIMARY KEY, password varchar(100))";
+        "CREATE TABLE USER(username varchar(100) PRIMARY KEY, password varchar(100), userEmail varchar(100))";
     await db.execute(sqlUser);
 
     sqlUser =
-        "INSERT INTO USER(username, password) VALUES ('aluno@gmail.com', '123456')";
+        "INSERT INTO USER(userEmail, password, userName) VALUES ('aluno@gmail.com', '123456', 'aluno')";
     await db.execute(sqlUser);
 
     String sqlCard =
@@ -42,19 +47,19 @@ class DB_Helper{
     await db.execute(sqlCard);
 
     sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao,) VALUES ('HISTÓRIA', 'Era Napoleônica', 'Em vingança a decisão do Czar Alexandre I, o governo napoleônico decidiu invadir a Rússia em 1812. Os generais acostumados com grandes vitórias...');";
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('HISTÓRIA', 'Era Napoleônica', 'Em vingança a decisão do Czar Alexandre I, o governo napoleônico decidiu invadir a Rússia em 1812. Os generais acostumados com grandes vitórias...');";
     await db.execute(sqlCard);
 
     sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao,) VALUES ('GEOGRAFIA', 'Geopolítica', 'A geopolítica mundial evoluiu para incluir as dinâmicas populacionais e econômicas dentro deste jogo de poder, no tabuleiro político internacional...');";
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('GEOGRAFIA', 'Geopolítica', 'A geopolítica mundial evoluiu para incluir as dinâmicas populacionais e econômicas dentro deste jogo de poder, no tabuleiro político internacional...');";
     await db.execute(sqlCard);
 
     sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao,) VALUES ('MATEMÁTICA', 'Conjuntos', 'Conjuntos numéricos são ..., A partir deles podemos definir interseções, uniões e manipular-los, no geral.');";
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('MATEMÁTICA', 'Conjuntos', 'Conjuntos numéricos são ..., A partir deles podemos definir interseções, uniões e manipular-los, no geral.');";
     await db.execute(sqlCard);
 
     sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao,) VALUES ('HISTORIA', '1º Guerra Mundial', 'A Primeira Guerra Mundial foi um conflito bélico global centrado na Europa, que começou em 28 de julho de 1914 e durou até 11 de...');";
+        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('HISTORIA', '1º Guerra Mundial', 'A Primeira Guerra Mundial foi um conflito bélico global centrado na Europa, que começou em 28 de julho de 1914 e durou até 11 de...');";
     await db.execute(sqlCard);
 
     sqlCard = 
@@ -76,6 +81,18 @@ class DB_Helper{
     String sql = "create table SubjectAtributes(id INTERGER PRIMARY KEY, title varchar(40), iconName varchar(40),  titleAppBar varchar(40), imageLink varchar(300), concept varchar(500))";
     await db.execute(sql);
     await insertIntoDatas(db: db);
+
+
+    String sqlEstatistica =
+        "CREATE TABLE ESTATISTICAS(username_FK varchar(100), qVitorias int, qJogos int);";
+    await db.execute(sqlEstatistica);
+
+    sqlEstatistica ="ALTER TABLE ESTATISTICAS ADD CONSTRAINT usrName_FK FOREIGN KEY (username_FK) REFERENCES USER(username);";
+
+    await db.execute(sqlEstatistica);
+
+    sqlEstatistica = "INSERT INTO ESTATISTICAS VALUES('aluno@gmail.com', 0, 0);";
+    await db.execute(sqlEstatistica);
   }
 
   Future<FutureOr<void>> insertIntoDatas({
@@ -126,17 +143,7 @@ class DB_Helper{
   Future<void> onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion == 1 && newVersion == 2) {
       //ESTATISTICAS é uma entidade fraca
-      String sql =
-          "CREATE TABLE ESTATISTICAS(username_FK varchar(100), qVitorias integer,qJogos integer,);";
-      await db.execute(sql);
 
-      sql =
-          "ALTER TABLE ESTATISTICAS ADD CONSTRAINT usrName_FK FOREIGN KEY (username_FK) REFERENCES USER(username);";
-
-      await db.execute(sql);
-
-      sql = "INSERT INTO ESTATISTICAS VALUES('aluno@gmail.com', 0, 0);";
-      await db.execute(sql);
     }
   }
 }

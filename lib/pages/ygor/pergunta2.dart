@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:telasjogos/widget/perguntas.dart';
-import '../pages/jogos_page.dart';
-import '../data/bd.dart';
+import 'package:app/widgets/perguntas.dart';
+import 'package:app/pages/ygor/jogos_page.dart';
+import 'package:app/data/bd.dart';
 //import '../widget/perguntas.dart';
 
 class Pergunta2Page extends StatefulWidget {
