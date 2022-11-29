@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:app/data/sharedPreferences.dart';
 import 'package:app/pages/principal/home_page.dart';
 import 'package:app/pages/telas%20de%20login/login.dart';
@@ -26,25 +24,24 @@ class _ScreenState extends State<Screen> {
     return Scaffold(
         backgroundColor: Color(0xFF1E1040),
         body: Center(
-            child: Container(
-              child: Image.asset(
-                'assets/images/splash.png',
-                fit: BoxFit.cover,
-              ),
+          child: Container(
+            child: Image.asset(
+              'assets/images/splash.png',
+              fit: BoxFit.cover,
             ),
-));
+          ),
+        ));
   }
 
   void animacao() async {
     await Future.delayed(const Duration(seconds: 4));
 
     bool isLogged = await SharedPrefsHelper().getUser();
-    if(isLogged == true){
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context){
-            return const HomePage();
-          }));
-    }else{
+    if (isLogged == true) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return const HomePage();
+      }));
+    } else {
       Navigator.pushReplacementNamed(context, widget.rota);
     }
   }
