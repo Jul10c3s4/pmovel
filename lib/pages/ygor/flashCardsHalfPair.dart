@@ -1,3 +1,8 @@
+import 'package:app/data/bd.dart';
+import 'package:app/data/sharedPreferences.dart';
+import 'package:app/domain/cartaoDefinitivo.dart';
+import 'package:app/domain/half_card.dart';
+import 'package:app/pages/ygor/jogo_memoria.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/ygor/pergunta1.dart';
 import 'package:app/pages/ygor/pergunta2.dart';
@@ -7,8 +12,10 @@ import 'package:app/domain/cartaoDefinitivo.dart';
 import 'package:app/data/bd.dart';
 import 'package:app/data/sharedPreferences.dart';
 import 'package:app/widgets/selection_cardH_dialog.dart';
+
 import 'dart:async';
 import 'dart:core';
+import 'package:app/widgets/selection_cardH_dialog.dart';
 
 class FCHPairPage extends StatefulWidget {
   @override

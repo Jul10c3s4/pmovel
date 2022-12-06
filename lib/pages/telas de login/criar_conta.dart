@@ -136,7 +136,8 @@ class _CriarcontaState extends State<Criarconta> {
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Campo email obrigatório!';
-                                      } else if (value.contains('@') == false) {
+
+                                      } else if (!value.contains('@')) {
                                         return 'Falta o @';
                                       }
                                       return null;

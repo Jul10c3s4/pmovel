@@ -1,6 +1,9 @@
+import 'package:app/data/estatisticasDao.dart';
+import 'package:app/data/sharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:core';
+import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:app/pages/ygor/pergunta1.dart';
 import 'package:app/pages/ygor/pergunta2.dart';
@@ -128,13 +131,13 @@ class _EstatisticasPageState extends State<EstatisticasPage> {
               height: 100,
               child: Row(
                 children: [
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () async {
                       await EstatisticasDao.resetarEstatisticas();
                     },
                     child: Text("reset statistics"),
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () async {
                       SharedPrefsHelper sph = new SharedPrefsHelper();
                       String usrName = await sph.getUserName();
@@ -144,7 +147,7 @@ class _EstatisticasPageState extends State<EstatisticasPage> {
                     },
                     child: Text("win"),
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () async {
                       SharedPrefsHelper sph = new SharedPrefsHelper();
                       String usrName = await sph.getUserName();

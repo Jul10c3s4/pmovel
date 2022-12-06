@@ -80,7 +80,9 @@ class _LoginState extends State<Login> {
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Campo e-mail obrigatório';
-                                } else if (value.contains('@') == false) {
+
+                                } else if (!value.contains('@')) {
+
                                   return 'Falta o @';
                                 }
                                 return null;
@@ -299,7 +301,7 @@ class _LoginState extends State<Login> {
                     style: TextStyle(color: Colors.white),
                   ),
                   style: ElevatedButton.styleFrom(
-                    onPrimary: Colors.blue.shade400,
+                    backgroundColor: Colors.blue.shade400,
                   ),
                 )
               ],

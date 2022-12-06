@@ -17,4 +17,23 @@ class SubjectDatabaseContents{
     static Materias programming = Materias("PROGRAMAÇÃO", Icons.computer);
     static Materias business = Materias("NEGÓCIOS", Icons.work);
 
+    static List<Materias> subjects = [
+        portuguese,
+        math,
+        history,
+        geografy,
+        sociology,
+        philosophy,
+        physical,
+        chemistry,
+        biology,
+        programming,
+        business,
+    ];
+
+    static Future <List<Materias>> getSubjectsList() async{
+        await Future.delayed(const Duration(seconds: 5));
+        return  subjects;
+    }
+
 }

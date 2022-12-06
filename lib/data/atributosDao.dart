@@ -3,7 +3,10 @@ import 'package:app/domain/atributos_card.dart';
 import 'package:app/domain/cartaoDefinitivo.dart';
 import 'package:sqflite/sqflite.dart';
 
-class AtributosDao {
+//import 'dart:convert';
+
+class AtributosDao{
+
   Future<void> salvarAtributos({required Atributos atributos}) async {
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
@@ -22,6 +25,7 @@ class AtributosDao {
     for (var json in result) {
       Atributos atributos = Atributos.fromJson(json);
       lista.add(atributos);
+      //json.encode(json) AS Map<String, dynamic>
     }
 
     return lista;
@@ -35,9 +39,14 @@ class AtributosDao {
     final result = await db.rawQuery(sql);
 
     List<CardDef> lista = <CardDef>[];
+<<<<<<< HEAD
     for (var json in result) {
+=======
+    for(var json in result){
+>>>>>>> origin/main
       CardDef c = new CardDef.fromJson(json);
       lista.add(c);
+      //json.decode(json) AS Map<String, dynamic>
     }
 
     return lista;

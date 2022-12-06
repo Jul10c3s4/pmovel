@@ -40,7 +40,7 @@ class _TelaState extends State<Tela> {
                         ),
                         const Text("/",
                             style:
-                            TextStyle(fontSize: 30, color: Colors.black)),
+                                TextStyle(fontSize: 30, color: Colors.black)),
                         TextButton(
                           onPressed: () {},
                           child: const Text(
@@ -134,7 +134,7 @@ class _TelaState extends State<Tela> {
                     onPressed: () {},
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty?.all(Colors.deepPurple[100]),
+                          MaterialStateProperty.all(Colors.deepPurple[100]),
                     ),
                     child: const Text("CLIQUE AQUI PARA CONCLUIR"),
                   ),
