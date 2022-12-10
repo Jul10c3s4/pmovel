@@ -4,17 +4,14 @@ class Materias {
   final String title;
   final IconData icon;
 
-  Materias(
-      this.title, this.icon);
-
+  Materias(this.title, this.icon);
 }
 
 class Search {
   final String name;
   final IconData icon;
 
-  Search(
-      this.name, this.icon);
+  Search(this.name, this.icon);
 }
 
 class Conteudos {

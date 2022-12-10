@@ -1,26 +1,26 @@
-class FHCP_API{
-    final String _baseUrl = "...";
+import 'dart:convert';
 
-    Future<List<CardHalf>> findAllCards(){
-        Uri url = Uri.http(_baseUrl, "/router/");
-        Response response = await http.get(url);
+import 'package:app/domain/half_card.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
-        
-        
-        List<CardHalf> lista = <CardHalf>[];
+class FhcAPI {
+  final String _baseUrl = "...";
 
-        if(response.statusCode == 200){
-            var result = jsonDecode(response.body);
+  Future<List<CardHalf>> findAllCards() async {
+    Uri url = Uri.http(_baseUrl, "/router/");
+    Response response = await http.get(url);
 
-            for(json in result){
-                Cardhalf c = CardHalf.fromJson(json);
-                lista.add(c);
-            }
-            
-        }
+    List<CardHalf> lista = <CardHalf>[];
+    if (response.statusCode == 200) {
+      var result = jsonDecode(response.body);
 
-        return lista;
-
-
+      for (var json in result) {
+        CardHalf c = CardHalf.fromJson(json);
+        lista.add(c);
+      }
     }
+
+    return lista;
+  }
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app/domain/conteudos_das_materias.dart';
-import 'package:app/data/database_contents.dart';
+import 'package:app/data/bd/database_contents.dart';
 
 class PaginaDeAssuntos extends StatefulWidget {
-
   final Conteudos nomeClasse;
 
   PaginaDeAssuntos({
@@ -36,7 +35,7 @@ class _PaginaDeAssuntosState extends State<PaginaDeAssuntos> {
       body: FutureBuilder(
         future: DatabaseContents.getFutureObject(widget.nomeClasse),
         builder: (context, snapshot) {
-          switch(snapshot.connectionState) {
+          switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.active:
             case ConnectionState.waiting:
@@ -49,9 +48,7 @@ class _PaginaDeAssuntosState extends State<PaginaDeAssuntos> {
     );
   }
 
-  void onTap() {
-
-  }
+  void onTap() {}
 
   void onPressed4() {
     Navigator.pop(context);
@@ -59,7 +56,7 @@ class _PaginaDeAssuntosState extends State<PaginaDeAssuntos> {
 
   buildDesignIcons({
     required IconData icon,
-  }){
+  }) {
     return Row(
       children: [
         Icon(
@@ -72,7 +69,7 @@ class _PaginaDeAssuntosState extends State<PaginaDeAssuntos> {
 
   buildPage({
     required Conteudos objeto,
-  }){
+  }) {
     return ListView(
       children: [
         Padding(
@@ -100,7 +97,6 @@ class _PaginaDeAssuntosState extends State<PaginaDeAssuntos> {
                     ],
                   ),
                 ),
-
                 Card(
                   color: Colors.white70,
                   child: Column(
@@ -118,7 +114,6 @@ class _PaginaDeAssuntosState extends State<PaginaDeAssuntos> {
                     ],
                   ),
                 ),
-
                 const SizedBox(height: 10),
                 TextButton(
                   onPressed: onPressed4,
@@ -130,9 +125,7 @@ class _PaginaDeAssuntosState extends State<PaginaDeAssuntos> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                          "Voltar"
-                      ),
+                      Text("Voltar"),
                     ],
                   ),
                 ),

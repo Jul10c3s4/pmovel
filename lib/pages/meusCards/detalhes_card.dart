@@ -1,11 +1,13 @@
 import 'package:app/domain/atributos_card.dart';
-import 'package:app/data/atributosDao.dart';
+import 'package:app/data/bd/atributosDao.dart';
 import 'package:flutter/material.dart';
 
 class CardDetalhes extends StatefulWidget {
   final Atributos detalhes;
 
-  const CardDetalhes({Key? key, required this.detalhes,
+  const CardDetalhes({
+    Key? key,
+    required this.detalhes,
   }) : super(key: key);
 
   @override
@@ -14,7 +16,7 @@ class CardDetalhes extends StatefulWidget {
 
 class _CardDetalhesState extends State<CardDetalhes> {
   Future<List<Atributos>> lista = AtributosDao().listarAtributos();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class _CardDetalhesState extends State<CardDetalhes> {
         backgroundColor: const Color(0xff180c36),
         title: const Text('MEUS CARDS'),
       ),
-      backgroundColor:  Colors.grey[300],
+      backgroundColor: Colors.grey[300],
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

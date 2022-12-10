@@ -1,10 +1,9 @@
 import 'package:app/domain/genre.dart';
 import 'package:app/domain/music.dart';
 import 'package:sqflite/sqflite.dart';
-import '../data/db_helper.dart';
+import 'db_helper.dart';
 
-class DataRequest{
-
+class DataRequest {
   Future<List<Music>> buildDatabase() async {
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
@@ -26,10 +25,10 @@ class DataRequest{
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
 
-    List<MusicGenre> lofiList = <MusicGenre> [];
-    List<MusicGenre> hipHopList = <MusicGenre> [];
-    List<MusicGenre> popList = <MusicGenre> [];
-    List<MusicGenre> electronicList = <MusicGenre> [];
+    List<MusicGenre> lofiList = <MusicGenre>[];
+    List<MusicGenre> hipHopList = <MusicGenre>[];
+    List<MusicGenre> popList = <MusicGenre>[];
+    List<MusicGenre> electronicList = <MusicGenre>[];
 
     List musicGenreList = [
       lofiList,
@@ -44,10 +43,18 @@ class DataRequest{
     for (var json in jsonList) {
       MusicGenre object = MusicGenre.fromJson(json);
       switch (object.genreName) {
-        case 'Lofi': lofiList.add(object); break;
-        case 'Hip Hop': hipHopList.add(object); break;
-        case 'Pop': popList.add(object);  break;
-        case 'Electronic': electronicList.add(object); break;
+        case 'Lofi':
+          lofiList.add(object);
+          break;
+        case 'Hip Hop':
+          hipHopList.add(object);
+          break;
+        case 'Pop':
+          popList.add(object);
+          break;
+        case 'Electronic':
+          electronicList.add(object);
+          break;
       }
     }
     return musicGenreList;

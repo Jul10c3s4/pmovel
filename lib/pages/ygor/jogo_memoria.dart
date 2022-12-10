@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app/data/bd.dart';
+import 'package:app/data/bd/bd.dart';
 import 'package:app/domain/cartaoDefinitivo.dart';
 import 'package:app/domain/half_card.dart';
 
