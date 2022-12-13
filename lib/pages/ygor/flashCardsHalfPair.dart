@@ -255,6 +255,47 @@ class _FCHPairPageState extends State<FCHPairPage> {
                       primary: Color(0xFFB6CCD7),
                     ),
                   ),
+
+
+                  ElevatedButton(
+                    onPressed: () async {
+                      List<CardHalf> listaCompleta = await FHCP_API.findAllCards();
+
+                      setState(() {
+                        baralho = listaCompleta[0];
+                        hand1 = listaCompleta[1];
+                        trash = listaCompleta[2];
+                      });
+
+                      
+                    },
+                    child: Text(
+                      "load_API",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                    ElevatedButton(
+                    onPressed: () async {
+                      setState(() {
+                        //FHCP_API.uploadCards(baralho, hand, trash);
+                      });
+
+                      
+                    },
+                    child: Text(
+                      "save_on_API",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                  ),
                 ],
               ),
             ),
