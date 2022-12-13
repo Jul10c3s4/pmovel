@@ -78,6 +78,7 @@ class DB_Helper {
     await db.execute(sql);
     await insertIntoDatas(db: db);
 
+    /*
     String sqlEstatistica =
         "CREATE TABLE ESTATISTICAS(username_FK varchar(100), qVitorias int, qJogos int);";
     await db.execute(sqlEstatistica);
@@ -90,7 +91,8 @@ class DB_Helper {
     sqlEstatistica =
         "INSERT INTO ESTATISTICAS VALUES('aluno@gmail.com', 0, 0);";
     await db.execute(sqlEstatistica);
-  }
+    */
+    }
 
   Future<FutureOr<void>> insertIntoDatas({
     required Database db,

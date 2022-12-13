@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 class CartaoApi {
-  String baseUrl = " " /*"tourist-packages.herokuapp.com"*/;
+  String baseUrl = "localhost:8081" /*"tourist-packages.herokuapp.com"*/;
 
   Future<List<CartaoResumo>> listarCartoes() async {
-    Uri url = Uri.http(baseUrl, "/api/findAll");
+    Uri url = Uri.http(baseUrl, "/admin/");
     Response response = await http.get(url);
 
     List<CartaoResumo> lista = <CartaoResumo>[];
