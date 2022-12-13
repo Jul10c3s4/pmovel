@@ -281,7 +281,8 @@ class _FCHPairPageState extends State<FCHPairPage> {
                     ElevatedButton(
                     onPressed: () async {
                       setState(() {
-                        //FHCP_API.uploadCards(baralho, hand, trash);
+                        //FHCP_API.dropDatabase();
+                        FHCP_API.uploadCards(baralho, hand, trash);
                       });
 
                       
