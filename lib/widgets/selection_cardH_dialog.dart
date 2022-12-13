@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app/widgets/perguntas.dart';
 import 'package:app/pages/ygor/jogos_page.dart';
-import '../data/bd.dart';
+import '../data/bd/bd.dart';
 
 class CustomDialog extends StatefulWidget {
   final List<String> options;
@@ -56,7 +56,7 @@ class _CustomDialogState extends State<CustomDialog> {
                           }
 
                           canUpload =
-                          counter == widget.qSelection ? true : false;
+                              counter == widget.qSelection ? true : false;
 
                           /*
                               for(int i = 0; i < widget.isChecked.length; i++){
@@ -82,8 +82,8 @@ class _CustomDialogState extends State<CustomDialog> {
             //color: Colors.blue,
             onPressed: canUpload
                 ? () {
-              Navigator.pop(context, widget.isChecked);
-            }
+                    Navigator.pop(context, widget.isChecked);
+                  }
                 : null,
             child: Text('Submeter'),
           ),

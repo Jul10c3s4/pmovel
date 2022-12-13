@@ -3,7 +3,8 @@ class CartaoResumo {
   late final String titulo;
   late final String descricao;
 
-  CartaoResumo({required this.materia, required this.titulo, required this.descricao});
+  CartaoResumo(
+      {required this.materia, required this.titulo, required this.descricao});
 
   CartaoResumo.fromJson(Map<String, dynamic> json) {
     materia = json['materia'];
@@ -18,5 +19,11 @@ class CartaoResumo {
     data['titulo'] = this.titulo;
     data['descricao'] = this.descricao;
     return data;
+  }
+
+  CartaoResumo.fromApiJson(Map<String, dynamic> json) {
+    materia = json['materia'];
+    titulo = json['titulo'];
+    descricao = json['descricao'];
   }
 }

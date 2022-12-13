@@ -1,5 +1,5 @@
 import 'package:app/data/sharedPreferences.dart';
-import 'package:app/data/userDao.dart';
+import 'package:app/data/bd/userDao.dart';
 import 'package:app/domain/user.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
 import 'package:app/pages/telas%20de%20login/criar_conta.dart';
