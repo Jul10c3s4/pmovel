@@ -1,7 +1,7 @@
-import 'package:app/data/bd/atributosDao.dart';
+import 'package:app/data/bd/cartaoDao.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/meusCards/detalhes_card.dart';
-import 'package:app/domain/atributos_card.dart';
+import 'package:app/domain/cartao_resumo.dart';
 import 'package:app/pages/meusCards/assunto_page.dart';
 import 'package:app/pages/meusCards/estudos_cards.dart';
 import 'package:app/widgets/nav_drawer.dart';
@@ -14,7 +14,7 @@ class MeuCard extends StatefulWidget {
 }
 
 class _MeuCardState extends State<MeuCard> {
-  Future<List<Atributos>> lista = AtributosDao().listarAtributos();
+  Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +62,11 @@ class _MeuCardState extends State<MeuCard> {
   }
 
   buildListView() {
-    return FutureBuilder<List<Atributos>>(
+    return FutureBuilder<List<CartaoResumo>>(
       future: lista,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Atributos> lista = snapshot.data ?? [];
+          List<CartaoResumo> lista = snapshot.data ?? [];
 
           return ListView.builder(
             shrinkWrap: true,

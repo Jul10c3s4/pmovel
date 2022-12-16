@@ -177,7 +177,7 @@
     },
     {
       "name": "shared_preferences_linux",
-      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.1.1",
+      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -201,7 +201,7 @@
     },
     {
       "name": "shared_preferences_windows",
-      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.1.1",
+      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -219,7 +219,7 @@
     },
     {
       "name": "sqflite",
-      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.2.0+3",
+      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -273,13 +273,13 @@
     },
     {
       "name": "url_launcher",
-      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-6.1.6",
+      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-6.1.7",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "url_launcher_android",
-      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_android-6.0.21",
+      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_android-6.0.22",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -327,7 +327,7 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/win32-3.1.1",
+      "rootUri": "file:///C:/flutter_windows_2.10.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/win32-3.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -344,7 +344,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-12-13T11:55:31.493896Z",
+  "generated": "2022-12-16T19:12:06.429832Z",
   "generator": "pub",
-  "generatorVersion": "2.18.0"
+  "generatorVersion": "2.18.4"
 }
