@@ -1,9 +1,10 @@
 import 'package:app/domain/atributos_card.dart';
-import 'package:app/data/bd/atributosDao.dart';
+import 'package:app/data/bd/cartaoDao.dart';
+import 'package:app/domain/cartao_resumo.dart';
 import 'package:flutter/material.dart';
 
 class CardDetalhes extends StatefulWidget {
-  final Atributos detalhes;
+  final CartaoResumo detalhes;
 
   const CardDetalhes({
     Key? key,
@@ -15,7 +16,7 @@ class CardDetalhes extends StatefulWidget {
 }
 
 class _CardDetalhesState extends State<CardDetalhes> {
-  Future<List<Atributos>> lista = AtributosDao().listarAtributos();
+  Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
 
   @override
   Widget build(BuildContext context) {

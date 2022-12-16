@@ -1,9 +1,9 @@
-import 'package:app/domain/atributos_card.dart';
+import 'package:app/domain/cartao_resumo.dart';
 import 'package:app/pages/meusCards/detalhes_card.dart';
 import 'package:flutter/material.dart';
 
 class EstudosCard extends StatefulWidget {
-  final Atributos detalhes;
+  final CartaoResumo detalhes;
 
   const EstudosCard({
     Key? key,
