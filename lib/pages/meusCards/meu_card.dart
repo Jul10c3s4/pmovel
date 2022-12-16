@@ -14,7 +14,7 @@ class MeuCard extends StatefulWidget {
 }
 
 class _MeuCardState extends State<MeuCard> {
-  Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
+  Future<List<CartaoResumo>> lista = CartaoApi().listarCartoes();
 
   @override
   Widget build(BuildContext context) {
