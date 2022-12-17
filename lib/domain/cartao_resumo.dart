@@ -15,14 +15,15 @@ class CartaoResumo {
   Map<String, Object?> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
 
-    data['materia'] = this.materia;
-    data['titulo'] = this.titulo;
-    data['descricao'] = this.descricao;
+    data["materia"] = this.materia;
+    data["titulo"] = this.titulo;
+    data["descricao"] = this.descricao;
     return data;
   }
 
   CartaoResumo.fromApiJson(Map<String, dynamic> json) {
-    materia = json['materia'];
+    
+    materia = json['assunto'];
     titulo = json['titulo'];
     descricao = json['descricao'];
   }
