@@ -1,4 +1,4 @@
-#Sat Dec 17 19:03:23 BRT 2022
+#Sun Dec 18 15:07:47 BRT 2022
 base.0=C\:\\Users\\julio\\Desktop\\pmovel\\pmovel\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

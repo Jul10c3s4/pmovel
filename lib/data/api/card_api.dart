@@ -7,7 +7,7 @@ import 'package:http/http.dart';
 
 class CartaoApi {
   String baseUrl =
-      "api-memstudy.juliocesar131.repl.co" /*"tourist-packages.herokuapp.com"*/;
+      "api-memstudy.onrender.com" /*"tourist-packages.herokuapp.com"*/;
 
   Future<List<CartaoResumo>> listarCartoes() async {
     Uri url = Uri.http(baseUrl, "/admin");
@@ -17,8 +17,7 @@ class CartaoApi {
     if (response.statusCode == 200) {
       var result = jsonDecode(response.body);
 
-      List<dynamic> dados = result["dados"];
-      for (var json in dados) {
+      for (var json in result) {
         CartaoResumo pacote = CartaoResumo.fromApiJson(json);
         lista.add(pacote);
       }

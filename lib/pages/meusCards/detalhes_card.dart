@@ -131,7 +131,7 @@ class _CardDetalhesState extends State<CardDetalhes> {
         materia: Assunto, titulo: Titulo, descricao: Descricao);
     try {
       var response = await http.post(
-          Uri.parse("https://api-memstudy.juliocesar131.repl.co/admin/add"),
+          Uri.parse("https://api-memstudy.onrender.com/admin/add"),
           body: {
             "titulo": cartaoResumo.titulo.toString(),
             "assunto": cartaoResumo.materia.toString(),
@@ -156,7 +156,7 @@ class _CardDetalhesState extends State<CardDetalhes> {
     try {
       /*/ws/$ cep /json/ */
       var url = Uri.parse(
-          "https://api-memstudy.juliocesar131.repl.co/admin/${cartaoResumo.titulo}/${cartaoResumo.descricao}");
+          "https://api-memstudy.onrender.com/admin/${cartaoResumo.titulo}/${cartaoResumo.descricao}");
       final response = await http.delete(url);
       if (response.statusCode == 422) {
         text = "Esse card ainda não está na nuvem!";
