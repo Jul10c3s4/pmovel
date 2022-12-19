@@ -282,7 +282,7 @@ class _FCHPairPageState extends State<FCHPairPage> {
                       setState(() {
                         //FHCP_API.dropDatabase();
 
-                        FHCP_API.uploadCards(baralho, hand, trash);
+                        FHCP_API.uploadCards(baralho, hand1, trash);
 
                         const snackBar = SnackBar(
                           content: Text('Cards Salvos'),
