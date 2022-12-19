@@ -23,4 +23,21 @@ class FhcAPI {
 
     return lista;
   }
+  
+  Future<List<CardHalf>> findCardsByCardField(String cardField) async {
+    Uri url = Uri.http(_baseUrl, "/cards/${cardField}");
+    Response response = await http.get(url);
+
+    List<CardHalf> lista = <CardHalf>[];
+    if (response.statusCode == 200) {
+      var result = jsonDecode(response.body);
+
+      for (var json in result) {
+        CardHalf c = CardHalf.fromJson(json);
+        lista.add(c);
+      }
+    }
+
+    return lista;
+  }
 }
