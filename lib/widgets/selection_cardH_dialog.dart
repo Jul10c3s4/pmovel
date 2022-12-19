@@ -57,11 +57,7 @@ class _CustomDialogState extends State<CustomDialog> {
                           }
 
                           canUpload =
-<<<<<<< HEAD
                               counter == widget.qSelection ? true : false;
-=======
-                          counter == widget.qSelection ? true : false;
->>>>>>> origin/main
 
                           /*
                               for(int i = 0; i < widget.isChecked.length; i++){
@@ -83,21 +79,12 @@ class _CustomDialogState extends State<CustomDialog> {
       actions: <Widget>[
         SizedBox(
           width: 300,
-<<<<<<< HEAD
-          child: RaisedButton(
-            color: Colors.blue,
-            onPressed: canUpload
-                ? () {
-                    Navigator.pop(context, widget.isChecked);
-                  }
-=======
           child: ElevatedButton(
             //color: Colors.blue,
             onPressed: canUpload
                 ? () {
-              Navigator.pop(context, widget.isChecked);
-            }
->>>>>>> origin/main
+                    Navigator.pop(context, widget.isChecked);
+                  }
                 : null,
             child: Text('Submeter'),
           ),

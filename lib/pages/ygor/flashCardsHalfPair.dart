@@ -16,6 +16,7 @@ import 'package:app/widgets/selection_cardH_dialog.dart';
 import 'dart:async';
 import 'dart:core';
 import 'package:app/widgets/selection_cardH_dialog.dart';
+import '../../data/api/fchpApi.dart';
 
 class FCHPairPage extends StatefulWidget {
   @override
@@ -255,19 +256,16 @@ class _FCHPairPageState extends State<FCHPairPage> {
                       primary: Color(0xFFB6CCD7),
                     ),
                   ),
-
-
                   ElevatedButton(
                     onPressed: () async {
-                      List<CardHalf> listaCompleta = await FHCP_API.findAllCards();
+                      List<List<CardHalf>> listaCompleta =
+                          await FHCP_API.findAllCards();
 
                       setState(() {
                         baralho = listaCompleta[0];
                         hand1 = listaCompleta[1];
                         trash = listaCompleta[2];
                       });
-
-                      
                     },
                     child: Text(
                       "load_API",
@@ -278,14 +276,13 @@ class _FCHPairPageState extends State<FCHPairPage> {
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFB6CCD7),
                     ),
-                    ElevatedButton(
+                  ),
+                  ElevatedButton(
                     onPressed: () async {
                       setState(() {
                         //FHCP_API.dropDatabase();
-                        FHCP_API.uploadCards(baralho, hand, trash);
+                        FHCP_API.uploadCards(baralho, hand1, trash);
                       });
-
-                      
                     },
                     child: Text(
                       "save_on_API",

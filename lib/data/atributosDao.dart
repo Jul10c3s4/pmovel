@@ -5,8 +5,7 @@ import 'package:sqflite/sqflite.dart';
 
 //import 'dart:convert';
 
-class AtributosDao{
-
+class AtributosDao {
   Future<void> salvarAtributos({required Atributos atributos}) async {
     DB_Helper dbHelper = DB_Helper();
     Database db = await dbHelper.initDB();
@@ -39,11 +38,8 @@ class AtributosDao{
     final result = await db.rawQuery(sql);
 
     List<CardDef> lista = <CardDef>[];
-<<<<<<< HEAD
+
     for (var json in result) {
-=======
-    for(var json in result){
->>>>>>> origin/main
       CardDef c = new CardDef.fromJson(json);
       lista.add(c);
       //json.decode(json) AS Map<String, dynamic>

@@ -280,20 +280,6 @@ class DatabaseContents {
     conteudosDeDesenvolvimentoPessoal2,
     conteudosDeExemploEmpreendedor,
   ];
-  
-  static List<List> subjects_contents = [
-    portuguese_contents,
-    maths_contents,
-    history_contents,
-    geografy_contents,
-    philosophy_contents,
-    sociology_contents,
-    physical_contents,
-    chemistry_contents,
-    biology_contents,
-    programming_contents,
-    business_contents,
-  ];
 
   static List<List> subjects_contents = [
     portuguese_contents,
@@ -302,7 +288,7 @@ class DatabaseContents {
     geografy_contents,
     philosophy_contents,
     sociology_contents,
-    philosophy_contents,
+    physical_contents,
     chemistry_contents,
     biology_contents,
     programming_contents,
