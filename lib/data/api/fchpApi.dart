@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 class FhcAPI {
-  final String _baseUrl = "...";
+  final String _baseUrl = "127.0.0.1:3000";
 
   Future<List<CardHalf>> findAllCards() async {
-    Uri url = Uri.http(_baseUrl, "/router/");
+    Uri url = Uri.http(_baseUrl, "/cards/");
     Response response = await http.get(url);
 
     List<CardHalf> lista = <CardHalf>[];
