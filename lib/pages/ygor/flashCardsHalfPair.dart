@@ -281,7 +281,16 @@ class _FCHPairPageState extends State<FCHPairPage> {
                     onPressed: () async {
                       setState(() {
                         //FHCP_API.dropDatabase();
-                        FHCP_API.uploadCards(baralho, hand1, trash);
+
+                        FHCP_API.uploadCards(baralho, hand, trash);
+
+                        const snackBar = SnackBar(
+                          content: Text('Cards Salvos'),
+                        );
+
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       });
                     },
                     child: Text(
