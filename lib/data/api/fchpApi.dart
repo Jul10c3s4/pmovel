@@ -80,7 +80,7 @@ class FHCP_API{
     }
 
 
-    static Future<void> dropDatabase(CardHalf ch){
+    static Future<void> dropDatabase(){
         Uri url = Uri.http(_baseUrl, "/cards/");
         Response response = await http.get(url);
         var result = jsonDecode(response.body);
