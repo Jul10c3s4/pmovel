@@ -96,11 +96,12 @@ class FHCP_API {
     var result = jsonDecode(response.body);
     for (var json in result) {
       Uri url = Uri.http(_baseUrl, "/cards/${json['text']}/delete");
-      var response = await http.get(url, body: {
+      var response = await http.get(url);
+      /*body: {
         "text": json["text"],
         "isFaceUp": true,
         "cardField": json['cardField']
-      });
+      }*/
     }
   }
 }
