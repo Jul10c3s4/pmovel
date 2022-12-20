@@ -1,6 +1,5 @@
+import 'package:app/data/bd/db_helper.dart';
 import 'package:sqflite/sqlite_api.dart';
-
-import 'db_helper.dart';
 
 class CallDatabase {
   Future<void> buildDatabase() async {

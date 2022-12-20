@@ -1,8 +1,8 @@
+import 'package:app/data/bd/subjects_bd/database_contents.dart';
+import 'package:app/data/bd/subjects_bd/subject_database.dart';
+import 'package:app/widgets/subjects_widgets/card_submaterias_topicos.dart';
 import 'package:flutter/material.dart';
-import 'package:app/data/bd/database_contents.dart';
-import 'package:app/data/bd/subject_database.dart';
-import 'package:app/domain/conteudos_das_materias.dart';
-import '../widgets/card_submaterias_topicos.dart';
+import 'package:app/domain/subjects_domain/conteudos_das_materias.dart';
 
 class CardSubMateria extends StatefulWidget {
   final List listaMaterias;

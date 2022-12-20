@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app/domain/conteudos_das_materias.dart';
+import 'package:app/domain/subjects_domain/conteudos_das_materias.dart';
 
 class DatabaseContents {
   static Conteudos conteudosDeSubstantivos = Conteudos("SUBSTANTIVOS", Icons.book,"PORTUGUÊS","https://static3.depositphotos.com/1006126/210/i/950/depositphotos_2102902-stock-photo-alphabet-letters-made-with-diamonds.jpg", "Qualquer classe gramatical antecedida por artigo, pronome demonstrativo, pronome indefinido ou pronome possessivo vira substantivo: o amar, um amanhã, nosso sentir, um não sei quê, o sim, o não, algum talvez, este falar, um abrir-se, o querer, aquele claro-escuro....");
