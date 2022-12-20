@@ -36,6 +36,7 @@ class FHCP_API {
 
     return [listaB, listaH1, listaTrash];
   }
+  //teste
 
   static Future<void> uploadCards(
       List<CardHalf> deck, List<CardHalf> hand1, List<CardHalf> trash) async {
