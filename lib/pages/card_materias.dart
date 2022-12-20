@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:app/data/database_contents.dart';
-import 'package:app/data/caller_database.dart';
-import 'package:app/data/subject_database.dart';
+import 'package:app/data/bd/database_contents.dart';
+import 'package:app/data/bd/caller_database.dart';
+import 'package:app/data/bd/subject_database.dart';
 import 'package:app/domain/conteudos_das_materias.dart';
 import 'package:app/pages/card_submateria.dart';
 
@@ -13,11 +13,9 @@ class CardMaterias extends StatefulWidget {
   _CardMaterias createState() => _CardMaterias();
 }
 
-class _CardMaterias extends State <CardMaterias> {
+class _CardMaterias extends State<CardMaterias> {
   @override
-
   Widget build(BuildContext context) {
-
     CallDatabase().buildDatabase();
 
     return Scaffold(
@@ -38,34 +36,38 @@ class _CardMaterias extends State <CardMaterias> {
           FutureBuilder(
               future: SubjectDatabaseContents.getSubjectsList(),
               builder: (context, snapshot) {
-                if(snapshot.hasData){
+                if (snapshot.hasData) {
                   return Center(
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Column(
                         children: [
-                          buildSearchFunction(lupa: SubjectDatabaseContents.lupa),
+                          buildSearchFunction(
+                              lupa: SubjectDatabaseContents.lupa),
                           ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: SubjectDatabaseContents.subjects.length,
+                              itemCount:
+                                  SubjectDatabaseContents.subjects.length,
                               itemBuilder: (context, index) {
                                 return Column(
                                   children: [
                                     const SizedBox(height: 60),
                                     //buildBody(materia: SubjectDatabaseContents.subjects[index], listaMaterias: Request().buildSubjectList(listLength: DatabaseContents.subjects_contents[index].length, appBarName: DatabaseContents.subjects_contents[index][0].titleAppBar)),
                                     //buildBody(materia: SubjectDatabaseContents.subjects[index], listaMaterias: DatabaseContents.subjects_contents[index], title: Request().atributesList[0].titleAppBar),
-                                    buildBody(materia: SubjectDatabaseContents.subjects[index], listaMaterias: DatabaseContents.subjects_contents[index]),
+                                    buildBody(
+                                        materia: SubjectDatabaseContents
+                                            .subjects[index],
+                                        listaMaterias: DatabaseContents
+                                            .subjects_contents[index]),
                                   ],
                                 );
-                              }
-                          ),
+                              }),
                         ],
                       ),
                     ),
                   );
-                }
-                else{
+                } else {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -78,8 +80,7 @@ class _CardMaterias extends State <CardMaterias> {
                     ],
                   );
                 }
-              }
-          ),
+              }),
         ],
       ),
     );
@@ -127,9 +128,10 @@ class _CardMaterias extends State <CardMaterias> {
           Expanded(
             child: ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFB6CCD7)),
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Color(0xFFB6CCD7)),
               ),
-              onPressed: () =>  onPressed(listaMaterias),
+              onPressed: () => onPressed(listaMaterias),
               child: Column(
                 children: [
                   Text(
@@ -153,14 +155,12 @@ class _CardMaterias extends State <CardMaterias> {
     );
   }
 
-  onPressed(List listaMaterias){
+  onPressed(List listaMaterias) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-          builder: (context) {
-            return CardSubMateria(listaMaterias: listaMaterias);
-          }
-      ),
+      MaterialPageRoute(builder: (context) {
+        return CardSubMateria(listaMaterias: listaMaterias);
+      }),
     );
   }
 }

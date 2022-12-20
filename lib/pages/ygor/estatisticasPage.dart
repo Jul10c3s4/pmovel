@@ -1,4 +1,4 @@
-import 'package:app/data/estatisticasDao.dart';
+import 'package:app/data/bd/estatisticasDao.dart';
 import 'package:app/data/sharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';

@@ -1,4 +1,4 @@
-import 'package:app/data/atributosDao.dart';
+import 'package:app/data/bd/atributosDao.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/meusCards/detalhes_card.dart';
 import 'package:app/domain/atributos_card.dart';
@@ -30,18 +30,18 @@ class _MeuCardState extends State<MeuCard> {
       ),
       backgroundColor: const Color(0xff6239db),
       body: ListView(
-          children: [
-            const ListTile(
-              title: Text(
-                'Aqui estão seus cards',
-                style: TextStyle(
-                  color: Colors.white,
-                  ),
-                ),
+        children: [
+          const ListTile(
+            title: Text(
+              'Aqui estão seus cards',
+              style: TextStyle(
+                color: Colors.white,
               ),
-                buildListView()
-            ],
+            ),
           ),
+          buildListView()
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -58,7 +58,7 @@ class _MeuCardState extends State<MeuCard> {
         backgroundColor: const Color(0xFF351B75),
         currentIndex: 0,
       ),
-        );
+    );
   }
 
   buildListView() {

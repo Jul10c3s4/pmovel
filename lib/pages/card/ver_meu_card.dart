@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/domain/cartao_resumo.dart';
-import 'package:app/data/cartaoDao.dart';
+import 'package:app/data/bd/cartaoDao.dart';
 
 class VerMeuCard extends StatefulWidget {
   final CartaoResumo cartaoResumo;
@@ -17,7 +17,7 @@ class VerMeuCard extends StatefulWidget {
 
 class _VerMeuCardState extends State<VerMeuCard> {
   Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _VerMeuCardState extends State<VerMeuCard> {
         backgroundColor: const Color(0xff180c36),
         title: const Text('MEMSTUDY'),
       ),
-      backgroundColor:  Colors.grey[300],
+      backgroundColor: Colors.grey[300],
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -113,4 +113,3 @@ class _VerMeuCardState extends State<VerMeuCard> {
     );
   }*/
 }
-                  

@@ -1,3 +1,4 @@
+
 import 'package:app/domain/atributos_card.dart';
 import 'package:app/pages/meusCards/detalhes_card.dart';
 import 'package:flutter/material.dart';

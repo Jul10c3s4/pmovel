@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app/data/database_contents.dart';
-import 'package:app/data/subject_database.dart';
+import 'package:app/data/bd/database_contents.dart';
+import 'package:app/data/bd/subject_database.dart';
 import 'package:app/domain/conteudos_das_materias.dart';
 import '../widgets/card_submaterias_topicos.dart';
 
@@ -44,28 +44,28 @@ class _CardSubMateria extends State<CardSubMateria> {
                 ),
               ),
               ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: widget.listaMaterias.length,
-                itemBuilder: (context, index) {
-                  return  FutureBuilder(
-                      future: getFutureContentList(lista: widget.listaMaterias, index: index),
-                      builder: (context, snapshot) {
-                        switch (snapshot.connectionState) {
-                          case ConnectionState.waiting:
-                            return Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(80.0),
-                                child: const CircularProgressIndicator(),
-                              ),
-                            );
-                          default:
-                            return buildPageContent(objeto: widget.listaMaterias[index]);
-                        }
-                      }
-                  );
-                }
-              ),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: widget.listaMaterias.length,
+                  itemBuilder: (context, index) {
+                    return FutureBuilder(
+                        future: getFutureContentList(
+                            lista: widget.listaMaterias, index: index),
+                        builder: (context, snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.waiting:
+                              return Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(80.0),
+                                  child: const CircularProgressIndicator(),
+                                ),
+                              );
+                            default:
+                              return buildPageContent(
+                                  objeto: widget.listaMaterias[index]);
+                          }
+                        });
+                  }),
             ],
           ),
         ],
@@ -76,8 +76,8 @@ class _CardSubMateria extends State<CardSubMateria> {
   getFutureContentList({
     required List lista,
     required int index,
-  }){
-    switch(lista[index].titleAppBar){
+  }) {
+    switch (lista[index].titleAppBar) {
       case "PORTUGUÊS":
         return DatabaseContents.getPortugueseListContents();
       case "MATEMÁTICA":
