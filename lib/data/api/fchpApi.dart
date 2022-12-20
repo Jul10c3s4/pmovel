@@ -1,4 +1,6 @@
 import 'dart:convert';
+
+import 'package:app/domain/half_card.dart';
 import 'package:http/http.dart' as http;
 //import 'package:aula_913/domain/pacote_turistico.dart';
 //import 'package:http/http.dart';
