@@ -1,5 +1,6 @@
 app
 2.12
+<<<<<<< HEAD
 file:///home/kelvin/AndroidStudioProjects/pmovel/
 file:///home/kelvin/AndroidStudioProjects/pmovel/lib/
 async
@@ -226,4 +227,4 @@ flutter_web_plugins
 2.17
 file:///home/kelvin/flutter/packages/flutter_web_plugins/
 file:///home/kelvin/flutter/packages/flutter_web_plugins/lib/
-2
+
