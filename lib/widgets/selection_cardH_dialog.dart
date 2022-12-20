@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:app/widgets/perguntas.dart';
 import 'package:app/pages/ygor/jogos_page.dart';
-import '../data/bd/bd.dart';
+
+import 'package:app/data/bd.dart';
 
 class CustomDialog extends StatefulWidget {
   final List<String> options;

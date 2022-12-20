@@ -1,10 +1,20 @@
-import 'package:app/data/bd/estatisticasDao.dart';
+import 'package:app/data/estatisticasDao.dart';
 import 'package:app/data/sharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:core';
 import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:app/pages/ygor/pergunta1.dart';
+import 'package:app/pages/ygor/pergunta2.dart';
+import 'package:app/pages/ygor/jogo_memoria.dart';
+import 'package:app/domain/half_card.dart';
+import 'package:app/domain/cartaoDefinitivo.dart';
+import 'package:app/data/bd.dart';
+import 'package:app/widgets/selection_cardH_dialog.dart';
+import 'package:app/data/estatisticasDao.dart';
+import 'package:app/data/db_helper.dart';
+import 'package:app/data/sharedPreferences.dart';
 
 class EstatisticasPage extends StatefulWidget {
   @override

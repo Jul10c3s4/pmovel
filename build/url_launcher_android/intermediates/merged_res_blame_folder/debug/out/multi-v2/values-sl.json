@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\julio\\Desktop\\pmovel\\pmovel\\build\\url_launcher_android\\intermediates\\res\\merged\\debug\\values-sl\\values-sl.xml",
+            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\studyapp\\pmovel\\build\\url_launcher_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sl\\values-sl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\julio\\.gradle\\caches\\transforms-3\\cbbd95a71c37efdfc64418cb4f36b641\\transformed\\core-1.6.0\\res\\values-sl\\values-sl.xml",
+                    "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\cbbd95a71c37efdfc64418cb4f36b641\\transformed\\core-1.6.0\\res\\values-sl\\values-sl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\julio\\Desktop\\pmovel\\pmovel\\build\\url_launcher_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sl\\values-sl.xml",
+            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\studyapp\\pmovel\\build\\url_launcher_android\\intermediates\\res\\merged\\debug\\values-sl\\values-sl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\julio\\.gradle\\caches\\transforms-3\\cbbd95a71c37efdfc64418cb4f36b641\\transformed\\core-1.6.0\\res\\values-sl\\values-sl.xml",
+                    "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\cbbd95a71c37efdfc64418cb4f36b641\\transformed\\core-1.6.0\\res\\values-sl\\values-sl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

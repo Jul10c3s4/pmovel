@@ -1,5 +1,5 @@
-import 'package:app/data/bd/atributosDao.dart';
-import 'package:app/data/bd/db_helper.dart';
+import 'package:app/data/atributosDao.dart';
+import 'package:app/data/db_helper.dart';
 import 'package:app/domain/atributos_card.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class _TestePageState extends State<TestePage> {
   AtributosDao atributosDao = AtributosDao();
   Future<List<Atributos>> lista = AtributosDao().listarAtributos();
 
-  /*initState(){
+    /*initState(){
       super.initState();
       _getAllAtributos();
     }*/
@@ -27,18 +27,20 @@ class _TestePageState extends State<TestePage> {
           backgroundColor: Colors.purple.shade800,
         ),
         backgroundColor: Colors.purple,
-        body: ListView(
-          children: [
-            buildListView(),
-          ],
-        ));
+        body:
+            ListView(
+              children: [
+                buildListView(),
+              ],
+            )
+        );
   }
 
   buildListView() {
-    return FutureBuilder<List<Atributos>>(
+    return FutureBuilder<List<Atributos>> (
         future: lista,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
+        builder: (context, snapshot){
+          if(snapshot.hasData){
             List<Atributos> lista = snapshot.data ?? [];
             return ListView.builder(
                 shrinkWrap: true,
@@ -47,21 +49,16 @@ class _TestePageState extends State<TestePage> {
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10,),
                       buildListtile(lista[index])
                     ],
                   );
                 });
           }
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.blue,
-            ),
-          );
+          return const Center(child: CircularProgressIndicator(color: Colors.blue,),);
         });
-  }
+
+        }
 
   /*void _getAllAtributos() {
     atributosDao.listarAtributos().then((list){
@@ -81,4 +78,5 @@ class _TestePageState extends State<TestePage> {
       hoverColor: Colors.white,
     );
   }
+
 }

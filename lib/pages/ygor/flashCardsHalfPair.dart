@@ -1,12 +1,22 @@
-import 'package:app/data/bd/bd.dart';
+import 'package:app/data/bd.dart';
 import 'package:app/data/sharedPreferences.dart';
 import 'package:app/domain/cartaoDefinitivo.dart';
 import 'package:app/domain/half_card.dart';
 import 'package:app/pages/ygor/jogo_memoria.dart';
 import 'package:flutter/material.dart';
+import 'package:app/pages/ygor/pergunta1.dart';
+import 'package:app/pages/ygor/pergunta2.dart';
+import 'package:app/pages/ygor/jogo_memoria.dart';
+import 'package:app/domain/half_card.dart';
+import 'package:app/domain/cartaoDefinitivo.dart';
+import 'package:app/data/bd.dart';
+import 'package:app/data/sharedPreferences.dart';
+import 'package:app/widgets/selection_cardH_dialog.dart';
+
 import 'dart:async';
 import 'dart:core';
 import 'package:app/widgets/selection_cardH_dialog.dart';
+import '../../data/api/fchpApi.dart';
 
 class FCHPairPage extends StatefulWidget {
   @override
@@ -238,6 +248,53 @@ class _FCHPairPageState extends State<FCHPairPage> {
                     },
                     child: Text(
                       "load",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      List<List<CardHalf>> listaCompleta =
+                          await FHCP_API.findAllCards();
+
+                      setState(() {
+                        baralho = listaCompleta[0];
+                        hand1 = listaCompleta[1];
+                        trash = listaCompleta[2];
+                      });
+                    },
+                    child: Text(
+                      "load_API",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFB6CCD7),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      setState(() {
+                        //FHCP_API.dropDatabase();
+
+                        FHCP_API.uploadCards(baralho, hand1, trash);
+
+                        const snackBar = SnackBar(
+                          content: Text('Cards Salvos'),
+                        );
+
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      });
+                    },
+                    child: Text(
+                      "save_on_API",
                       style: TextStyle(
                         color: Colors.black,
                       ),

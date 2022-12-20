@@ -1,5 +1,5 @@
-import 'package:app/data/bd/bd.dart';
-import 'package:app/data/bd/bd3.dart';
+import 'package:app/data/bd.dart';
+import 'package:app/data/bd3.dart';
 import 'package:app/domain/container.dart';
 import 'package:app/pages/telas%20de%20login/login.dart';
 import 'package:app/widgets/opcao_config.dart';
@@ -59,128 +59,403 @@ class _TelaConfigState extends State<TelaConfig> {
           List<Conteudo> lista = snapshot.data ?? [];
 
           return Column(
-            children: [
-              Expanded(
-                child: ListView(
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      SizedBox(
+                        height: 6,
+                      ),
+                    ]),
+                    Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        decoration: BoxDecoration(color: Color(0xFF5B30BF)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Tipo de conta',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Gratuita',
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.black),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Adquirir versão pro',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  style: TextButton.styleFrom(
+                                      primary: Colors.white,
+                                      backgroundColor: Color(0xFF3D2080),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 8)),
+                                ),
+                              ],
+                            )
+                          ],
+                        )),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      decoration: BoxDecoration(color: Color(0xFF5B30BF)),
+                      child: Column(
+                        children: [
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(
-                                height: 6,
+                              Text(
+                                'Configurações do usuário',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ]),
-                        Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            decoration: BoxDecoration(color: Color(0xFF5B30BF)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Tipo de conta',
-                                          style: TextStyle(
-                                              fontSize: 18,
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(children: [
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                        'Insira a senha:',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                      content: TextField(),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                    'Insira insira o novo Email:',
+                                                    style: TextStyle(
+                                                        color: Colors.green),
+                                                  ),
+                                                  content: TextField(),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {},
+                                                      child: Text(
+                                                        'Continuar',
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        backgroundColor: Colors
+                                                            .lightBlueAccent,
+                                                        primary: Colors.white,
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                        'Cancelar',
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        backgroundColor:
+                                                            Colors.redAccent,
+                                                        primary: Colors.white,
+                                                      ),
+                                                    )
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
+                                          child: Text(
+                                            'Continuar',
+                                            style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.white),
+                                            ),
+                                          ),
+                                          style: TextButton.styleFrom(
+                                            backgroundColor:
+                                                Colors.lightBlueAccent,
+                                            primary: Colors.white,
+                                          ),
                                         ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Gratuita',
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.black),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            'Cancelar',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          style: TextButton.styleFrom(
+                                            backgroundColor: Colors.redAccent,
+                                            primary: Colors.white,
+                                          ),
                                         )
                                       ],
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Adquirir versão pro',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Text(
+                                'Alterar e-mail',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ]),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'usuario@gmail.com',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(children: [
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                        'Insira a senha:',
+                                        style: TextStyle(color: Colors.green),
                                       ),
-                                      style: TextButton.styleFrom(
-                                          primary: Colors.white,
-                                          backgroundColor: Color(0xFF3D2080),
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 10, vertical: 8)),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            )),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          decoration: BoxDecoration(color: Color(0xFF5B30BF)),
-                          child: Column(
+                                      content: TextField(),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                    'Insira o novo nome de usuário:',
+                                                    style: TextStyle(
+                                                        color: Colors.green),
+                                                  ),
+                                                  content: TextField(),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {},
+                                                      child: Text(
+                                                        'Continuar',
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        backgroundColor: Colors
+                                                            .lightBlueAccent,
+                                                        primary: Colors.white,
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                        'Cancelar',
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        backgroundColor:
+                                                            Colors.redAccent,
+                                                        primary: Colors.white,
+                                                      ),
+                                                    )
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
+                                          child: Text(
+                                            'Continuar',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          style: TextButton.styleFrom(
+                                            backgroundColor:
+                                                Colors.lightBlueAccent,
+                                            primary: Colors.white,
+                                          ),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            'Cancelar',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          style: TextButton.styleFrom(
+                                            backgroundColor: Colors.redAccent,
+                                            primary: Colors.white,
+                                          ),
+                                        )
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              child: Text(
+                                'Alterar nome do usuário',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ]),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Row(
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Configurações do usuário',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Row(children: [
-                                InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text(
-                                            'Insira a senha:',
-                                            style:
-                                                TextStyle(color: Colors.green),
-                                          ),
-                                          content: TextField(),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                        'Insira insira o novo Email:',
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.green),
+                              Text(
+                                'usuario',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(children: [
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                        'Insira a senha:',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                      content: TextField(),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                    'Insira a nova senha:',
+                                                    style: TextStyle(
+                                                        color: Colors.green),
+                                                  ),
+                                                  content: TextField(),
+                                                  actions: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 16),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            'Confirme a nova senha:',
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Colors.green,
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      content: TextField(),
-                                                      actions: [
+                                                    ),
+                                                    Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal: 16),
+                                                        child: Container(
+                                                          child: TextField(),
+                                                        )),
+                                                    SizedBox(
+                                                      height: 30,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.end,
+                                                      children: [
                                                         TextButton(
                                                           onPressed: () {},
                                                           child: Text(
-                                                            'Continuar',
+                                                            'Ok',
                                                             style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight
@@ -195,572 +470,254 @@ class _TelaConfigState extends State<TelaConfig> {
                                                                 Colors.white,
                                                           ),
                                                         ),
-                                                        TextButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text(
-                                                            'Cancelar',
-                                                            style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                          ),
-                                                          style: TextButton
-                                                              .styleFrom(
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .redAccent,
-                                                            primary:
-                                                                Colors.white,
-                                                          ),
-                                                        )
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                              child: Text(
-                                                'Continuar',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.lightBlueAccent,
-                                                primary: Colors.white,
-                                              ),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                'Cancelar',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.redAccent,
-                                                primary: Colors.white,
-                                              ),
-                                            )
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Text(
-                                    'Alterar e-mail',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ]),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'usuario@gmail.com',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 16),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Row(children: [
-                                InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text(
-                                            'Insira a senha:',
-                                            style:
-                                                TextStyle(color: Colors.green),
-                                          ),
-                                          content: TextField(),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                        'Insira o novo nome de usuário:',
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.green),
-                                                      ),
-                                                      content: TextField(),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () {},
-                                                          child: Text(
-                                                            'Continuar',
-                                                            style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                          ),
-                                                          style: TextButton
-                                                              .styleFrom(
-                                                            backgroundColor: Colors
-                                                                .lightBlueAccent,
-                                                            primary:
-                                                                Colors.white,
-                                                          ),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text(
-                                                            'Cancelar',
-                                                            style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                          ),
-                                                          style: TextButton
-                                                              .styleFrom(
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .redAccent,
-                                                            primary:
-                                                                Colors.white,
-                                                          ),
-                                                        )
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                              child: Text(
-                                                'Continuar',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.lightBlueAccent,
-                                                primary: Colors.white,
-                                              ),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                'Cancelar',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.redAccent,
-                                                primary: Colors.white,
-                                              ),
-                                            )
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Text(
-                                    'Alterar nome do usuário',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ]),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'usuario',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 16),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Row(children: [
-                                InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text(
-                                            'Insira a senha:',
-                                            style:
-                                                TextStyle(color: Colors.green),
-                                          ),
-                                          content: TextField(),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                        'Insira a nova senha:',
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.green),
-                                                      ),
-                                                      content: TextField(),
-                                                      actions: [
-                                                        Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                                  horizontal:
-                                                                      16),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                'Confirme a nova senha:',
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: Colors
-                                                                      .green,
-                                                                  fontSize: 20,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    horizontal:
-                                                                        16),
-                                                            child: Container(
-                                                              child:
-                                                                  TextField(),
-                                                            )),
                                                         SizedBox(
-                                                          height: 30,
+                                                          width: 20,
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            TextButton(
-                                                              onPressed: () {},
-                                                              child: Text(
-                                                                'Ok',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                              ),
-                                                              style: TextButton
-                                                                  .styleFrom(
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .lightBlueAccent,
-                                                                primary: Colors
-                                                                    .white,
-                                                              ),
+                                                        TextButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Text(
+                                                            'Cancelar',
+                                                            style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
                                                             ),
-                                                            SizedBox(
-                                                              width: 20,
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () {
-                                                                Navigator.pop(
-                                                                    context);
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
-                                                              child: Text(
-                                                                'Cancelar',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                              ),
-                                                              style: TextButton
-                                                                  .styleFrom(
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .redAccent,
-                                                                primary: Colors
-                                                                    .white,
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              width: 20,
-                                                            ),
-                                                          ],
-                                                        )
+                                                          ),
+                                                          style: TextButton
+                                                              .styleFrom(
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .redAccent,
+                                                            primary:
+                                                                Colors.white,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 20,
+                                                        ),
                                                       ],
-                                                    );
-                                                  },
+                                                    )
+                                                  ],
                                                 );
                                               },
-                                              child: Text(
-                                                'Continuar',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.lightBlueAccent,
-                                                primary: Colors.white,
-                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            'Continuar',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                             ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                'Cancelar',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              style: TextButton.styleFrom(
-                                                backgroundColor:
-                                                    Colors.redAccent,
-                                                primary: Colors.white,
-                                              ),
-                                            )
-                                          ],
-                                        );
-                                      },
+                                          ),
+                                          style: TextButton.styleFrom(
+                                            backgroundColor:
+                                                Colors.lightBlueAccent,
+                                            primary: Colors.white,
+                                          ),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            'Cancelar',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          style: TextButton.styleFrom(
+                                            backgroundColor: Colors.redAccent,
+                                            primary: Colors.white,
+                                          ),
+                                        )
+                                      ],
                                     );
                                   },
-                                  child: Text(
-                                    'Alterar Senha',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ]),
-                              SizedBox(
-                                height: 3,
+                                );
+                              },
+                              child: Text(
+                                'Alterar Senha',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '********',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 16),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              )
-                            ],
+                            ),
+                          ]),
+                          SizedBox(
+                            height: 3,
                           ),
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          decoration: BoxDecoration(color: Color(0xFF5B30BF)),
-                          child: Column(
+                          Row(
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Configurações gerais',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Efeitos sonoros',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Switch(
-                                        value: isSwitched1,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            isSwitched1 = value;
-                                          });
-                                        })
-                                  ]),
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Modo escuro',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Switch(
-                                        value: isSwitched2,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            isSwitched2 = value;
-                                            if (isSwitched2 == true) {
-                                              print('oi');
-                                              MaterialApp(
-                                                darkTheme: ThemeData.dark(),
-                                              );
-                                            }
-                                          });
-                                        })
-                                  ]),
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Notificações',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Switch(
-                                        value: isSwitched3,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            isSwitched3 = value;
-                                          });
-                                        })
-                                  ]),
-                              SizedBox(
-                                height: 10,
+                              Text(
+                                '********',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
                               )
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 6,
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 20),
-                          decoration: BoxDecoration(color: Color(0xFF5B30BF)),
-                          child: Column(children: [
-                            Row(
+                          SizedBox(
+                            height: 10,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      decoration: BoxDecoration(color: Color(0xFF5B30BF)),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Configurações gerais',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Versão',
+                                  'Efeitos sonoros',
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Row(
+                                Switch(
+                                    value: isSwitched1,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isSwitched1 = value;
+                                      });
+                                    })
+                              ]),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'versão 1',
+                                  'Modo escuro',
                                   style: TextStyle(
-                                    color: Colors.black38,
-                                    fontSize: 18,
-                                  ),
-                                )
-                              ],
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Switch(
+                                    value: isSwitched2,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isSwitched2 = value;
+                                        if (isSwitched2 == true) {
+                                          print('oi');
+                                          MaterialApp(
+                                            darkTheme: ThemeData.dark(),
+                                          );
+                                        }
+                                      });
+                                    })
+                              ]),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Notificações',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Switch(
+                                    value: isSwitched3,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isSwitched3 = value;
+                                      });
+                                    })
+                              ]),
+                          SizedBox(
+                            height: 10,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                      decoration: BoxDecoration(color: Color(0xFF5B30BF)),
+                      child: Column(children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Versão',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                          ]),
+                          ],
                         ),
                         SizedBox(
-                          height: 6,
+                          height: 5,
                         ),
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: lista.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  Opcao_config(cont: lista[index]),
-                                  SizedBox(
-                                    height: 6,
-                                  ),
-                                ],
-                              );
-                            }),
-                      ],
-                    )
+                        Row(
+                          children: [
+                            Text(
+                              'versão 1',
+                              style: TextStyle(
+                                color: Colors.black38,
+                                fontSize: 18,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 6,),
+                      ]),
+                    ),
+                    SizedBox(height: 6,),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: lista.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            children: [
+                              Opcao_config(
+                            cont: lista[index]),
+                            SizedBox(height: 6,),
+                            ],
+                          );
+                          
+                        }),
                   ],
-                ),
-              )
-            ],
-          );
-          /**/
+                )
+              ],
+            ),
+          )
+        ],
+          );/**/
         }
-        return Center(child: const CircularProgressIndicator());
+        return Center(child: const CircularProgressIndicator(
+          
+        ));
       },
     );
   }

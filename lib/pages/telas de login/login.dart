@@ -1,5 +1,5 @@
 import 'package:app/data/sharedPreferences.dart';
-import 'package:app/data/bd/userDao.dart';
+import 'package:app/data/userDao.dart';
 import 'package:app/domain/user.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
 import 'package:app/pages/telas%20de%20login/criar_conta.dart';
@@ -80,7 +80,9 @@ class _LoginState extends State<Login> {
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Campo e-mail obrigatório';
+
                                 } else if (!value.contains('@')) {
+
                                   return 'Falta o @';
                                 }
                                 return null;
