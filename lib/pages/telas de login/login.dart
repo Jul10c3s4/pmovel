@@ -80,9 +80,7 @@ class _LoginState extends State<Login> {
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Campo e-mail obrigatório';
-
                                 } else if (!value.contains('@')) {
-
                                   return 'Falta o @';
                                 }
                                 return null;

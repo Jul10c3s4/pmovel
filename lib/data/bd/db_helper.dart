@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'package:app/data/bd/subjects_bd/database_contents.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:app/data/bd/database_contents.dart';
 
 class DB_Helper {
+
   static List subjectList = DatabaseContents.subjects_contents;
 
   initDB() async {

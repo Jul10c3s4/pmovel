@@ -1,18 +1,11 @@
 import 'package:app/data/sharedPreferences.dart';
-import 'package:app/pages/home_music.dart';
+import 'package:app/pages/musics_pages/home_music.dart';
 import 'package:app/pages/perfil/perfil_page.dart';
 import 'package:app/pages/principal/home_page.dart';
+import 'package:app/pages/subjects_pages/card_materias.dart';
 import 'package:app/pages/ygor/jogos_page.dart';
 import 'package:flutter/material.dart';
-
-import 'package:app/pages/ygor/jogos_page.dart';
-
 import 'package:app/pages/meusCards/meu_card.dart';
-import 'package:app/pages/materias_card.dart';
-import 'package:app/pages/card_materias.dart';
-import 'package:app/data/sharedPreferences.dart';
-
-import '../pages/perfil/perfil_page.dart';
 
 class NavDrawer extends StatefulWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -84,14 +77,23 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
             },
           ),
-
           ListTile(
             leading: const Icon(Icons.folder),
             title: const Text('Matérias'),
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CardMaterias()),
+                MaterialPageRoute(builder: (context) => const  CardMaterias()),
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.favorite),
+            title: const Text('Study Musics'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeMusic()),
               ),
             },
           ),
@@ -105,17 +107,7 @@ class _NavDrawerState extends State<NavDrawer> {
             title: const Text('Logout'),
             onTap: () => {
               SharedPrefsHelper().logout(),
-              Navigator.pushReplacementNamed(context, '/login')
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.favorite),
-            title: const Text('Study Musics'),
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeMusic()),
-              ),
+              Navigator.pushReplacementNamed(context, '/login')         
             },
           ),
         ],

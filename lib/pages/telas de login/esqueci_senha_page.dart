@@ -109,9 +109,7 @@ class _EsqueciSenhaState extends State<EsqueciSenha> {
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Campo e-mail obrigatório';
-
                                     } else if (!value.contains('@')) {
-
                                       return 'Falta o @';
                                     }
                                     return null;

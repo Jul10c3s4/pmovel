@@ -3,7 +3,6 @@ import 'package:app/domain/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'dart:ui';
 
 import 'login.dart';
 
@@ -136,7 +135,6 @@ class _CriarcontaState extends State<Criarconta> {
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Campo email obrigatório!';
-
                                       } else if (!value.contains('@')) {
                                         return 'Falta o @';
                                       }
