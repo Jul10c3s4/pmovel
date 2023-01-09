@@ -1,4 +1,9 @@
 # This is a generated file; do not edit or check into version control.
+flutter_plugin_android_lifecycle=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7/
+geocoding=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/geocoding-2.0.5/
+google_maps_flutter=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-2.2.3/
+google_maps_flutter_android=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_android-2.4.0/
+google_maps_flutter_ios=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_ios-2.1.12/
 path_provider_linux=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7/
 path_provider_windows=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.3/
 shared_preferences=/home/kelvin/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.15/

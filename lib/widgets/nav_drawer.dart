@@ -1,5 +1,6 @@
 import 'package:app/data/sharedPreferences.dart';
 import 'package:app/pages/dicionario/dicionario.dart';
+import 'package:app/pages/map_pages/location.dart';
 import 'package:app/pages/music_pages/home_music.dart';
 import 'package:app/pages/perfil/perfil_page.dart';
 import 'package:app/pages/principal/home_page.dart';
@@ -111,6 +112,16 @@ class _NavDrawerState extends State<NavDrawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const HomeMusic()),
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.app_registration),
+            title: const Text('Cadastrar Localizaçao'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const StudentLocation()),
               ),
             },
           ),
