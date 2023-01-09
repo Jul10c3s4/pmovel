@@ -1,4 +1,4 @@
-import 'package:app/data/sharedPreferences.dart';
+import 'package:app/data/shared_preferences/sharedPreferences.dart';
 import 'package:app/pages/dicionario/dicionario.dart';
 import 'package:app/pages/map_pages/location.dart';
 import 'package:app/pages/music_pages/home_music.dart';
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:app/pages/ygor/jogos_page.dart';
 import 'package:app/pages/meusCards/meu_card.dart';
 import 'package:app/pages/study_pages/card_materias.dart';
-import 'package:app/data/sharedPreferences.dart';
+import 'package:app/data/shared_preferences/sharedPreferences.dart';
 import '../pages/perfil/perfil_page.dart';
 
 class NavDrawer extends StatefulWidget {

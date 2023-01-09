@@ -1,5 +1,5 @@
 import 'package:app/data/DAO/estatisticasDao.dart';
-import 'package:app/data/sharedPreferences.dart';
+import 'package:app/data/shared_preferences/sharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:core';
@@ -14,7 +14,7 @@ import 'package:app/data/bd/bd.dart';
 import 'package:app/widgets/selection_cardH_dialog.dart';
 import 'package:app/data/DAO/estatisticasDao.dart';
 import 'package:app/data/bd/db_helper.dart';
-import 'package:app/data/sharedPreferences.dart';
+import 'package:app/data/shared_preferences/sharedPreferences.dart';
 
 class EstatisticasPage extends StatefulWidget {
   @override

@@ -3,7 +3,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import '../bd/db_helper.dart';
 import 'package:sqflite/sqflite.dart';
-import '../sharedPreferences.dart';
+import '../shared_preferences/sharedPreferences.dart';
 import '../../domain/cartao_domain/cartaoDefinitivo.dart';
 
 class CardDefDao {

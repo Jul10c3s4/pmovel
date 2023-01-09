@@ -1,4 +1,4 @@
-import 'package:app/data/sharedPreferences.dart';
+import 'package:app/data/shared_preferences/sharedPreferences.dart';
 import 'package:app/data/DAO/userDao.dart';
 import 'package:app/domain/user_domain/user.dart';
 import 'package:app/pages/telas%20de%20configuracoes/config_page.dart';
