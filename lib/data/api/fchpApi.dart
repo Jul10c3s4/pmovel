@@ -43,7 +43,7 @@ class FHCP_API {
   static Future<void> uploadCards(
       List<CardHalf> deck, List<CardHalf> hand1, List<CardHalf> trash) async {
     //String cardField = "deck";
-    List<List<dynamic>> listaCardFields = [["deck", deck], ["hand", hand], ["trash",trash]];
+    List<List<dynamic>> listaCardFields = [["deck", deck], ["hand", hand1], ["trash",trash]];
     
     for(var cardField in listaCardFields){
       for (var cardH in cardField[1]) {

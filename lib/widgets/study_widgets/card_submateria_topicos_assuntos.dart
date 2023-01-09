@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:app/domain/conteudos_das_materias.dart';
-import 'package:app/data/database_contents.dart';
+import 'package:app/domain/study_domain/conteudos_das_materias.dart';
+import 'package:app/data/study_data/database_contents.dart';
 
 class PaginaDeAssuntos extends StatefulWidget {
 

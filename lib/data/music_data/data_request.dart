@@ -1,7 +1,7 @@
-import 'package:app/domain/genre.dart';
-import 'package:app/domain/music.dart';
+import 'package:app/domain/music_domain/genre.dart';
+import 'package:app/domain/music_domain/music.dart';
 import 'package:sqflite/sqflite.dart';
-import '../data/db_helper.dart';
+import '../db_helper.dart';
 
 class DataRequest{
 

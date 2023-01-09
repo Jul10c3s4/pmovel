@@ -1,9 +1,9 @@
-import 'package:app/widgets/genre_page.dart';
+import 'package:app/widgets/music_widgets/genre_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:app/data/data_request.dart';
-import 'package:app/domain/music.dart';
+import 'package:app/data/music_data/data_request.dart';
+import 'package:app/domain/music_domain/music.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeMusic extends StatefulWidget {

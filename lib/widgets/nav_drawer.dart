@@ -1,5 +1,6 @@
 import 'package:app/data/sharedPreferences.dart';
-import 'package:app/pages/home_music.dart';
+import 'package:app/pages/dicionario/dicionario.dart';
+import 'package:app/pages/music_pages/home_music.dart';
 import 'package:app/pages/perfil/perfil_page.dart';
 import 'package:app/pages/principal/home_page.dart';
 import 'package:app/pages/ygor/jogos_page.dart';
@@ -9,7 +10,7 @@ import 'package:app/pages/ygor/jogos_page.dart';
 
 import 'package:app/pages/meusCards/meu_card.dart';
 import 'package:app/pages/materias_card.dart';
-import 'package:app/pages/card_materias.dart';
+import 'package:app/pages/study_pages/card_materias.dart';
 import 'package:app/data/sharedPreferences.dart';
 
 import '../pages/perfil/perfil_page.dart';
@@ -73,7 +74,6 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
             },
           ),
-
           ListTile(
             leading: const Icon(Icons.games_outlined),
             title: const Text('Jogos'),
@@ -84,7 +84,6 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
             },
           ),
-
           ListTile(
             leading: const Icon(Icons.folder),
             title: const Text('Matérias'),
@@ -92,6 +91,26 @@ class _NavDrawerState extends State<NavDrawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const CardMaterias()),
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.chrome_reader_mode),
+            title: const Text('Study Musics'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FormularioPalavra()),
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.music_note),
+            title: const Text('Study Musics'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeMusic()),
               ),
             },
           ),
@@ -106,16 +125,6 @@ class _NavDrawerState extends State<NavDrawer> {
             onTap: () => {
               SharedPrefsHelper().logout(),
               Navigator.pushReplacementNamed(context, '/login')
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.favorite),
-            title: const Text('Study Musics'),
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeMusic()),
-              ),
             },
           ),
         ],

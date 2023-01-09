@@ -1,4 +1,6 @@
 
+import 'package:app/pages/dicionario/dicionario.dart';
+import 'package:app/pages/music_pages/home_music.dart';
 import 'package:app/pages/principal/home_page.dart';
 import 'package:app/pages/telas%20de%20configuracoes/avalie-nos.dart';
 import 'package:app/pages/telas%20de%20configuracoes/central_ajuda.dart';
@@ -33,8 +35,7 @@ class MyWidget extends StatelessWidget {
         '/sobre': (context) => const Sobre(),
         '/avalie-nos': (context) => const Avalie(),
         '/splash':(context) => const Screen(rota: "/login"),
-        '/termos_uso': ((context) => const Termos_uso())
-        //'/dicionario': ((context) => const FormularioPalavra())
+        '/termos_uso': ((context) => const Termos_uso()),
       },
     );
   }

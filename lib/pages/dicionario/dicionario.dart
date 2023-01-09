@@ -2,7 +2,7 @@
 https://learn.microsoft.com/pt-br/xamarin/xamarin-forms/data-cloud/azure-cognitive-services/text-translation
 */
 
-import 'package:dicionario/data/dicionario_api.dart';
+import 'package:app/data/api/dicionario_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
