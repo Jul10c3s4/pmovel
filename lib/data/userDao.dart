@@ -1,5 +1,5 @@
-import 'package:app/data/db_helper.dart';
-import 'package:app/domain/user.dart';
+import 'package:app/data/bd/db_helper.dart';
+import 'package:app/domain/user_domain/user.dart';
 import 'package:sqflite/sqflite.dart';
 
 class UserDao{

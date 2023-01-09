@@ -1,6 +1,6 @@
-import 'package:app/data/db_helper.dart';
+import 'package:app/data/bd/db_helper.dart';
 import 'package:app/domain/atributos_card.dart';
-import 'package:app/domain/cartaoDefinitivo.dart';
+import 'package:app/domain/cartao_domain/cartaoDefinitivo.dart';
 import 'package:sqflite/sqflite.dart';
 
 //import 'dart:convert';

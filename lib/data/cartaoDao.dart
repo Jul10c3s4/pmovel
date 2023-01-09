@@ -1,5 +1,5 @@
-import 'package:app/domain/cartao_resumo.dart';
-import 'package:app/data/db_helper.dart';
+import 'package:app/domain/cartao_domain/cartao_resumo.dart';
+import 'package:app/data/bd/db_helper.dart';
 import 'package:sqflite/sqflite.dart';
 
 class CartaoDao {

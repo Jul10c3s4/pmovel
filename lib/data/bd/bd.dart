@@ -1,4 +1,4 @@
-import '../domain/cartaoDefinitivo.dart';
+import '../../domain/cartao_domain/cartaoDefinitivo.dart';
 import 'dart:math';
 
 class BD {

@@ -1,5 +1,5 @@
 import 'package:app/data/userDao.dart';
-import 'package:app/domain/user.dart';
+import 'package:app/domain/user_domain/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

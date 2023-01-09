@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:app/data/api/card_api.dart';
-import 'package:app/domain/cartao_resumo.dart';
+import 'package:app/domain/cartao_domain/cartao_resumo.dart';
 import 'package:app/pages/card/new_card.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/domain/atributos_card.dart';

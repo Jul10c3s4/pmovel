@@ -1,5 +1,5 @@
 import 'package:app/data/atributosDao.dart';
-import 'package:app/data/db_helper.dart';
+import 'package:app/data/bd/db_helper.dart';
 import 'package:app/domain/atributos_card.dart';
 import 'package:flutter/material.dart';
 

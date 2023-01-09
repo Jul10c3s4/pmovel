@@ -1,4 +1,4 @@
-import '../domain/half_card.dart';
+import '../half_card.dart';
 
 class CardDef {
   late String titulo;

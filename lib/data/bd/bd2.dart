@@ -1,4 +1,4 @@
-import 'package:app/domain/cartao_resumo.dart';
+import 'package:app/domain/cartao_domain/cartao_resumo.dart';
 /*
 class BD {
   static List<CartaoResumo> lista = [

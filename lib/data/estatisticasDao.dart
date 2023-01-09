@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:core';
 import 'package:flutter/material.dart';
-import '../data/db_helper.dart';
+import 'bd/db_helper.dart';
 import 'package:sqflite/sqflite.dart';
 import '../data/sharedPreferences.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:app/domain/cartao_resumo.dart';
+import 'package:app/domain/cartao_domain/cartao_resumo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
