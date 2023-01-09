@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Playlist{
   late final String thumbnail;
   late final String musicName;
@@ -10,4 +12,13 @@ class Playlist{
     musicName = json['name'];
     musicURL = json['link'];
   }
+
+  Map<String, dynamic> toJson(){
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['thumbnail'] = thumbnail;
+    data['musicName'] = musicName;
+    data['musicURL'] = musicURL;
+    return data;
+  }
+
 }

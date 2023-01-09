@@ -32,72 +32,74 @@ class _FormularioPalavra extends State<FormularioPalavra>{
         title: buildText(text: "Dicionario de Palavras", size: 24),
         backgroundColor: const Color(0xFF180C36),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 200,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              filled: true,
-                              fillColor: Colors.white,
-                              hintText: 'Palavra',
-                            ),
-                            controller: palavraController,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Campo sem preenchimento";
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
-                      ),
-                      onPressed: onPressed,
-                      child: buildText(text: "Enviar palavra", size: 18),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF180C36),
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(8.0)
-                  ),
-                ),
-                height: 250,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+      body: ListView(
+        children: [Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 200,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      buildText(text: palavra, size: 24),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintText: 'Palavra',
+                              ),
+                              controller: palavraController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Campo sem preenchimento";
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green,
+                        ),
+                        onPressed: onPressed,
+                        child: buildText(text: "Enviar palavra", size: 18),
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF180C36),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(8.0)
+                    ),
+                  ),
+                  height: 250,
+                  width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildText(text: palavra, size: 24),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+        ),],
       ),
     );
   }

@@ -11,7 +11,6 @@ class DataRequest{
 
     String sql = "SELECT * FROM StudyMusics;";
     final queryResult = await db.rawQuery(sql);
-    print("Query Result: $queryResult");
 
     List<Music> musicList = <Music>[];
 
@@ -52,4 +51,6 @@ class DataRequest{
     }
     return musicGenreList;
   }
+
+
 }
