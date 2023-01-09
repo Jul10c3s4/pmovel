@@ -286,10 +286,7 @@ class _FCHPairPageState extends State<FCHPairPage> {
 
                         const snackBar = SnackBar(
                           content: Text('Cards Salvos'),
-                        );
-
-                        // Find the ScaffoldMessenger in the widget tree
-                        // and use it to show a SnackBar.
+                        ); 
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       });
                     },
