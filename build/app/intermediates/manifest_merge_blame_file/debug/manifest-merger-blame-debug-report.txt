@@ -12,13 +12,13 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\Aluno\StudioProjects\pmovel\android\app\src\debug\AndroidManifest.xml:6:5-66
-14-->C:\Users\Aluno\StudioProjects\pmovel\android\app\src\debug\AndroidManifest.xml:6:22-64
+14-->/home/kelvin/AndroidStudioProjects/pmovel/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/home/kelvin/AndroidStudioProjects/pmovel/android/app/src/debug/AndroidManifest.xml:6:22-64
 15
 16    <application
 17        android:name="android.app.Application"
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.6.0] C:\Users\Aluno\.gradle\caches\transforms-3\cbbd95a71c37efdfc64418cb4f36b641\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+18-->[androidx.core:core:1.6.0] /home/kelvin/.gradle/caches/transforms-3/cbbd95a71c37efdfc64418cb4f36b641/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 19        android:debuggable="true"
 20        android:icon="@mipmap/ic_launcher"
 21        android:label="Memstudy" >
@@ -56,26 +56,26 @@
 53            android:value="2" />
 54
 55        <activity
-55-->[:url_launcher_android] C:\Users\Aluno\StudioProjects\pmovel\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+55-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
 56            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-56-->[:url_launcher_android] C:\Users\Aluno\StudioProjects\pmovel\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+56-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
 57            android:exported="false"
-57-->[:url_launcher_android] C:\Users\Aluno\StudioProjects\pmovel\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+57-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
 58            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-58-->[:url_launcher_android] C:\Users\Aluno\StudioProjects\pmovel\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+58-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
 59
 60        <uses-library
-60-->[androidx.window:window:1.0.0-beta04] C:\Users\Aluno\.gradle\caches\transforms-3\e1122a04ff3f2e301327facd1abb25ea\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+60-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
 61            android:name="androidx.window.extensions"
-61-->[androidx.window:window:1.0.0-beta04] C:\Users\Aluno\.gradle\caches\transforms-3\e1122a04ff3f2e301327facd1abb25ea\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+61-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
 62            android:required="false" />
-62-->[androidx.window:window:1.0.0-beta04] C:\Users\Aluno\.gradle\caches\transforms-3\e1122a04ff3f2e301327facd1abb25ea\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+62-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
 63        <uses-library
-63-->[androidx.window:window:1.0.0-beta04] C:\Users\Aluno\.gradle\caches\transforms-3\e1122a04ff3f2e301327facd1abb25ea\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+63-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
 64            android:name="androidx.window.sidecar"
-64-->[androidx.window:window:1.0.0-beta04] C:\Users\Aluno\.gradle\caches\transforms-3\e1122a04ff3f2e301327facd1abb25ea\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+64-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
 65            android:required="false" />
-65-->[androidx.window:window:1.0.0-beta04] C:\Users\Aluno\.gradle\caches\transforms-3\e1122a04ff3f2e301327facd1abb25ea\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+65-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
 66    </application>
 67
 68</manifest>

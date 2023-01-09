@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\pmovel\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ne\\values-ne.xml",
+            "outputFile": "/home/kelvin/AndroidStudioProjects/pmovel/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Aluno\\.gradle\\caches\\transforms-3\\cbbd95a71c37efdfc64418cb4f36b641\\transformed\\core-1.6.0\\res\\values-ne\\values-ne.xml",
+                    "source": "/home/kelvin/.gradle/caches/transforms-3/cbbd95a71c37efdfc64418cb4f36b641/transformed/core-1.6.0/res/values-ne/values-ne.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

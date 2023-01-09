@@ -1,4 +1,4 @@
-#Fri Dec 30 09:26:35 BRT 2022
-base.0=C\:\\Users\\Aluno\\StudioProjects\\pmovel\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Mon Jan 09 15:34:06 BRT 2023
+base.0=/home/kelvin/AndroidStudioProjects/pmovel/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
