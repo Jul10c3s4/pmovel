@@ -96,7 +96,7 @@ class _NavDrawerState extends State<NavDrawer> {
           ),
           ListTile(
             leading: const Icon(Icons.chrome_reader_mode),
-            title: const Text('Study Musics'),
+            title: const Text('Dicionario'),
             onTap: () => {
               Navigator.push(
                 context,

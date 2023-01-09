@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Aluno\\StudioProjects\\pmovel\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "/home/kelvin/AndroidStudioProjects/pmovel/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Aluno\\StudioProjects\\pmovel\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "/home/kelvin/AndroidStudioProjects/pmovel/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
