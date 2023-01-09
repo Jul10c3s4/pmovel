@@ -2,7 +2,7 @@ import 'package:app/domain/atributos_card.dart';
 import 'package:app/domain/cartao_domain/cartao_resumo.dart';
 import 'package:app/pages/principal/destaque_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app/data/atributosDao.dart';
+import 'package:app/data/DAO/atributosDao.dart';
 import 'package:app/domain/atributos_card.dart';
 
 class NewCard extends StatefulWidget {
