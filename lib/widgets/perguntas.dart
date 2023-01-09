@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../domain/cartao_domain/cartaoDefinitivo.dart';
+import '../domain/cartaoDefinitivo.dart';
 
 class PerguntasWidget extends StatefulWidget {
   final CardDef cardD;

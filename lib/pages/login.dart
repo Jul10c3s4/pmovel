@@ -1,4 +1,4 @@
-import 'package:app/domain/user_domain/usuarios.dart';
+import 'package:app/domain/usuarios.dart';
 import 'package:app/pages/config_page.dart';
 import 'package:app/pages/esqueci_senha_page.dart';
 import 'package:app/pages/principal/home_page.dart';

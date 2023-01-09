@@ -1,9 +1,10 @@
 import 'package:app/domain/atributos_card.dart';
+import 'package:app/domain/cartao_resumo.dart';
 import 'package:app/pages/meusCards/detalhes_card.dart';
 import 'package:flutter/material.dart';
 
 class EstudosCard extends StatefulWidget {
-  final Atributos detalhes;
+  final CartaoResumo detalhes;
 
   const EstudosCard({
     Key? key,
@@ -64,11 +65,26 @@ class _EstudosCardState extends State<EstudosCard> {
                 ),
               ),
               const SizedBox(width: 24),
-              //buildImage(),
+              buildImage(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  buildImage() {
+    return Stack(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            width: 130,
+            height: 107,
+            child: Image.network(widget.detalhes.imagem, fit: BoxFit.fill,),
+          ),
+        ),
+      ],
     );
   }
   

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app/domain/cartao_domain/cartao_resumo.dart';
+import 'package:app/domain/cartao_resumo.dart';
 import 'package:app/pages/card/ver_meu_card.dart';
 
 class CardCartaoResumo extends StatefulWidget {

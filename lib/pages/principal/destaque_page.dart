@@ -1,11 +1,11 @@
-import 'package:app/data/DAO/cartaoDao.dart';
+import 'package:app/data/cartaoDao.dart';
 import 'package:app/pages/ygor/jogos_page.dart';
 import 'package:app/widgets/ultimo_acesso_card.dart';
 import 'package:flutter/material.dart';
-import 'package:app/domain/cartao_domain/cartao_resumo.dart';
+import 'package:app/domain/cartao_resumo.dart';
 import 'package:app/pages/card/new_card.dart';
 import 'package:app/widgets/cartao_resumo_card.dart';
-import 'package:app/data/DAO/cartaoDao.dart';
+import 'package:app/data/cartaoDao.dart';
 
 class DestaquePage extends StatefulWidget {
   const DestaquePage({Key? key}) : super(key: key);
@@ -134,7 +134,7 @@ class _DestaquePageState extends State<DestaquePage> {
         if (snapshot.hasData) {
           List<CartaoResumo> lista = snapshot.data ?? [];
 
-          return CardCartaoResumo(cartaoResumo: lista[1]);
+          return CardCartaoResumo(cartaoResumo: lista[0]);
         }
 
         return Center(child: const CircularProgressIndicator());
@@ -152,7 +152,7 @@ class _DestaquePageState extends State<DestaquePage> {
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 3,
+            itemCount: 2,
             itemBuilder: (BuildContext context, int index) {
               return CardCartaoResumo(cartaoResumo: lista[index]);
             },

@@ -1,5 +1,5 @@
-import 'cartao_domain/cartaoDefinitivo.dart';
-import '../data/bd/bd.dart';
+import '../domain/cartaoDefinitivo.dart';
+import '../data/bd.dart';
 
 class CardHalf {
   late String text;

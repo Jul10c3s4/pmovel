@@ -42,30 +42,55 @@ class FHCP_API {
 
   static Future<void> uploadCards(
       List<CardHalf> deck, List<CardHalf> hand1, List<CardHalf> trash) async {
-    //String cardField = "deck";
-    List<List<dynamic>> listaCardFields = [["deck", deck], ["hand", hand1], ["trash",trash]];
-    
-    for(var cardField in listaCardFields){
-      for (var cardH in cardField[1]) {
-        var cJson = cardH.toJson();
+    String cardField = "deck";
+    for (var cardH in deck) {
+      var cJson = cardH.toJson();
 
-        Uri url = Uri.http(_baseUrl, "/cards/${cJson['text']}/create");
+      Uri url = Uri.http(_baseUrl, "/cards/${cJson['text']}/create");
 
-        var response = await http.post(url, body: {
-          'text': cJson['text'],
-          'isFaceUp': true,
-          'cardField': cardField[0]
-        });
+      var response = await http.post(url, body: {
+        'text': cJson['text'],
+        'isFaceUp': true,
+        'cardField': cardField
+      });
 
-        if (response.statusCode == 201) {
-          print("card criado com sucesso");
-        }
+      if (response.statusCode == 201) {
+        print("card criado com sucesso");
       }
-
-
     }
 
+    cardField = "hand";
+    for (var cardH in hand1) {
+      var cJson = cardH.toJson();
 
+      Uri url = Uri.http(_baseUrl, "/cards/${cJson['text']}/create");
+
+      var response = await http.post(url, body: {
+        'text': cJson['text'],
+        'isFaceUp': true,
+        'cardField': cardField
+      });
+
+      if (response.statusCode == 201) {
+        print("card criado com sucesso");
+      }
+    }
+    cardField = "trash";
+    for (var cardH in trash) {
+      var cJson = cardH.toJson();
+
+      Uri url = Uri.http(_baseUrl, "/cards/${cJson['text']}/create");
+
+      var response = await http.post(url, body: {
+        'text': cJson['text'],
+        'isFaceUp': true,
+        'cardField': cardField
+      });
+
+      if (response.statusCode == 201) {
+        print("card criado com sucesso");
+      }
+    }
   }
 
   static Future<void>? dropDatabase() async {
@@ -75,14 +100,11 @@ class FHCP_API {
     for (var json in result) {
       Uri url = Uri.http(_baseUrl, "/cards/${json['text']}/delete");
       var response = await http.get(url);
-      
       /*body: {
         "text": json["text"],
         "isFaceUp": true,
         "cardField": json['cardField']
       }*/
-      //o codigo acima é quando eu estava tentando fazer um GET contendo body, mas isso não é possível
-      //por isso o código usa um parâmetro dentro da url
     }
     //teste
   }

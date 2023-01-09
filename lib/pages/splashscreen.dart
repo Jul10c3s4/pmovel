@@ -1,4 +1,4 @@
-import 'package:app/data/shared_preferences/sharedPreferences.dart';
+import 'package:app/data/sharedPreferences.dart';
 import 'package:app/pages/principal/home_page.dart';
 import 'package:app/pages/telas%20de%20login/login.dart';
 import 'package:flutter/src/foundation/key.dart';

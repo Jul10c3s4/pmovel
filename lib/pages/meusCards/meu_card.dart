@@ -1,4 +1,7 @@
-import 'package:app/data/DAO/atributosDao.dart';
+import 'package:app/data/atributosDao.dart';
+import 'package:app/data/cartaoDao.dart';
+import 'package:app/domain/cartao_resumo.dart';
+import 'package:app/widgets/ultimo_acesso_card.dart';
 import 'package:flutter/material.dart';
 import 'package:app/pages/meusCards/detalhes_card.dart';
 import 'package:app/domain/atributos_card.dart';
@@ -14,7 +17,13 @@ class MeuCard extends StatefulWidget {
 }
 
 class _MeuCardState extends State<MeuCard> {
-  Future<List<Atributos>> lista = AtributosDao().listarAtributos();
+  late Future<List<CartaoResumo>> lista;
+
+  @override
+  void initState() {
+    super.initState();
+    getCards();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +39,18 @@ class _MeuCardState extends State<MeuCard> {
       ),
       backgroundColor: const Color(0xff6239db),
       body: ListView(
-          children: [
-            const ListTile(
-              title: Text(
-                'Aqui estão seus cards',
-                style: TextStyle(
-                  color: Colors.white,
-                  ),
-                ),
+        children: [
+          const ListTile(
+            title: Text(
+              'Aqui estão seus cards',
+              style: TextStyle(
+                color: Colors.white,
               ),
-                buildListView()
-            ],
+            ),
           ),
+          buildListView()
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -58,22 +67,29 @@ class _MeuCardState extends State<MeuCard> {
         backgroundColor: const Color(0xFF351B75),
         currentIndex: 0,
       ),
-        );
+    );
   }
 
   buildListView() {
-    return FutureBuilder<List<Atributos>>(
+    return FutureBuilder<List<CartaoResumo>>(
       future: lista,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Atributos> lista = snapshot.data ?? [];
+          List<CartaoResumo> lista = snapshot.data ?? [];
 
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: lista.length,
             itemBuilder: (BuildContext context, int index) {
-              return EstudosCard(detalhes: lista[index]);
+              return Column(
+                children: [
+                  EstudosCard(detalhes: lista[index]),
+                  SizedBox(
+                    height: 10,
+                  )
+                ],
+              );
             },
           );
         }
@@ -92,5 +108,12 @@ class _MeuCardState extends State<MeuCard> {
         },
       ),
     );
+  }
+
+  void getCards() {
+    setState(() {
+    lista = CartaoDao().listarCartoes();  
+    });
+    
   }
 }
