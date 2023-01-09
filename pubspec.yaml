@@ -25,6 +25,8 @@ dependencies:
   shared_preferences:
   url_launcher: ^6.1.6
   http:
+  google_maps_flutter:
+  geocoding:
 
 dev_dependencies:
   flutter_test:

@@ -20,9 +20,9 @@ class _CardMaterias extends State <CardMaterias> {
     CallDatabase().buildDatabase();
 
     return Scaffold(
-      backgroundColor: Color(0xFF6E39F5),
+      backgroundColor: const Color(0xFF6E39F5),
       appBar: AppBar(
-        backgroundColor: Color(0xFF180C36),
+        backgroundColor: const Color(0xFF180C36),
         centerTitle: true,
         title: const Text(
           "Matérias",
@@ -86,7 +86,7 @@ class _CardMaterias extends State <CardMaterias> {
     required Search lupa,
   }) {
     return Card(
-      color: Color(0xFFB6CCD7),
+      color: const Color(0xFFB6CCD7),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 10, 40, 10),
         child: Row(
@@ -117,14 +117,14 @@ class _CardMaterias extends State <CardMaterias> {
     required List listaMaterias,
   }) {
     return Card(
-      color: Color(0xFFB6CCD7),
+      color: const Color(0xFFB6CCD7),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFB6CCD7)),
+                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFB6CCD7)),
               ),
               onPressed: () =>  onPressed(listaMaterias),
               child: Column(
