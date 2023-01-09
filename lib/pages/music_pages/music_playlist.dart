@@ -35,9 +35,9 @@ class _JsonMusic extends State <JsonMusic>{
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF9F9F9F),
+      backgroundColor: const Color(0xFF6E39F5),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF4F4F4F),
+        backgroundColor: const Color(0xFF180C36),
         title: buildText(text: "Playlist"),
         centerTitle: true,
       ),
@@ -75,7 +75,7 @@ class _JsonMusic extends State <JsonMusic>{
                             ),
                             style: ElevatedButton.styleFrom(
                               shape: CircleBorder(),
-                              primary: const Color(0xFF4F4F4F),
+                              primary: const Color(0xFF180C36),
                             ),
                           ),
                         ],
@@ -97,7 +97,7 @@ class _JsonMusic extends State <JsonMusic>{
                     children: [
                       returnAddMinusBottons(textDialog: "Inserir nova musica", buttonText: "Adicionar", icon: Icons.add, action: 0),
                       returnUpdateDialog(icon: Icons.update),
-                      returnAddMinusBottons(textDialog: "Deletar musica", buttonText: "Deletar", icon: Icons.remove, action: 2),
+                      returnAddMinusBottons(textDialog: "Deletar musica", buttonText: "Deletar", icon: Icons.delete_forever, action: 2),
                     ],
                   ),
                 ),

@@ -1,4 +1,4 @@
-#Mon Jan 09 15:34:06 BRT 2023
+#Mon Jan 09 16:04:44 BRT 2023
 base.0=/home/kelvin/AndroidStudioProjects/pmovel/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
