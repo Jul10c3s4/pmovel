@@ -6,14 +6,10 @@ import 'package:app/pages/perfil/perfil_page.dart';
 import 'package:app/pages/principal/home_page.dart';
 import 'package:app/pages/ygor/jogos_page.dart';
 import 'package:flutter/material.dart';
-
 import 'package:app/pages/ygor/jogos_page.dart';
-
 import 'package:app/pages/meusCards/meu_card.dart';
-import 'package:app/pages/materias_card.dart';
 import 'package:app/pages/study_pages/card_materias.dart';
 import 'package:app/data/sharedPreferences.dart';
-
 import '../pages/perfil/perfil_page.dart';
 
 class NavDrawer extends StatefulWidget {
