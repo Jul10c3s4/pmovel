@@ -1,11 +1,13 @@
 import 'package:app/domain/atributos_card.dart';
+import 'package:app/domain/cartao_resumo.dart';
 import 'package:app/pages/principal/destaque_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app/data/atributosDao.dart';
 import 'package:app/domain/atributos_card.dart';
 
 class NewCard extends StatefulWidget {
-  const NewCard({Key? key}) : super(key: key);
+  final CartaoResumo? cartaoResumo;
+  const NewCard({Key? key, this.cartaoResumo}) : super(key: key);
   @override
   _NewCardState createState() => _NewCardState();
 }
@@ -18,14 +20,33 @@ class _NewCardState extends State<NewCard> {
 
   String nomeMateria = "";
   var _materias = [
-    'Português',
-    'Geografia',
-    'História',
+    'PORTUGUÊS',
+    'GEOGRAFIA',
+    'HISTÓRIA',
     'Biologia',
     'Física',
-    'Matemática'
+    'MATEMÁTICA',
+    'LÓGICA DE PROGRAMAÇÃO'
   ];
-  var _itemSelecionado = 'História';
+  String _itemSelecionado = 'História';
+  String TituloPage = "NOVO CARD";
+
+  late CartaoResumo edited_CartaoResumo;
+
+   @override
+  void initState(){
+    super.initState();
+    if(widget.cartaoResumo == null){
+      edited_CartaoResumo = CartaoResumo.nada();
+    }else{
+      TituloPage = "ATUALIZAR CARD";
+      edited_CartaoResumo = widget.cartaoResumo!;
+      tituloController.text = widget.cartaoResumo!.titulo.toString();
+      descricaoController.text = widget.cartaoResumo!.descricao.toString();
+      _itemSelecionado = widget.cartaoResumo!.materia.toString();
+    
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +78,7 @@ class _NewCardState extends State<NewCard> {
                             Radius.circular(10),
                           ),
                         ),
-                        child:const Text('NOVO CARD',
+                        child: Text(TituloPage,
                             style: TextStyle(fontSize: 25)),
                       ),
 
@@ -98,7 +119,6 @@ class _NewCardState extends State<NewCard> {
                                 });
                               },
                               value: _itemSelecionado),
-    
                         ],
                       ),
 
@@ -166,16 +186,28 @@ class _NewCardState extends State<NewCard> {
     if (_formKey.currentState!.validate()) {
       String tituloDigitado = tituloController.text;
       String materiaDigitada = _itemSelecionado;
-      String descricaoDigitada = descricaoController.text;
+      String DescricaoDigitada = descricaoController.text;
 
-      Atributos atributos = Atributos(materia: materiaDigitada, titulo: tituloDigitado, descricao: descricaoDigitada);
+      if(edited_CartaoResumo == widget.cartaoResumo){
+        print("oi");
+
+        CartaoResumo cardResumo = CartaoResumo(materia: materiaDigitada, titulo: tituloDigitado, descricao: DescricaoDigitada);
+        
+
+        Navigator.pop(context, cardResumo);
+      }
+      else if(edited_CartaoResumo == CartaoResumo.nada()){
+        print("hi");
+        Atributos atributos = Atributos(materia: materiaDigitada, titulo: tituloDigitado, descricao: DescricaoDigitada);
       await AtributosDao().salvarAtributos(atributos: atributos);
 
       showSnackBar('Novo cartão foi salvo com sucesso!');
-      Navigator.pop(context);
 
-    } else {
+      Navigator.pop(context);
+      }
+       else {
       showSnackBar("Erro na validação");
+    }
     }
   }
 

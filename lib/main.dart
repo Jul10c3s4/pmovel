@@ -34,6 +34,7 @@ class MyWidget extends StatelessWidget {
         '/avalie-nos': (context) => const Avalie(),
         '/splash':(context) => const Screen(rota: "/login"),
         '/termos_uso': ((context) => const Termos_uso())
+        //'/dicionario': ((context) => const FormularioPalavra())
       },
     );
   }

@@ -1,3 +1,4 @@
+import 'package:app/data/api/card_api.dart';
 import 'package:app/data/cartaoDao.dart';
 import 'package:app/widgets/cartao_resumo_card.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
-  Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
+  Future<List<CartaoResumo>> lista = CartaoApi().listarCartoes();
 
   @override
   Widget build(BuildContext context) {
