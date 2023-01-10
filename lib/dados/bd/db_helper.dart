@@ -42,40 +42,16 @@ class DB_Helper {
     await db.execute(sqlUser);
 
     String sqlCard =
-        'create table CARD(id INTEGER KEY, materia varchar(100), titulo varchar(100), descricao TEXT);';
-    await db.execute(sqlCard);
+        'cria tabela CARD(id INTEGER KEY, materia varchar(100), titulo varchar(100), descricao TEXT, imagem TEXT);' ;
+    aguardo db. executar (sqlCard);
 
     sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('HISTÓRIA', 'Era Napoleônica', 'Em vingança a decisão do Czar Alexandre I, o governo napoleônico decidiu invadir a Rússia em 1812. Os generais acostumados com grandes vitórias...');";
-    await db.execute(sqlCard);
+        "INSERT INTO CARD(materia, titulo, descricao, imagem) VALUES ('PORTUGUÊS', 'Formatação de Texto', 'segundo a norma ABNT, os textos devem estar em formato justificado, na fonte Arial ou Times New Romans tamanho 10 ou 12 , com espaçamento de 1,5 entre as linhas...', 'https://support.content.office.net/pt-br/media/4f5a2908-0eec-48bd-83f9-831d9d1526a6.png');" ;
+    aguardo db. executar (sqlCard);
 
     sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('GEOGRAFIA', 'Geopolítica', 'A geopolítica mundial evoluiu para incluir as dinâmicas populacionais e econômicas dentro deste jogo de poder, no tabuleiro político internacional...');";
-    await db.execute(sqlCard);
-
-    sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('MATEMÁTICA', 'Conjuntos', 'Conjuntos numéricos são ..., A partir deles podemos definir interseções, uniões e manipular-los, no geral.');";
-    await db.execute(sqlCard);
-
-    sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('HISTORIA', '1º Guerra Mundial', 'A Primeira Guerra Mundial foi um conflito bélico global centrado na Europa, que começou em 28 de julho de 1914 e durou até 11 de...');";
-    await db.execute(sqlCard);
-
-    sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'MEU PRIMEIRO TESTE', 'textotextotextotextotextotextotextotextotextotextotextotextotextotexto...');";
-    await db.execute(sqlCard);
-
-    sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'Conjunções subordinadas', 'As conjunções subordinativas são termos que ligam duas orações sintaticamente dependentes...');";
-    await db.execute(sqlCard);
-
-    sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('LÓGICA DE PROGRAMAÇÃO', 'Linguagem HTML', 'HTML é o componente base da web. Isso quer dizer que ele permite a construção de websites e a inserção de novos conteúdos, como imagens e vídeos, por meio dos hipertextos...');";
-    await db.execute(sqlCard);
-
-    sqlCard =
-        "INSERT INTO CARD(materia, titulo, descricao) VALUES ('PORTUGUÊS', 'Formatação de Texto', 'segundo a norma ABNT, os textos devem estar em formato justificado, na fonte Arial ou Times New Romans tamanho 10 ou 12, com espaçamento de 1,5 entre as linhas...');";
-    await db.execute(sqlCard);
+        "INSERT INTO CARD(materia, titulo, descricao, imagem) VALUES ('MATEMÁTICA', 'geometria plana', 'a geometria estuda a formas primitivas, e calcula a área e o volume', 'https://sites.google.com /site/victorialacerdameninadavila/_/rsrc/1386518443445/home/matematica/geometria-plana/aprenda-a-geometria-espacial.jpg');" ;
+    aguardo db. executar (sqlCard);
 
     String sql =
         "create table SubjectAtributes(id INTERGER PRIMARY KEY, title varchar(40), iconName varchar(40),  titleAppBar varchar(40), imageLink varchar(300), concept varchar(500))";
