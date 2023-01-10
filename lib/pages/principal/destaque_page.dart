@@ -134,7 +134,7 @@ class _DestaquePageState extends State<DestaquePage> {
         if (snapshot.hasData) {
           List<CartaoResumo> lista = snapshot.data ?? [];
 
-          return CardCartaoResumo(cartaoResumo: lista[1]);
+          return CardCartaoResumo(cartaoResumo: lista[0]);
         }
 
         return Center(child: const CircularProgressIndicator());
@@ -152,7 +152,7 @@ class _DestaquePageState extends State<DestaquePage> {
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 3,
+            itemCount: 2,
             itemBuilder: (BuildContext context, int index) {
               return CardCartaoResumo(cartaoResumo: lista[index]);
             },

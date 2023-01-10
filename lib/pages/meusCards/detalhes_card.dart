@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:app/data/DAO/cartaoDao.dart';
 import 'package:app/data/api/card_api.dart';
 import 'package:app/domain/cartao_domain/cartao_resumo.dart';
 import 'package:app/pages/card/new_card.dart';
+import 'package:app/pages/meusCards/meu_card.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/domain/atributos_card.dart';
 import 'package:app/data/DAO/atributosDao.dart';
@@ -10,9 +12,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 class CardDetalhes extends StatefulWidget {
-  final Atributos detalhes;
+  final CartaoResumo detalhes;
 
-  const CardDetalhes({Key? key, required this.detalhes,
+  const CardDetalhes({
+    Key? key,
+    required this.detalhes,
   }) : super(key: key);
 
   @override
@@ -20,102 +24,111 @@ class CardDetalhes extends StatefulWidget {
 }
 
 class _CardDetalhesState extends State<CardDetalhes> {
-  Future<List<Atributos>> lista = AtributosDao().listarAtributos();
-  
+  Future<List<CartaoResumo>> lista = CartaoDao().listarCartoes();
+  String? nomeCard;
+  final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xff180c36),
-        title: const Text('MEUS CARDS'),
-      ),
-      backgroundColor:  Colors.grey[300],
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
+        appBar: AppBar(
+          backgroundColor: const Color(0xff180c36),
+          title: Text('${widget.detalhes.titulo}'),
+        ),
+        backgroundColor: Colors.grey[300],
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
+            Expanded(child: 
+            ListView(
               children: [
-                Column(
-                  children: [
-                    Wrap(
-                      direction: Axis.vertical,
-                      spacing: 30.0,
-                      children: [
-                        Text(
-                          widget.detalhes.titulo,
-                          style: const TextStyle(
+                Container(
+              decoration: BoxDecoration(
+                color: Colors.purple.shade900,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        alert(
+                            "Confirmação de upload",
+                            "Tem certeza que deseja subir esse card para a nuvem ?",
+                            SubirCard);
+                      },
+                      icon: Icon(
+                        Icons.cloud_upload,
+                        color: Colors.lightBlue,
+                      )),
+                  IconButton(
+                      onPressed: () {
+                        alertExluir(
+                            "Confirmação de exclusão", DescerCard);
+                      },
+                      icon: Icon(
+                        Icons.cloud_off,
+                        color: Colors.red,
+                      )),
+                  IconButton(
+                      onPressed: () {
+                        alert(
+                            "Confirmação de atualização",
+                            "Tem certeza que deseja atualizar esse card ?",
+                            AtualizarCard);
+                      },
+                      icon: Icon(
+                        Icons.update,
+                        color: Colors.blue,
+                        size: 28,
+                      )),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Matéria: '),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        '${widget.detalhes.materia}',
+                        style: TextStyle(
                             color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                      ],
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 350,
+                      height: 200,
+                      child: Image.network(
+                        widget.detalhes.imagem,
+                        fit: BoxFit.fill,
+                      ),
                     ),
-                    Wrap(
-                      direction: Axis.vertical,
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  alert(
-                                      "Confirmação de upload",
-                                      "Tem certeza que deseja subir esse card para a nuvem ?",
-                                      SubirCard);
-                                },
-                                icon: Icon(
-                                  Icons.cloud_upload,
-                                  color: Colors.lightBlue,
-                                )),
-                            IconButton(
-                                onPressed: () {
-                                  alert(
-                                      "Confirmação de exclusão da nuvem",
-                                      "Tem certeza que deseja tirar esse card da nuvem ?",
-                                      DescerCard);
-                                },
-                                icon: Icon(
-                                  Icons.cloud_off,
-                                  color: Colors.red,
-                                )),
-                            IconButton(
-                                onPressed: () {
-                                  alert(
-                                      "Confirmação de atualização da nuvem",
-                                      "Tem certeza que deseja atualizar esse card na nuvem ?",
-                                      AtualizarCard);
-                                },
-                                icon: Icon(
-                                  Icons.update,
-                                  color: Colors.blue, size: 28,
-                                ))
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                  ),
 
-                //const SizedBox(width: 6.0),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                Text('Matéria'),
-                Icon(Icons.expand_more_outlined),
-              ],
-            ),
-            const SizedBox(height: 10.0),
-            const Text(
-              'DESCRIÇÃO',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 6),
-            Container(
+                  const SizedBox(height: 15),
+                  const Text(
+                    'DESCRIÇÃO',
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
               padding: const EdgeInsets.all(6.0),
               decoration: BoxDecoration(
                   color: const Color(0xff6239db),
@@ -129,29 +142,35 @@ class _CardDetalhesState extends State<CardDetalhes> {
                 ),
               ),
             ),
-            const SizedBox(height: 4.0),
-            //buildImage(),
+
+                  //buildImage(),
+                ],
+              ),
+            ),
+              ],
+            ))
+            
           ],
-        ),
-      ),
-    );
+        ));
   }
 
   void SubirCard() async {
     String Titulo = widget.detalhes.titulo;
     String Assunto = widget.detalhes.materia;
     String Descricao = widget.detalhes.descricao;
+    String imagem = widget.detalhes.imagem;
     String text = "Card enviado para a nuvem com sucesso!";
 
     CartaoResumo cartaoResumo = new CartaoResumo(
-        materia: Assunto, titulo: Titulo, descricao: Descricao);
+        materia: Assunto, titulo: Titulo, descricao: Descricao, imagem: imagem);
     try {
       var response = await http.post(
           Uri.parse("https://api-memstudy.juliocesar131.repl.co/admin/add"),
           body: {
             "titulo": cartaoResumo.titulo.toString(),
             "assunto": cartaoResumo.materia.toString(),
-            "descricao": cartaoResumo.descricao.toString()
+            "descricao": cartaoResumo.descricao.toString(),
+            "imagem": cartaoResumo.imagem.toString(),
           });
       if (response.statusCode == 409) {
         text = "Esse card já está na nuvem!";
@@ -166,79 +185,107 @@ class _CardDetalhesState extends State<CardDetalhes> {
   }
 
   void DescerCard() async {
-    String Titulo = widget.detalhes.titulo;
-    String Assunto = widget.detalhes.materia;
-    String Descricao = widget.detalhes.descricao;
-    String text = "Card excluido da nuvem com sucesso!";
-    CartaoResumo cartaoResumo = new CartaoResumo(
-        materia: Assunto, titulo: Titulo, descricao: Descricao);
-    try {
-      /*/ws/$ cep /json/ */
-      var url = Uri.parse(
-          "https://api-memstudy.juliocesar131.repl.co/admin/${cartaoResumo.titulo}/${cartaoResumo.descricao}");
-      final response = await http.delete(url);
-      if (response.statusCode == 422) {
-        text = "Esse card ainda não está na nuvem!";
-      }
-      showSnackBar(text, Colors.purple);
-    } catch (e) {
-      showSnackBar("Erro ao enviar o card: " + e.toString(), Colors.redAccent);
+    if (_formkey.currentState!.validate()) {
+      String Titulo = widget.detalhes.titulo;
+      String Assunto = widget.detalhes.materia;
+      String Descricao = widget.detalhes.descricao;
+      String imagem = widget.detalhes.imagem;
+      String text = "Card excluido com sucesso!";
+      CartaoResumo cartaoResumo = new CartaoResumo(
+          materia: Assunto,
+          titulo: Titulo,
+          descricao: Descricao,
+          imagem: imagem);
+        try {
+          /*/ws/$ cep /json/ */
+          var url = Uri.parse(
+              "https://api-memstudy.juliocesar131.repl.co/admin/${cartaoResumo.titulo}/${cartaoResumo.descricao}");
+          final response = await http.delete(url);
+          await CartaoDao().ExcluirCartao(cartaoResumo: cartaoResumo);
+          showSnackBar(text, Colors.purple);
+          setState(() {
+            Navigator.pop(context);
+            Navigator.pop(context);
+            Navigator.pop(context);
+            Navigator.pop(context);
+          });
+        } catch (e) {
+          showSnackBar(
+              "Erro ao enviar o card: " + e.toString(), Colors.redAccent);
+        }
     }
-    setState(() {
-      Navigator.pop(context);
-    });
   }
 
   void AtualizarCard() async {
-     String Titulo = widget.detalhes.titulo;
-     String Assunto = widget.detalhes.materia;
-     String Descricao = widget.detalhes.descricao;
-      String text = "Card atualizado na nuvem com sucesso!";
+    String Titulo = widget.detalhes.titulo;
+    String Assunto = widget.detalhes.materia;
+    String Descricao = widget.detalhes.descricao;
+    String imagem = widget.detalhes.imagem;
+    String text = "Card atualizado na nuvem com sucesso!";
 
     CartaoResumo cartaoResumo = new CartaoResumo(
-        materia: Assunto, titulo: Titulo, descricao: Descricao);
+        materia: Assunto, titulo: Titulo, descricao: Descricao, imagem: imagem);
 
-      var url = Uri.parse(
-
-      "https://api-memstudy.juliocesar131.repl.co/admin/${cartaoResumo.descricao}");
-      final responseGet = await http.get(url);
-      if(responseGet.statusCode == 422){
-        text = "Esse card ainda não está na nuvem!";
-        showSnackBar(text, Colors.purple);
-        Navigator.pop(context);
-      }
-      else{
-        final recCartaoResumo = await Navigator.push(
+    final recCartaoResumo = await Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => NewCard(
-          cartaoResumo: cartaoResumo)));
-        Navigator.pop(context);
-        if(recCartaoResumo != null){
-          if (cartaoResumo != null) {
-            try {
-              var url = Uri.parse(
-                  "https://api-memstudy.juliocesar131.repl.co/admin/${cartaoResumo.titulo}/${cartaoResumo.descricao}");
-              final response = await http.put(url,
-              body: {
-                "titulo": recCartaoResumo.titulo.toString(),
-                "assunto": recCartaoResumo.materia.toString(),
-                "descricao": recCartaoResumo.descricao.toString()
-              }
-              );
-              if(response.statusCode == 200){
-                showSnackBar(text, Colors.purple);
-              }
-              else if (response.statusCode == 500) {
-                text = "Erro ao atualizar o card!";
-                showSnackBar(text, Colors.purple);
-              }
-              
-              } catch (e) {
-              showSnackBar("Erro ao atualizar o card: " +e.toString(), Colors.redAccent);
-              }
+        MaterialPageRoute(
+            builder: (context) => NewCard(cartaoResumo: cartaoResumo)));
+    Navigator.pop(context);
+    if (recCartaoResumo != null) {
+      if (cartaoResumo != null) {
+        var url = Uri.parse(
+            "https://api-memstudy.juliocesar131.repl.co/admin/${cartaoResumo.descricao}");
+        final responseGet = await http.get(url);
+        if (responseGet.statusCode == 422) {
+          text = "card atualizado!";
+          showSnackBar(text, Colors.purple);
+          setState(() {
+            Navigator.pop(context);
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const MeuCard();
+                },
+              ),
+            );
+          });
+        } else {
+          try {
+            var url = Uri.parse(
+                "https://api-memstudy.juliocesar131.repl.co/admin/${cartaoResumo.titulo}/${cartaoResumo.descricao}");
+            final response = await http.put(url, body: {
+              "titulo": recCartaoResumo.titulo.toString(),
+              "assunto": recCartaoResumo.materia.toString(),
+              "descricao": recCartaoResumo.descricao.toString(),
+              "imagem": recCartaoResumo.imagem.toString(),
+            });
+            if (response.statusCode == 200) {
+              showSnackBar(text, Colors.purple);
+              setState(() {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const MeuCard();
+                    },
+                  ),
+                );
+              });
+            } else if (response.statusCode == 500) {
+              text = "Erro ao atualizar o card na nuvem!";
+              showSnackBar(text, Colors.purple);
+            }
+          } catch (e) {
+            showSnackBar(
+                "Erro ao atualizar o card: " + e.toString(), Colors.redAccent);
           }
         }
       }
+    }
   }
 
   showSnackBar(String msg, Color cor) {
@@ -255,12 +302,17 @@ class _CardDetalhesState extends State<CardDetalhes> {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  alert(String title, String subtitle, Function function, /*void navigator*/) {
+  alert(
+    String title,
+    String subtitle,
+    Function function,
+    /*void navigator*/
+  ) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(          
+        return AlertDialog(
           content: Text(
             subtitle,
             style: TextStyle(),
@@ -274,7 +326,7 @@ class _CardDetalhesState extends State<CardDetalhes> {
           ),
           actions: [
             ElevatedButton(
-              onPressed: () async{
+              onPressed: () async {
                 function();
               },
               child: Text(
@@ -287,10 +339,87 @@ class _CardDetalhesState extends State<CardDetalhes> {
             ),
             ElevatedButton(
               onPressed: () {
-                  Navigator.pop(context);
+                Navigator.pop(context);
               },
               child: Text(
-                'Não',
+                'Cancelar',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  alertExluir(
+    String title,
+    Function function,
+    /*void navigator*/
+  ) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Form(
+                key: _formkey,
+                child: TextFormField(
+                  onChanged: (value) {
+                    nomeCard = value;
+                  },
+                  validator: (value) {
+                    if (value == "" || value == null) {
+                      return "Informe algum titulo!";
+                    }
+                    else if (value != widget.detalhes.titulo) {
+                      return "titulo incorreto!";
+                    }
+                    return null;
+                    ;
+                  },
+                  decoration: InputDecoration(
+                    labelText: "Digite o titulo do card ",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+          title: Text(
+            title,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () async {
+                function();
+              },
+              child: Text(
+                'Ok',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancelar',
                 style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
