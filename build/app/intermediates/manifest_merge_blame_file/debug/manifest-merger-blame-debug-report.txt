@@ -5,7 +5,7 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="20"
 9        android:targetSdkVersion="31" />
 10    <!--
 11         Flutter needs it to communicate with the running application
@@ -14,68 +14,114 @@
 14    <uses-permission android:name="android.permission.INTERNET" />
 14-->/home/kelvin/AndroidStudioProjects/pmovel/android/app/src/debug/AndroidManifest.xml:6:5-66
 14-->/home/kelvin/AndroidStudioProjects/pmovel/android/app/src/debug/AndroidManifest.xml:6:22-64
-15
-16    <application
-17        android:name="android.app.Application"
-18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.6.0] /home/kelvin/.gradle/caches/transforms-3/cbbd95a71c37efdfc64418cb4f36b641/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
-19        android:debuggable="true"
-20        android:icon="@mipmap/ic_launcher"
-21        android:label="Memstudy" >
-22        <activity
-23            android:name="com.prmo.app.MainActivity"
-24            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-25            android:exported="true"
-26            android:hardwareAccelerated="true"
-27            android:launchMode="singleTop"
-28            android:theme="@style/LaunchTheme"
-29            android:windowSoftInputMode="adjustResize" >
-30
-31            <!--
-32                 Specifies an Android theme to apply to this Activity as soon as
-33                 the Android process has started. This theme is visible to the user
-34                 while the Flutter UI initializes. After that, this theme continues
-35                 to determine the Window background behind the Flutter UI.
-36            -->
-37            <meta-data
-38                android:name="io.flutter.embedding.android.NormalTheme"
-39                android:resource="@style/NormalTheme" />
-40
-41            <intent-filter>
-42                <action android:name="android.intent.action.MAIN" />
-43
-44                <category android:name="android.intent.category.LAUNCHER" />
-45            </intent-filter>
-46        </activity>
-47        <!--
-48             Don't delete the meta-data below.
-49             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-50        -->
-51        <meta-data
-52            android:name="flutterEmbedding"
-53            android:value="2" />
-54
-55        <activity
-55-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
-56            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-56-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
-57            android:exported="false"
-57-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
-58            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-58-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+15    <!-- Include required permissions for Google Maps API to run. -->
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:23:5-79
+16-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:23:22-76
+17
+18    <uses-feature
+18-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:26:5-28:35
+19        android:glEsVersion="0x00020000"
+19-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:27:9-41
+20        android:required="true" />
+20-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:28:9-32
+21
+22    <queries>
+22-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:30:5-34:15
+23
+24        <!-- Needs to be explicitly declared on Android R+ -->
+25        <package android:name="com.google.android.apps.maps" />
+25-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:33:9-64
+25-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:33:18-61
+26    </queries>
+27
+28    <application
+29        android:name="android.app.Application"
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.6.0] /home/kelvin/.gradle/caches/transforms-3/cbbd95a71c37efdfc64418cb4f36b641/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+31        android:debuggable="true"
+32        android:icon="@mipmap/ic_launcher"
+33        android:label="Memstudy" >
+34        <meta-data
+35            android:name="com.google.android.geo.API_KEY"
+36            android:value="AIzaSyBwYVl7zFzPykmIHbx1wuelPef5DTKiPmI" />
+37
+38        <activity
+39            android:name="com.prmo.app.MainActivity"
+40            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+41            android:exported="true"
+42            android:hardwareAccelerated="true"
+43            android:launchMode="singleTop"
+44            android:theme="@style/LaunchTheme"
+45            android:windowSoftInputMode="adjustResize" >
+46
+47            <!--
+48                 Specifies an Android theme to apply to this Activity as soon as
+49                 the Android process has started. This theme is visible to the user
+50                 while the Flutter UI initializes. After that, this theme continues
+51                 to determine the Window background behind the Flutter UI.
+52            -->
+53            <meta-data
+54                android:name="io.flutter.embedding.android.NormalTheme"
+55                android:resource="@style/NormalTheme" />
+56
+57            <intent-filter>
+58                <action android:name="android.intent.action.MAIN" />
 59
-60        <uses-library
-60-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-61            android:name="androidx.window.extensions"
-61-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-62            android:required="false" />
-62-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-63        <uses-library
-63-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-64            android:name="androidx.window.sidecar"
-64-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-65            android:required="false" />
-65-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-66    </application>
-67
-68</manifest>
+60                <category android:name="android.intent.category.LAUNCHER" />
+61            </intent-filter>
+62        </activity>
+63        <!--
+64             Don't delete the meta-data below.
+65             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+66        -->
+67        <meta-data
+68            android:name="flutterEmbedding"
+69            android:value="2" />
+70
+71        <activity
+71-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
+72            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+72-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+73            android:exported="false"
+73-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-37
+74            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+74-->[:url_launcher_android] /home/kelvin/AndroidStudioProjects/pmovel/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
+75
+76        <uses-library
+76-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+77            android:name="androidx.window.extensions"
+77-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+78            android:required="false" />
+78-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+79        <uses-library
+79-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+80            android:name="androidx.window.sidecar"
+80-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+81            android:required="false" /> <!-- Needs to be explicitly declared on P+ -->
+81-->[androidx.window:window:1.0.0-beta04] /home/kelvin/.gradle/caches/transforms-3/e1122a04ff3f2e301327facd1abb25ea/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+82        <uses-library
+82-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:39:9-41:40
+83            android:name="org.apache.http.legacy"
+83-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:40:13-50
+84            android:required="false" />
+84-->[com.google.android.gms:play-services-maps:18.1.0] /home/kelvin/.gradle/caches/transforms-3/59a6b3e510772cbfa4e2157eb1712fb5/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:41:13-37
+85
+86        <activity
+86-->[com.google.android.gms:play-services-base:18.0.1] /home/kelvin/.gradle/caches/transforms-3/e1b5530718619a10070cdbc5e3abb884/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+87            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+87-->[com.google.android.gms:play-services-base:18.0.1] /home/kelvin/.gradle/caches/transforms-3/e1b5530718619a10070cdbc5e3abb884/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+88            android:exported="false"
+88-->[com.google.android.gms:play-services-base:18.0.1] /home/kelvin/.gradle/caches/transforms-3/e1b5530718619a10070cdbc5e3abb884/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+89            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+89-->[com.google.android.gms:play-services-base:18.0.1] /home/kelvin/.gradle/caches/transforms-3/e1b5530718619a10070cdbc5e3abb884/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+90
+91        <meta-data
+91-->[com.google.android.gms:play-services-basement:18.0.0] /home/kelvin/.gradle/caches/transforms-3/afbf11d9ce659f24295a536a571437c0/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+92            android:name="com.google.android.gms.version"
+92-->[com.google.android.gms:play-services-basement:18.0.0] /home/kelvin/.gradle/caches/transforms-3/afbf11d9ce659f24295a536a571437c0/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+93            android:value="@integer/google_play_services_version" />
+93-->[com.google.android.gms:play-services-basement:18.0.0] /home/kelvin/.gradle/caches/transforms-3/afbf11d9ce659f24295a536a571437c0/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+94    </application>
+95
+96</manifest>
